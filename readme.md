@@ -3,88 +3,91 @@
 
 * Classes:
 
-	activemob
-	mythicspawner
++ activemob
++ mythicspawner
 
 
 * Events:
 
-	on activemob spawnevent
-		Called whenever MythicMobs spawns an ActiveMob. Returns event-activemob & event-entity.
++ on activemob spawnevent
+Called whenever MythicMobs spawns an ActiveMob. Returns event-activemob & event-entity.
+
 
 * Conditions:
 
-	%entity% instanceof activemob
-		true if the entity is a activemob:
++ %entity% instanceof activemob
+true if the entity is a activemob:
 ```
-		on damage of player:
-			if attacker instanceof activemob:
-				set {_am} to attacker
+on damage of player:
+	if attacker instanceof activemob:
+	    set {_am} to attacker
 ```			
 	
-	%activemob% has threattable
-		true if the activemob has a threattable:
++ %activemob% has threattable
+true if the activemob has a threattable:
 ```
-		on damage of player:
-			if attacker instanceof activemob:
-				set {_am} to attacker
-				if {_am} has threattable:
-					dropcombat for {_am}
+on damage of player:
+	if attacker instanceof activemob:
+		set {_am} to attacker
+		if {_am} has threattable:
+			dropcombat for {_am}
 ```
 
-	%activemob% has mythicspawner
-		true if the activemob has a mythicspawner:
++ %activemob% has mythicspawner
+true if the activemob has a mythicspawner:
 ```		
-		on activemob spawnevent:
-			if event-activemob has mythicspawner:
-				set {_mythicspawner} to mythicspawner of event-activemob
+on activemob spawnevent:
+	if event-activemob has mythicspawner:
+		set {_mythicspawner} to mythicspawner of event-activemob
 ```			
 
 
 * Expressions:
 
-	activemob of %entity%
-		Get the activemob instance of the entity: set {_am} to activemob of event-entity
-		
-	all activemobs [in world %string%]
-		Get all ActiveMobs on the whole server or, if a world is present in the expression, of the world:
-				Example:
-					on right click on entity:
-					set {_count} to 0
-						loop all activemobs in world "world":
-							broadcast "displayname of loop-value"
-							add 1 to {_count}
-							broadcast "%{_count}%"
-							
-	displayname of %activemob%
-		Returns the displayname as string of the ActiveMob, if it has one.
-		
-	lastaggro of %activemob%
-		Get the entity instance of the entity which caused the last trigger on the activemob: set {_lastaggro} to lastaggro of {_am}
-		
-	toptarget of %activemob%
-		Get the entity instance of the activemobs target, or the topthreatholder if the activemob has a threadtable: set {_target} to toptarget of {_am}
-		
-	uuid of %activemob%
-		Returns a string with the uuid of the activemob: set {_uuid} to uuid of {_am}
-		
-	health of %activemob%
-		Returns a number with the amount of health the activemob actually has left: set {_health} to health of {_am}
-		
-	location of %activemob%
-		Returns the location of the activemob: set {_loc} to location of {_am}
-		
-	mlc %string% of %activemob%
-		%string% can be every YAML node of the mobs yml config. Returns the string of the %string% yml node of the activemob: set {_mobtype} to mlc {_node} of {_am}
-		
-	faction of %activemob%
-		Returns the faction name the activemob is in: set {_faction} to faction of {_am}
++ activemob of %entity%
+Get the activemob instance of the entity: set {_am} to activemob of event-entity
 
-	stance of %activemob%
-		Returns the stance of the activemob, if it has one: set {_stance} to stance of {_am}
-		
-	level of %activemob%
-		Returns the level of the activemob: set {_lvl} to level of {_am}
++ all activemobs [in world %string%]
+Get all ActiveMobs on the whole server or, if a world is present in the expression, of the world:
+```
+Example:
+	on right click on entity:
+		set {_count} to 0
+		loop all activemobs in world "world":
+			broadcast "displayname of loop-value"
+			add 1 to {_count}
+			broadcast "%{_count}%"
+```	
+
++ displayname of %activemob%
+Returns the displayname as string of the ActiveMob, if it has one.
+
++ lastaggro of %activemob%
+Get the entity instance of the entity which caused the last trigger on the activemob: set {_lastaggro} to lastaggro of {_am}
+
++ toptarget of %activemob%
+Get the entity instance of the activemobs target, or the topthreatholder if the activemob has a threadtable: set {_target} to toptarget of {_am}
+
++ uuid of %activemob%
+Returns a string with the uuid of the activemob: set {_uuid} to uuid of {_am}
+
++ health of %activemob%
+Returns a number with the amount of health the activemob actually has left: set {_health} to health of {_am}
+
++ location of %activemob%
+Returns the location of the activemob: set {_loc} to location of {_am}
+
++ mlc %string% of %activemob%
+%string% can be every YAML node of the mobs yml config. Returns the string of the %string% yml node of the activemob: set {_mobtype} to mlc {_node} of {_am}
+
++ faction of %activemob%
+Returns the faction name the activemob is in: set {_faction} to faction of {_am}
+
++ stance of %activemob%
+Returns the stance of the activemob, if it has one: set {_stance} to stance of {_am}
+
++ level of %activemob%
+Returns the level of the activemob: set {_lvl} to level of {_am}
 	
 	playerkills of %activemob%
 		Returns the playerkills of the activemob: set {_kills} to playerkills of {_am}
