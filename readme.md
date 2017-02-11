@@ -2,13 +2,10 @@
 
 
 * Classes:
-
 	activemob
 	mythicspawner
 
-
 * Events:
-
 	on activemob spawnevent
 		Called whenever MythicMobs spawns an ActiveMob. Returns event-activemob & event-entity.
 
@@ -16,30 +13,26 @@
 
 	%entity% instanceof activemob
 		true if the entity is a activemob:
-```
+
 		on damage of player:
 			if attacker instanceof activemob:
 				set {_am} to attacker
-```			
-	
+			
 	%activemob% has threattable
 		true if the activemob has a threattable:
-```
+
 		on damage of player:
 			if attacker instanceof activemob:
 				set {_am} to attacker
 				if {_am} has threattable:
 					dropcombat for {_am}
-```
 
 	%activemob% has mythicspawner
 		true if the activemob has a mythicspawner:
-```		
+
 		on activemob spawnevent:
 			if event-activemob has mythicspawner:
 				set {_mythicspawner} to mythicspawner of event-activemob
-```			
-
 
 * Expressions:
 
