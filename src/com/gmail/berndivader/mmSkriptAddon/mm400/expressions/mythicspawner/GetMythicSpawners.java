@@ -1,4 +1,4 @@
-package com.gmail.berndivader.mmSkriptAddon.mm400.expressions;
+package com.gmail.berndivader.mmSkriptAddon.mm400.expressions.mythicspawner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +12,9 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 
-public class ExprGetActiveMobs extends SimpleExpression<ActiveMob>{
+public class GetMythicSpawners extends SimpleExpression<MythicSpawner> {
 	private Expression<String> worldString;
 	private boolean all;
 
@@ -24,14 +24,13 @@ public class ExprGetActiveMobs extends SimpleExpression<ActiveMob>{
 	}
 
 	@Override
-	public Class<? extends ActiveMob> getReturnType() {
-		return ActiveMob.class;
+	public Class<? extends MythicSpawner> getReturnType() {
+		return MythicSpawner.class;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean init(Expression<?>[] expr, int matchedPattern, Kleenean var3, ParseResult var4) {
-		
 		if (matchedPattern==0) {
 			worldString = (Expression<String>) expr[0];
 			all = false;
@@ -48,19 +47,19 @@ public class ExprGetActiveMobs extends SimpleExpression<ActiveMob>{
 
 	@Override
 	@Nullable
-	protected ActiveMob[] get(Event e) {
-		List<ActiveMob> ams = new ArrayList<ActiveMob>();
+	protected MythicSpawner[] get(Event e) {
+		String wn = worldString.getSingle(e).toLowerCase();
+		List<MythicSpawner> spawners = new ArrayList<MythicSpawner>();
 		if (all) {
-			ams.addAll(MythicMobs.inst().getMobManager().getActiveMobs());
+			spawners.addAll(MythicMobs.inst().getSpawnerManager().getSpawners());
 		} else {
-			String world = worldString.getSingle(e).toLowerCase();
-			for (ActiveMob am : ams) {
-				if (am.getEntity().getWorld().getName().toLowerCase().equals(world)) {
-					ams.add(am);
+			for (MythicSpawner ms : MythicMobs.inst().getSpawnerManager().getSpawners()) {
+				if (ms.getLocation().getWorld().getName().toLowerCase().equals(wn)) {
+					spawners.add(ms);
 					continue;
 				}
 			}
 		}
-		return ams.toArray(new ActiveMob[0]);
+		return spawners.toArray(new MythicSpawner[0]);
 	}
 }

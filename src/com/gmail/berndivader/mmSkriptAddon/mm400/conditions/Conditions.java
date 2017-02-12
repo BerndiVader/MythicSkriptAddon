@@ -6,6 +6,8 @@ public class Conditions {
 	public static void register() {
 		Skript.registerCondition(ConditionEntityIsActiveMob.class, 
 				"%entity% [is ]instanceof activemob");
+		Skript.registerCondition(ActiveMobIsDead.class, 
+				"%activemob% is dead");
 		Skript.registerCondition(HasThreatTable.class, 
 				"%activemob% has threattable");
 		Skript.registerCondition(ConditionAmHasCustomSpawner.class,

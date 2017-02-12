@@ -1,7 +1,8 @@
-package com.gmail.berndivader.mmSkriptAddon.mm400.expressions;
+package com.gmail.berndivader.mmSkriptAddon.mm400.expressions.mythicspawner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Nullable;
 
@@ -13,10 +14,10 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 
-public class ExprGetActiveMobs extends SimpleExpression<ActiveMob>{
-	private Expression<String> worldString;
-	private boolean all;
+public class GetAllMobsFromSpawner extends SimpleExpression<ActiveMob> {
+	private Expression<MythicSpawner> mythicSpawner;
 
 	@Override
 	public boolean isSingle() {
@@ -30,15 +31,9 @@ public class ExprGetActiveMobs extends SimpleExpression<ActiveMob>{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean init(Expression<?>[] expr, int matchedPattern, Kleenean var3, ParseResult var4) {
-		
-		if (matchedPattern==0) {
-			worldString = (Expression<String>) expr[0];
-			all = false;
-		} else {
-			all = true;
-		}
-		return true;
+	public boolean init(Expression<?>[] expr, int var2, Kleenean var3, ParseResult var4) {
+		mythicSpawner = (Expression<MythicSpawner>) expr[0];
+		return false;
 	}
 
 	@Override
@@ -50,16 +45,12 @@ public class ExprGetActiveMobs extends SimpleExpression<ActiveMob>{
 	@Nullable
 	protected ActiveMob[] get(Event e) {
 		List<ActiveMob> ams = new ArrayList<ActiveMob>();
-		if (all) {
-			ams.addAll(MythicMobs.inst().getMobManager().getActiveMobs());
-		} else {
-			String world = worldString.getSingle(e).toLowerCase();
-			for (ActiveMob am : ams) {
-				if (am.getEntity().getWorld().getName().toLowerCase().equals(world)) {
-					ams.add(am);
-					continue;
-				}
-			}
+		ActiveMob am;
+		MythicSpawner ms = mythicSpawner.getSingle(e);
+		if (ms==null) return null;
+		for (UUID uuid : ms.mobs) {
+			am = MythicMobs.inst().getMobManager().getActiveMob(uuid).get();
+			if (am!=null) ams.add(am);
 		}
 		return ams.toArray(new ActiveMob[0]);
 	}
