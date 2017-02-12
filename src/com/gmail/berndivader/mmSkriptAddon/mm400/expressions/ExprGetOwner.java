@@ -50,7 +50,7 @@ public class ExprGetOwner extends SimpleExpression<Entity> {
 	protected Entity[] get(Event e) {
 		ActiveMob am = activeMob.getSingle(e);
 		if (am!=null && am.getOwner().isPresent()) {
-			UUID uuid = am.getUniqueId();
+			UUID uuid = am.getOwner().get();
 			World world = BukkitAdapter.adapt(am.getEntity().getWorld());
 			return new Entity[]{nmsutils.getEntity(world, uuid)};
 		};

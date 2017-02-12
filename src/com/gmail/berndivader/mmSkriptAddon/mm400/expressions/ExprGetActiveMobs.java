@@ -54,7 +54,7 @@ public class ExprGetActiveMobs extends SimpleExpression<ActiveMob>{
 			ams.addAll(MythicMobs.inst().getMobManager().getActiveMobs());
 		} else {
 			String world = worldString.getSingle(e).toLowerCase();
-			for (ActiveMob am : ams) {
+			for (ActiveMob am : MythicMobs.inst().getMobManager().getActiveMobs()) {
 				if (am.getEntity().getWorld().getName().toLowerCase().equals(world)) {
 					ams.add(am);
 					continue;

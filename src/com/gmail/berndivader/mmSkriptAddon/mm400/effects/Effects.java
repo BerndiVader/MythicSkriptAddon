@@ -11,7 +11,8 @@ public class Effects {
 		Skript.registerEffect(SetStance.class, "set stance of activemob %activemob% to %string%");
 		Skript.registerEffect(SetLevel.class, "set level of activemob %activemob% to %number%");
 		Skript.registerEffect(SetPlayerKills.class, "set kills of activemob %activemob% to %number%");
-		Skript.registerEffect(SetOwner.class, "set owner of activemob %activemob% to %entity%","set owner of activemob %activemob% to %string%");
+		Skript.registerEffect(SetOwner.class, "set owner of activemob %activemob% to %entity%",
+				"set owner of activemob %activemob% to %string% by uuid");
 		Skript.registerEffect(SendSignal.class, "send signal %string% to activemob %activemob% with trigger %entity%");
 		Skript.registerEffect(RemoveMob.class, "remove activemob %activemob%");
 	};

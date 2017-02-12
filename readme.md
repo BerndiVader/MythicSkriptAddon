@@ -34,7 +34,7 @@ on damage of player:
 	if attacker instanceof activemob:
 		set {_am} to attacker
 		if {_am} has threattable:
-			dropcombat for {_am}
+			dropcombat for activemob {_am}
 ```
 
 ### %activemob% has mythicspawner
@@ -70,9 +70,9 @@ Example:
 	on right click on entity:
 		set {_count} to 0
 		loop all activemobs in world "world":
-			broadcast "displayname of loop-value"
+			broadcast "%displayname of activemob loop-activemob%"
 			add 1 to {_count}
-			broadcast "%{_count}%"
+		broadcast "%{_count}%"
 ```	
 
 ### displayname of activemob %activemob%
@@ -151,7 +151,7 @@ Change the stance of the ActiveMob: set stance of event-activemob to "fight"
 Change the level of the ActiveMob: set level of {_am} to 10
 
 ### set owner of activemob %activemob% to %entity%
-### set owner of activemob %activemob% to %string%
+### set owner of activemob %activemob% to %string% by uuid
 Change the owner of the ActiveMob eighter by %entity% or by UUID in String format.
 
 ### set kills of activemob %activemob% to %number%
@@ -160,9 +160,9 @@ Set the playerkills of the activemob to a new amount:
 Example:
 	if event-entity instanceof activemob:
 		set {_am} to activemob of event-entity
-		set {_pks} to playerkills of {_am}
+		set {_pks} to playerkills of activemob {_am}
 		add 1 to {_pks}
-		set kills of {_am} to {_pks}
+		set kills of activemob {_am} to {_pks}
 ```
 
 ### send signal %string% to activemob %activemob% with trigger %entity%

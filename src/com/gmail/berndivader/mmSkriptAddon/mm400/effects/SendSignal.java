@@ -21,8 +21,8 @@ public class SendSignal extends Effect {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean init(Expression<?>[] expr, int var2, Kleenean var3, ParseResult var4) {
-		skriptMob = (Expression<ActiveMob>) expr[0];
-		skriptSignal = (Expression<String>) expr[1];
+		skriptMob = (Expression<ActiveMob>) expr[1];
+		skriptSignal = (Expression<String>) expr[0];
 		skriptSender = (Expression<Entity>) expr[2];
 		return true;
 	}
