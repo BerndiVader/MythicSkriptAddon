@@ -6,6 +6,6 @@
 	<classpathentry kind="lib" path="X:/SpigotJars/1_10_2/Spigot/Spigot-API/target/spigot-api-1.10.2-R0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="X:/SpigotJars/1_10_2/Spigot/Spigot-API/target/spigot-api-1.10.2-R0.1-SNAPSHOT-shaded.jar"/>
 	<classpathentry kind="lib" path="X:/SpigotJars/1_10_2/Spigot/Spigot-Server/target/spigot-1.10.2-R0.1-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="X:/SpigotJars/MythicMobs-4.0.0-1930.jar" sourcepath="X:/maven/MythicMobs-4.0.0-1930_source_from_cfr"/>
+	<classpathentry kind="lib" path="X:/SpigotJars/MythicMobs-4.0.0-1941.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

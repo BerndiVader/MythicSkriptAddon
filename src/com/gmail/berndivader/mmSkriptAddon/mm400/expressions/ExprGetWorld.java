@@ -30,7 +30,7 @@ public class ExprGetWorld extends SimpleExpression<World>{
 	@Override
 	public boolean init(Expression<?>[] expr, int var2, Kleenean var3, ParseResult var4) {
 		activeMob = (Expression<ActiveMob>) expr[0];
-		return false;
+		return true;
 	}
 
 	@Override

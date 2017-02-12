@@ -48,11 +48,11 @@ public class GetMythicSpawners extends SimpleExpression<MythicSpawner> {
 	@Override
 	@Nullable
 	protected MythicSpawner[] get(Event e) {
-		String wn = worldString.getSingle(e).toLowerCase();
 		List<MythicSpawner> spawners = new ArrayList<MythicSpawner>();
 		if (all) {
-			spawners.addAll(MythicMobs.inst().getSpawnerManager().getSpawners());
+			return MythicMobs.inst().getSpawnerManager().getSpawners().toArray(new MythicSpawner[0]);
 		} else {
+			String wn = worldString.getSingle(e).toLowerCase();
 			for (MythicSpawner ms : MythicMobs.inst().getSpawnerManager().getSpawners()) {
 				if (ms.getLocation().getWorld().getName().toLowerCase().equals(wn)) {
 					spawners.add(ms);

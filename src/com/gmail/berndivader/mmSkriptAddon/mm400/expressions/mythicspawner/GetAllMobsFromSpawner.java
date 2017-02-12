@@ -33,7 +33,7 @@ public class GetAllMobsFromSpawner extends SimpleExpression<ActiveMob> {
 	@Override
 	public boolean init(Expression<?>[] expr, int var2, Kleenean var3, ParseResult var4) {
 		mythicSpawner = (Expression<MythicSpawner>) expr[0];
-		return false;
+		return true;
 	}
 
 	@Override
@@ -45,11 +45,11 @@ public class GetAllMobsFromSpawner extends SimpleExpression<ActiveMob> {
 	@Nullable
 	protected ActiveMob[] get(Event e) {
 		List<ActiveMob> ams = new ArrayList<ActiveMob>();
-		ActiveMob am;
+		ActiveMob am = null;
 		MythicSpawner ms = mythicSpawner.getSingle(e);
 		if (ms==null) return null;
 		for (UUID uuid : ms.mobs) {
-			am = MythicMobs.inst().getMobManager().getActiveMob(uuid).get();
+			if (MythicMobs.inst().getMobManager().getActiveMob(uuid).isPresent()) am = MythicMobs.inst().getMobManager().getActiveMob(uuid).get();
 			if (am!=null) ams.add(am);
 		}
 		return ams.toArray(new ActiveMob[0]);
