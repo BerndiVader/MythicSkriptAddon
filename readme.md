@@ -93,6 +93,9 @@ Returns a string with the uuid of the activemob: set {_uuid} to uuid of {_am}
 ### health of activemob %activemob%
 Returns a number with the amount of health the activemob actually has left: set {_health} to health of {_am}
 
+### maxhealth of activemob %activemob%
+Returns a number with the max health of the activemob.
+
 ### mlc %string% of activemob %activemob%
 %string% can be every YAML node of the mobs yml config. Returns the string of the %string% yml node of the activemob: set {_mobtype} to mlc {_node} of {_am}
 
@@ -131,6 +134,12 @@ Returns all the ActiveMobs of the MythicSpawner
 
 
 ## Effects:
+
+### set health of activemob %activemob% to %number%
+Set the health of the ActiveMob. Amount of 1 = 1/2 heart
+
+### set maxhealth of activemob %activemob% to %number%
+Set the max possible health the ActiveMob can have. 1 = 1/2 heart
 
 ### set lastaggro of activemob %activemob% to %entity%
 Set the LastAggroEntity to a new entity: set lastaggro of {_am} to event-entity

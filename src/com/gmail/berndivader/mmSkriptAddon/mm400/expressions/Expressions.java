@@ -29,6 +29,7 @@ public class Expressions {
 		Skript.registerExpression(ExprGetTopThreat.class, Entity.class, ExpressionType.SIMPLE, "toptarget of activemob %activemob%");
 		Skript.registerExpression(ExprGetUUID.class, String.class, ExpressionType.SIMPLE,"uuid of activemob %activemob%");
 		Skript.registerExpression(ExprGetHealth.class, Number.class, ExpressionType.SIMPLE,"health of activemob %activemob%");
+		Skript.registerExpression(ExprGetMaxHealth.class, Number.class, ExpressionType.SIMPLE, "maxhealth of activemob %activemob%");
 		Skript.registerExpression(ExprGetMythicMobConfig.class, String.class, ExpressionType.SIMPLE,"mlc %string% of activemob %activemob%");
 		Skript.registerExpression(ExprGetFaction.class, String.class, ExpressionType.SIMPLE,"faction of activemob %activemob%");
 		Skript.registerExpression(ExprGetStance.class, String.class, ExpressionType.SIMPLE,"stance of activemob %activemob%");

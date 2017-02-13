@@ -15,5 +15,7 @@ public class Effects {
 				"set owner of activemob %activemob% to %string% by uuid");
 		Skript.registerEffect(SendSignal.class, "send signal %string% to activemob %activemob% with trigger %entity%");
 		Skript.registerEffect(RemoveMob.class, "remove activemob %activemob%");
+		Skript.registerEffect(SetHealth.class, "set health of activemob %activemob% to %number%");
+		Skript.registerEffect(SetMaxHealth.class, "set maxhealth of activemob %activemob% to %number%");
 	};
 }
