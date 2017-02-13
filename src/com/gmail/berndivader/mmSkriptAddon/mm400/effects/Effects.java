@@ -1,7 +1,11 @@
 package com.gmail.berndivader.mmSkriptAddon.mm400.effects;
 
 import com.gmail.berndivader.mmSkriptAddon.mm400.effects.mythicspawner.ActivateMythicSpawner;
+import com.gmail.berndivader.mmSkriptAddon.mm400.effects.mythicspawner.AttachMobToSpawner;
 import com.gmail.berndivader.mmSkriptAddon.mm400.effects.mythicspawner.CooldownMythicSpawner;
+import com.gmail.berndivader.mmSkriptAddon.mm400.effects.mythicspawner.MakeSpawnerSpawn;
+import com.gmail.berndivader.mmSkriptAddon.mm400.effects.mythicspawner.SetMobTypeOfSpawner;
+import com.gmail.berndivader.mmSkriptAddon.mm400.effects.mythicspawner.SetMovLevelofSpawner;
 import com.gmail.berndivader.mmSkriptAddon.mm400.effects.mythicspawner.WarmupMythicSpawner;
 
 import ch.njol.skript.Skript;
@@ -33,5 +37,9 @@ public class Effects {
 				"set remainingcooldown of mythicspawner %mythicspawner% to %number%");
 		Skript.registerEffect(WarmupMythicSpawner.class, "set warmup of mythicspawner %mythicspawner% to %number%",
 				"set remainingwarmup of mythicspawner %mythicspawner% to %number%");
+		Skript.registerEffect(SetMobTypeOfSpawner.class, "set mobtype of mythicspawner %mythicspawner% to %string%");
+		Skript.registerEffect(SetMovLevelofSpawner.class, "set moblevel of mythicspawner %mythicspawner% to %number%");
+		Skript.registerEffect(MakeSpawnerSpawn.class, "make mythicspawner %mythicspawner% spawn");
+		Skript.registerEffect(AttachMobToSpawner.class, "attach activemob %activemob% to mythicspawner %mythicspawner%");
 	};
 }

@@ -6,13 +6,17 @@ for MythicMobs 4.0.0 Build1930-1941
 
 #### activemob
 #### mythicspawner
+#### mobdrop
+#### mobitem
 
 
 ## Events:
 
-### on activemob spawnevent
+### on mythicmob spawnevent
 Called whenever MythicMobs spawns an ActiveMob. Returns event-activemob & event-entity.
 
+### on mythicmob deathevent
+Called whenever a MythicMob dies. Returns MobDrop with MobItems ***under development
 
 ## Conditions:
 
@@ -49,7 +53,10 @@ Example:
 on activemob spawnevent:
 	if event-activemob has mythicspawner:
 		set {_mythicspawner} to mythicspawner of event-activemob
-```			
+```
+
+### mythicspawner %mythicspawner% contains activemob %activemob%
+True if the ActiveMob is attached to the MythicSpawner	
 
 
 ## Expressions:
@@ -141,7 +148,26 @@ Returns all MythicSpawners in the world %string% or if if used without world con
 ### all activemobs of mythicspawner %mythicspawner%
 Returns all the ActiveMobs of the MythicSpawner
 
+### mobtype of mythicspawner %mythicspawner%
+Returns the MythicMob type of the MythicSpawner as String
 
+### moblevel of mythicspawner %mythicspawner%
+Returns the Level of the Spawner as Number
+
+### cooldown of mythicspawner %mythicspawner% || remainingcooldown of mythicspawner %mythicspawner%
+Returns the cooldown or the cooldown timer of the MythicSpawner. Both values are numbers in seconds.
+
+### warmup of mythicspawner %mythicspawner% || remainingwarmup of mythicspawner %mythicspawner%
+Returns the cooldown or the cooldown timer of the MythicSpawner. Both values are numbers in seconds.
+
+### number of activemobs from mythicspawner %mythicspawner% || number of maxmobs from mythicspawner %mythicspawner%
+Returns the number of spawned mobs or the number of MaxMobs that can be spawned.
+
+### mobtype of mythicspawner %mythicspawner%
+Retruns the MythicMob mobtype name of the MythicSpawner as string.
+
+### moblevel of mythicspawner %mythicspawner%
+Returns the level the MythicSpawner is set to as number.
 
 
 ## Effects:
@@ -217,11 +243,19 @@ Use this effect to remove the ActiveMob.
 ### activate mythicspawner %mythicspawner% || deactivate mythicspawner %mythicspawner%
 Activates or deaktivates a MythicSpawner.
 
-### cooldown of mythicspawner %mythicspawner% || remainingcooldown of mythicspawner %mythicspawner%
-Get the cooldown or the cooldown timer of the MythicSpawner. Both values are numbers in seconds.
+### set cooldown of mythicspawner %mythicspawner% to %number% || set remainingcooldown of mythicspawner %mythicspawner% to %number%
 
-### warmup of mythicspawner %mythicspawner% || remainingwarmup of mythicspawner %mythicspawner%
-Get the cooldown or the cooldown timer of the MythicSpawner. Both values are numbers in seconds.
+### set warmup of mythicspawner %mythicspawner% to %number% || set remainingwarmup of mythicspawner %mythicspawner% to %number%
 
-### number of activemobs from mythicspawner %mythicspawner% || number of maxmobs from mythicspawner %mythicspawner%
-Get the number of spawned mobs or the number of MaxMobs that can be spawned.
+### set mobtype of mythicspawner %mythicspawner% to %string%
+
+### set moblevel of mythicspawner %mythicspawner% to %number%
+
+### make mythicspawner %mythicspawner% spawn
+
+### attach activemob %activemob% to mythicspawner %mythicspawner%
+
+
+#### for MythicMob Drops:
+
+### all items of mobdrop %mobdrop%

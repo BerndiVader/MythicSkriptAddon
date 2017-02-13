@@ -12,5 +12,7 @@ public class Conditions {
 				"%activemob% has threattable");
 		Skript.registerCondition(ConditionAmHasCustomSpawner.class,
 				"%activemob% has mythicspawner");
+		Skript.registerCondition(ConditionSpawnerContainsMob.class,
+				"mythicspawner %mythicspawner% contains activemob %activemob%");
 	}
 }

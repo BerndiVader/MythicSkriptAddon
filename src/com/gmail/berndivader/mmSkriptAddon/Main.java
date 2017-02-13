@@ -30,8 +30,10 @@ public class Main extends JavaPlugin {
 	    	strMMVer = Bukkit.getServer().getPluginManager().getPlugin("MythicMobs").getDescription().getVersion();
 			mmVer = Integer.valueOf(strMMVer.replaceAll("\\.", ""));
 			if (mmVer >= 245 && mmVer <= 251) {
+				Bukkit.getLogger().info("NOT SUPPORTED YET!");
 				mm251Code.register();
-			} else if (mmVer == 260) {
+			} else if (mmVer == 2511) {
+				Bukkit.getLogger().info("NOT SUPPORTED YET!");
 				mm260Code.register();
 			} else if (mmVer == 400) {
 				mm400Code.register();

@@ -60,5 +60,61 @@ public class CustomClasses {
 					}
 					
 		}));
+		Classes.registerClass(new ClassInfo<MythicDrops>(MythicDrops.class,"mobdrop").name("mobdrop").user("mobdrop")
+				.defaultExpression(new EventValueExpression<MythicDrops>(MythicDrops.class))
+				.parser(new Parser<MythicDrops>() {
+
+					@Override
+					@Nullable
+					public MythicDrops parse(String var1, ParseContext var2) {
+						return null;
+					}
+
+					@Override
+					@Nullable
+					public String toString(MythicDrops drops, int var2) {
+						return Integer.toString(drops.getDrops().size());
+					}
+
+					@Override
+					public String toVariableNameString(MythicDrops drops) {
+						return drops.getDrops().toString();
+					}
+
+					@Override
+					public String getVariableNamePattern() {
+						return ".+";
+					}
+		}));
+		Classes.registerClass(new ClassInfo<MobItem>(MobItem.class,"mobitem").name("mobitem").user("mobitem")
+				.defaultExpression(new EventValueExpression<MobItem>(MobItem.class))
+				.parser(new Parser<MobItem>() {
+
+					@Override
+					@Nullable
+					public MobItem parse(String var1, ParseContext var2) {
+						// TODO Auto-generated method stub
+						return null;
+					}
+
+					@Override
+					@Nullable
+					public String toString(MobItem item, int var2) {
+						// TODO Auto-generated method stub
+						return item.getItem().toString();
+					}
+
+					@Override
+					public String toVariableNameString(MobItem var1) {
+						// TODO Auto-generated method stub
+						return var1.toString();
+					}
+
+					@Override
+					public String getVariableNamePattern() {
+						// TODO Auto-generated method stub
+						return ".+";
+					}
+		}));
 	}
 }

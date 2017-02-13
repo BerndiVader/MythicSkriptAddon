@@ -4,6 +4,8 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 
+import com.gmail.berndivader.mmSkriptAddon.mm400.classes.MobItem;
+import com.gmail.berndivader.mmSkriptAddon.mm400.expressions.drops.GetAllDrops;
 import com.gmail.berndivader.mmSkriptAddon.mm400.expressions.mythicspawner.*;
 
 import ch.njol.skript.Skript;
@@ -56,6 +58,13 @@ public class Expressions {
 		Skript.registerExpression(GetMaxMobsFromSpawner.class, Number.class, ExpressionType.SIMPLE, "number of activemobs from mythicspawner %mythicspawner%",
 				"number of maxmobs from mythicspawner %mythicspawner%");
 		Skript.registerExpression(GetAllMobsFromSpawner.class, ActiveMob.class, ExpressionType.SIMPLE, "all activemobs of mythicspawner %mythicspawner%");
-//		Skript.registerExpression(MobtypeOfSpawner.class, MythicMob.class, ExpressionType.SIMPLE, "mythicmobtype of %mythicspawner%");
+		Skript.registerExpression(MobtypeOfSpawner.class, String.class, ExpressionType.SIMPLE, "mobtype of mythicspawner %mythicspawner%");
+		Skript.registerExpression(GetMovLevelOfSpawner.class, Number.class, ExpressionType.SIMPLE, "moblevel of mythicspawner %mythicspawner%");
+		
+		//MythicMobs Drops Expressions
+		
+		Skript.registerExpression(GetAllDrops.class, MobItem.class, ExpressionType.SIMPLE, "all items of mobdrop %mobdrop%");
+		
+		
 	}
 }
