@@ -15,7 +15,9 @@ public class Expressions {
 	public static void register() {
 		
 		//ActiveMob Expressions
-
+		
+		Skript.registerExpression(SpawnMythicMob.class, ActiveMob.class, ExpressionType.SIMPLE, 
+				"spawn mythicmob %string% at location %location% in world %string%");
 		Skript.registerExpression(ExprGetActiveMobs.class, ActiveMob.class, ExpressionType.SIMPLE,
 				"all activemobs in world %string%","all activemobs");
 		Skript.registerExpression(ExprGetActiveMob.class, ActiveMob.class, ExpressionType.SIMPLE, 
@@ -42,10 +44,17 @@ public class Expressions {
 		//MythicSpawner Expressions
 
 		Skript.registerExpression(ExprGetMythicSpawner.class, MythicSpawner.class, ExpressionType.SIMPLE, "mythicspawner of %activemob%");
+		Skript.registerExpression(SpawnerName.class, String.class, ExpressionType.SIMPLE, "name of mythicspawner %mythicspawner%");
 		Skript.registerExpression(SpawnerLocation.class, Location.class, ExpressionType.SIMPLE, "location of mythicspawner %mythicspawner%");
 		Skript.registerExpression(GetSpawnerWorld.class, World.class, ExpressionType.SIMPLE, "world of mythicspawner %mythicspawner%");
+		Skript.registerExpression(SpawnerCooldown.class, Number.class, ExpressionType.SIMPLE, "cooldown of mythicspawner %mythicspawner%",
+				"remainingcooldown of mythicspawner %mythicspawner%");
+		Skript.registerExpression(SpawnerWarmup.class, Number.class, ExpressionType.SIMPLE, "warmup of mythicspawner %mythicspawner%",
+				"remainingwarmup of mythicspawner %mythicspawner%");
 		Skript.registerExpression(GetMythicSpawners.class, MythicSpawner.class, ExpressionType.SIMPLE, 
 				"all mythicspawners in world %string%","all mythicspawners");
+		Skript.registerExpression(GetMaxMobsFromSpawner.class, Number.class, ExpressionType.SIMPLE, "number of activemobs from mythicspawner %mythicspawner%",
+				"number of maxmobs from mythicspawner %mythicspawner%");
 		Skript.registerExpression(GetAllMobsFromSpawner.class, ActiveMob.class, ExpressionType.SIMPLE, "all activemobs of mythicspawner %mythicspawner%");
 //		Skript.registerExpression(MobtypeOfSpawner.class, MythicMob.class, ExpressionType.SIMPLE, "mythicmobtype of %mythicspawner%");
 	}

@@ -18,6 +18,8 @@ Called whenever MythicMobs spawns an ActiveMob. Returns event-activemob & event-
 
 ### %entity% instanceof activemob
 true if the entity is a activemob:
+
+Example:
 ```
 on damage of player:
 	if attacker instanceof activemob:
@@ -29,6 +31,8 @@ True if the ActiveMob is dead
 	
 ### %activemob% has threattable
 true if the activemob has a threattable:
+
+Example:
 ```
 on damage of player:
 	if attacker instanceof activemob:
@@ -39,6 +43,8 @@ on damage of player:
 
 ### %activemob% has mythicspawner
 true if the activemob has a mythicspawner:
+
+Example:
 ```		
 on activemob spawnevent:
 	if event-activemob has mythicspawner:
@@ -47,6 +53,8 @@ on activemob spawnevent:
 
 
 ## Expressions:
+
+#### for ActiveMob:
 
 ### activemob of %entity%
 Get the activemob instance of the entity: set {_am} to activemob of event-entity
@@ -65,14 +73,15 @@ Get the ActiveMob by UUID. Return NULL if the entitiy is no ActiveMob.
 
 ### all activemobs [in world %string%]
 Get all ActiveMobs on the whole server or, if a world is present in the expression, of the world:
-```
+
 Example:
-	on right click on entity:
-		set {_count} to 0
-		loop all activemobs in world "world":
-			broadcast "%displayname of activemob loop-activemob%"
-			add 1 to {_count}
-		broadcast "%{_count}%"
+```
+on right click on entity:
+	set {_count} to 0
+	loop all activemobs in world "world":
+		broadcast "%displayname of activemob loop-activemob%"
+		add 1 to {_count}
+	broadcast "%{_count}%"
 ```	
 
 ### displayname of activemob %activemob%
@@ -115,6 +124,8 @@ Returns the playerkills of the activemob: set {_kills} to playerkills of {_am}
 Returns the lastest signal of the activemob, if there is one: set {_signal} to lastsignal of {_am}
 
 
+#### for MythicSpawner:
+
 ### mythicspawner of %activemob%
 Returns the MythicSpawner instance of the activemob, if it have one: set {_ms} to mythicspawner of {_am}
 
@@ -134,6 +145,25 @@ Returns all the ActiveMobs of the MythicSpawner
 
 
 ## Effects:
+
+#### for ActiveMob:
+
+### spawn mythicmob %string% at location %location% in world %string%
+Spawns a MythicMob with mobtype %string% at the given location in the given world. Returns the ActiveMob instance of the spawned MythicMob. Mobtype string is case sensitive!
+
+Example:
+```
+on right click:
+	event-block is dirt
+	set {_loc} to location of event-block
+	set {_world} to "%world of event-block%"
+	set {_mobtype} to "disguisedummy"
+	set {_am} to spawn mythicmob {_mobtype} at location {_loc} in world {_world}
+	if "%{_am}%" is "<none>":
+		send "Something went wrong! Maybe the Mobtype does not exist?" to player
+	else:
+		send "You just spawned a MythicMob named %displayname of activemob {_am}%!" to player
+```
 
 ### set health of activemob %activemob% to %number%
 Set the health of the ActiveMob. Amount of 1 = 1/2 heart
@@ -165,13 +195,14 @@ Change the owner of the ActiveMob eighter by %entity% or by UUID in String forma
 
 ### set kills of activemob %activemob% to %number%
 Set the playerkills of the activemob to a new amount:
-```
+
 Example:
-	if event-entity instanceof activemob:
-		set {_am} to activemob of event-entity
-		set {_pks} to playerkills of activemob {_am}
-		add 1 to {_pks}
-		set kills of activemob {_am} to {_pks}
+```
+if event-entity instanceof activemob:
+	set {_am} to activemob of event-entity
+	set {_pks} to playerkills of activemob {_am}
+	add 1 to {_pks}
+	set kills of activemob {_am} to {_pks}
 ```
 
 ### send signal %string% to activemob %activemob% with trigger %entity%
@@ -179,3 +210,18 @@ Use this effect to send the signal %string% to the %activemob% with the trigger 
 
 ### remove activemob %activemob%
 Use this effect to remove the ActiveMob.
+
+
+#### for MythicSpawner:
+
+### activate mythicspawner %mythicspawner% || deactivate mythicspawner %mythicspawner%
+Activates or deaktivates a MythicSpawner.
+
+### cooldown of mythicspawner %mythicspawner% || remainingcooldown of mythicspawner %mythicspawner%
+Get the cooldown or the cooldown timer of the MythicSpawner. Both values are numbers in seconds.
+
+### warmup of mythicspawner %mythicspawner% || remainingwarmup of mythicspawner %mythicspawner%
+Get the cooldown or the cooldown timer of the MythicSpawner. Both values are numbers in seconds.
+
+### number of activemobs from mythicspawner %mythicspawner% || number of maxmobs from mythicspawner %mythicspawner%
+Get the number of spawned mobs or the number of MaxMobs that can be spawned.

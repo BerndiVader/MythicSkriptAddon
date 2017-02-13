@@ -1,4 +1,4 @@
-package com.gmail.berndivader.mmSkriptAddon.mm400.expressions;
+package com.gmail.berndivader.mmSkriptAddon.mm400.expressions.mythicspawner;
 
 import javax.annotation.Nullable;
 
@@ -8,11 +8,11 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 
-public class ExprGetDisplayName extends SimpleExpression<String>{
-	private Expression<ActiveMob> activeMob;
-
+public class SpawnerName extends SimpleExpression<String> {
+	private Expression<MythicSpawner> skriptSpawner;
+	
 	@Override
 	public boolean isSingle() {
 		return true;
@@ -26,7 +26,7 @@ public class ExprGetDisplayName extends SimpleExpression<String>{
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean init(Expression<?>[] expr, int var2, Kleenean var3, ParseResult var4) {
-		activeMob = (Expression<ActiveMob>) expr[0];
+		skriptSpawner = (Expression<MythicSpawner>) expr[0];
 		return true;
 	}
 
@@ -38,8 +38,7 @@ public class ExprGetDisplayName extends SimpleExpression<String>{
 	@Override
 	@Nullable
 	protected String[] get(Event e) {
-		ActiveMob am = activeMob.getSingle(e);
-		if (am.getEntity().getCustomName()==null) return null;
-		return new String[]{am.getEntity().getCustomName().toString()};
+		
+		return new String[]{skriptSpawner.getSingle(e).getName()};
 	}
 }
