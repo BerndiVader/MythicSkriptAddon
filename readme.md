@@ -34,7 +34,7 @@ on mythicspawner spawnevent:
 	broadcast "a %displayname of activemob event-activemob% just spawned at %location of activemob event-activemob%"
 ```
 
-### on mythicmobs skillevent:
+### on mythicmobs skriptskillevent:
 Called when the mob casted the skill skriptskill.
 Returns:
 event-activemob = activemob who casted the skill
