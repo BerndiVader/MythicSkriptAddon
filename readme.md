@@ -55,7 +55,7 @@ skriptpig:
 
 Skript part:
 on mythicmobs skriptskillevent:
-	if event-skillname is "msgskill":
+	if event-skillname is "msg":
 		if event-targettype is "ENTITY":
 			event-target is a player
 			send event-skillargs to event-target
