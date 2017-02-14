@@ -14,7 +14,9 @@ import com.gmail.berndivader.mmSkriptAddon.mm400.events.custom.mmMythicMobSpawnE
 import com.gmail.berndivader.mmSkriptAddon.mm400.events.custom.mmMythicSpawnerSpawnEvent;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
+import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMechanicLoadEvent;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.xikage.mythicmobs.skills.SkillMechanic;
 
 public class mmRegisterEvents implements Listener {
 	private static Plugin plugin = Main.plugin;
@@ -40,6 +42,14 @@ public class mmRegisterEvents implements Listener {
 					Bukkit.getServer().getPluginManager().callEvent(e);
 				}
 			}.runTaskLater(plugin, 1);
+		}
+	}
+	
+	@EventHandler
+	public void onMythicMobsCustomMechanicsLoad(MythicMechanicLoadEvent e) {
+		if (e.getMechanicName().toLowerCase().equals("skriptskill")) {
+			SkillMechanic skill = new mmSkriptSkill(e.getContainer(), e.getConfig());
+			e.register(skill);
 		}
 	}
 }

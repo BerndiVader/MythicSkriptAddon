@@ -34,6 +34,34 @@ on mythicspawner spawnevent:
 	broadcast "a %displayname of activemob event-activemob% just spawned at %location of activemob event-activemob%"
 ```
 
+### on mythicmobs skillevent:
+Called when the mob casted the skill skriptskill.
+Returns:
+event-activemob = activemob who casted the skill
+event-targettype = what kind of target? there are 3 possibilities: NONE, ENTITY, LOCATION
+event-target = target entity if targettype = ENTITY
+event-trigger = trigger entity
+event-skillname = name of skriptskill skill
+event-skillargs = arguments for the skriptskill
+event-location = location if the targettype is LOCATION
+Example:
+```
+MythicMob mob.yml:
+skriptpig:
+  Type: pig
+  Display: 'Skriptskill Pig'
+  Skills:
+  - skriptskill{skill=msg;args="Hallo wie gehts, <target.name>?"} @trigger ~onInteract 1
+
+Skript part:
+on mythicmobs skriptskillevent:
+	if event-skillname is "msgskill":
+		if event-targettype is "ENTITY":
+			event-target is a player
+			send event-skillargs to event-target
+```
+
+
 ## Conditions:
 
 ### %entity% instanceof activemob
