@@ -47,8 +47,8 @@ public class Effects {
 
 		//mobdrops & mobitems
 		
-		Skript.registerEffect(RemoveMobItem.class, "remove mobitem %mobitem% from mobdrop %mobdrops%","clear mobdrop %mobdrops%");
+		Skript.registerEffect(RemoveMobItem.class, "remove mobitem %mobitem% from mobdrop %mobdrop%","clear mobdrop %mobdrop%");
 		Skript.registerEffect(ChangeMaterialOfMobItem.class, "set material of mobitem %mobitem% to %string%");
-		Skript.registerEffect(AddItemToMobDrop.class, "add item %itemstack% to mobdrop %mobdrops%");
+		Skript.registerEffect(AddItemToMobDrop.class, "add item %itemstack% to mobdrop %mobdrop%");
 	};
 }

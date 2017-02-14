@@ -287,7 +287,7 @@ on mythicmob deathevent:
 			remove mobitem loop-mobitem from mobdrop event-mobdrop
 ```
 
-### add item %itemstack% to mobdrop %mobdrops%
+### add item %itemstack% to mobdrop %mobdrop%
 Add a new item to the mobdrop of the mythicmob deathevent.
 
 Example:
