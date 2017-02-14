@@ -170,6 +170,13 @@ Retruns the MythicMob mobtype name of the MythicSpawner as string.
 Returns the level the MythicSpawner is set to as number.
 
 
+#### for MobDrops & MobItems:
+
+### all items of mobdrop %mobdrop%
+Gets you the MythicMob Drops from the MythicMobDeathEvent. Only works in the mythicmob deathevent!
+
+
+
 ## Effects:
 
 #### for ActiveMob:
@@ -244,18 +251,49 @@ Use this effect to remove the ActiveMob.
 Activates or deaktivates a MythicSpawner.
 
 ### set cooldown of mythicspawner %mythicspawner% to %number% || set remainingcooldown of mythicspawner %mythicspawner% to %number%
+Set the cooldown or the remaining cooldown of the MythicMobSpawner in seconds.
 
 ### set warmup of mythicspawner %mythicspawner% to %number% || set remainingwarmup of mythicspawner %mythicspawner% to %number%
+Set the warumup or the remaining warmup of the MythicMobspawner in seconds.
 
 ### set mobtype of mythicspawner %mythicspawner% to %string%
+Change the Mobtype of the MythicSpawner. Where %string% is a valid MythicMob.
 
 ### set moblevel of mythicspawner %mythicspawner% to %number%
+Change to moblevel of the MythicSpawner.
 
 ### make mythicspawner %mythicspawner% spawn
+Activates the MythicSpawner. 
 
 ### attach activemob %activemob% to mythicspawner %mythicspawner%
+Register the given ActiveMob to the MythicSpawner.
 
 
-#### for MythicMob Drops:
+#### for MobDrops & MobItems:
 
-### all items of mobdrop %mobdrop%
+### remove mobitem %mobitem% from mobdrop %mobdrop% || clear mobdrop %mobdrop%
+Remove the given mobitem from the mobdrop or clears the mobdrop completely.
+
+### set material of mobitem %mobitem% to %string%
+Change the materialtype of the given mobitem into a new Materialtype. %string% have to be a valid Bukkit Material.
+
+Example:
+```
+on mythicmob deathevent:
+	loop all items of mobdrop event-mobdrop:
+		if "%loop-mobitem%" contains "STONE":
+			set material of mobitem loop-mobitem to "GRASS"
+		if "%loop-mobitem%" contains "DIRT":
+			remove mobitem loop-mobitem from mobdrop event-mobdrop
+```
+
+### add item %itemstack% to mobdrop %mobdrops%
+Add a new item to the mobdrop of the mythicmob deathevent.
+
+Example:
+```
+on mythicmob deathevent:
+	clear mobdrop event-mobdrop
+	set {_item} to diamond sword named "Godsword"
+	add item {_item} to mobdrop event-mobdrop
+```

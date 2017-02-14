@@ -1,5 +1,8 @@
 package com.gmail.berndivader.mmSkriptAddon.mm400.effects;
 
+import com.gmail.berndivader.mmSkriptAddon.mm400.effects.mobitems.AddItemToMobDrop;
+import com.gmail.berndivader.mmSkriptAddon.mm400.effects.mobitems.ChangeMaterialOfMobItem;
+import com.gmail.berndivader.mmSkriptAddon.mm400.effects.mobitems.RemoveMobItem;
 import com.gmail.berndivader.mmSkriptAddon.mm400.effects.mythicspawner.ActivateMythicSpawner;
 import com.gmail.berndivader.mmSkriptAddon.mm400.effects.mythicspawner.AttachMobToSpawner;
 import com.gmail.berndivader.mmSkriptAddon.mm400.effects.mythicspawner.CooldownMythicSpawner;
@@ -41,5 +44,11 @@ public class Effects {
 		Skript.registerEffect(SetMovLevelofSpawner.class, "set moblevel of mythicspawner %mythicspawner% to %number%");
 		Skript.registerEffect(MakeSpawnerSpawn.class, "make mythicspawner %mythicspawner% spawn");
 		Skript.registerEffect(AttachMobToSpawner.class, "attach activemob %activemob% to mythicspawner %mythicspawner%");
+
+		//mobdrops & mobitems
+		
+		Skript.registerEffect(RemoveMobItem.class, "remove mobitem %mobitem% from mobdrop %mobdrops%","clear mobdrop %mobdrops%");
+		Skript.registerEffect(ChangeMaterialOfMobItem.class, "set material of mobitem %mobitem% to %string%");
+		Skript.registerEffect(AddItemToMobDrop.class, "add item %itemstack% to mobdrop %mobdrops%");
 	};
 }
