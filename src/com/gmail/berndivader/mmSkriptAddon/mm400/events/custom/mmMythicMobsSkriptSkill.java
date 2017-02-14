@@ -2,7 +2,6 @@ package com.gmail.berndivader.mmSkriptAddon.mm400.events.custom;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
@@ -27,7 +26,7 @@ public class mmMythicMobsSkriptSkill extends Event {
 		if (t!=null) trigger = t.getBukkitEntity();
 		this.targettype = TargetType.NONE;
 		if (target instanceof Entity) {
-			this.targetEntity = (Player) target;
+			this.targetEntity = target;
 			this.targettype = TargetType.ENTITY;
 		} else if (targetloc instanceof Location) {
 			this.targetLocation = targetloc;
