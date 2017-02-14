@@ -11,8 +11,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.gmail.berndivader.mmSkriptAddon.Main;
 import com.gmail.berndivader.mmSkriptAddon.mm400.events.custom.mmMythicMobSpawnEvent;
+import com.gmail.berndivader.mmSkriptAddon.mm400.events.custom.mmMythicSpawnerSpawnEvent;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
+import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 
 public class mmRegisterEvents implements Listener {
 	private static Plugin plugin = Main.plugin;
@@ -29,7 +31,12 @@ public class mmRegisterEvents implements Listener {
 				@Override
 				public void run() {
 					if (!(MythicMobs.inst().getAPIHelper().isMythicMob(bukkitEntity))) return;
-					mmMythicMobSpawnEvent e = new mmMythicMobSpawnEvent(MythicMobs.inst().getMobManager().getMythicMobInstance(bukkitEntity));
+					ActiveMob am = MythicMobs.inst().getAPIHelper().getMythicMobInstance(bukkitEntity);
+					if (am.getSpawner()!=null) {
+						mmMythicSpawnerSpawnEvent e = new mmMythicSpawnerSpawnEvent(am.getSpawner(), am);
+						Bukkit.getServer().getPluginManager().callEvent(e);
+					}
+					mmMythicMobSpawnEvent e = new mmMythicMobSpawnEvent(am);
 					Bukkit.getServer().getPluginManager().callEvent(e);
 				}
 			}.runTaskLater(plugin, 1);

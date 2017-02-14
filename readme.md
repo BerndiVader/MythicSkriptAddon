@@ -16,7 +16,23 @@ for MythicMobs 4.0.0 Build1930-1941
 Called whenever MythicMobs spawns an ActiveMob. Returns event-activemob & event-entity.
 
 ### on mythicmob deathevent
-Called whenever a MythicMob dies. Returns MobDrop with MobItems ***under development
+Called whenever a MythicMob dies. Returns event-activemob & event-mobdrop
+Example:
+```
+on mythicmob deathevent:
+	if displayname of event-activemob is "Super Zombie":
+		loop all items of mobdrop event-mobdrop:
+			if "%loop-mobitem%" contains "<do_not_drop>":
+				remove mobitem loop-mobitem from mobdrop event-mobdrop
+```
+
+### on mythicspawner spawnevent
+Called whenever a MythicMobs CustomSpawner spawned a MythicMob. Returns event-activemob & event-mythicspawner
+Example:
+```
+on mythicspawner spawnevent:
+	broadcast "a %displayname of activemob event-activemob% just spawned at %location of activemob event-activemob%"
+```
 
 ## Conditions:
 
@@ -149,7 +165,7 @@ Returns all MythicSpawners in the world %string% or if if used without world con
 Returns all the ActiveMobs of the MythicSpawner
 
 ### mobtype of mythicspawner %mythicspawner%
-Returns the MythicMob type of the MythicSpawner as String
+Retruns the MythicMob mobtype name of the MythicSpawner as string.
 
 ### moblevel of mythicspawner %mythicspawner%
 Returns the Level of the Spawner as Number
@@ -163,11 +179,6 @@ Returns the cooldown or the cooldown timer of the MythicSpawner. Both values are
 ### number of activemobs from mythicspawner %mythicspawner% || number of maxmobs from mythicspawner %mythicspawner%
 Returns the number of spawned mobs or the number of MaxMobs that can be spawned.
 
-### mobtype of mythicspawner %mythicspawner%
-Retruns the MythicMob mobtype name of the MythicSpawner as string.
-
-### moblevel of mythicspawner %mythicspawner%
-Returns the level the MythicSpawner is set to as number.
 
 
 #### for MobDrops & MobItems:
@@ -207,7 +218,7 @@ Set the max possible health the ActiveMob can have. 1 = 1/2 heart
 ### set lastaggro of activemob %activemob% to %entity%
 Set the LastAggroEntity to a new entity: set lastaggro of {_am} to event-entity
 
-### set dropcombat for activemob %activemob%
+### dropcombat for activemob %activemob%
 Clears the target, the threattable & calls the dropcombat trigger (if threattable is enabled) for the activemob: dropcombat for {_am}
 
 ### set %entity% to new target of activemob %activemob%

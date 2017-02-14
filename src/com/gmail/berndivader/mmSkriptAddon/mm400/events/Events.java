@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import org.bukkit.entity.Entity;
 
 import com.gmail.berndivader.mmSkriptAddon.mm400.events.custom.mmMythicMobSpawnEvent;
+import com.gmail.berndivader.mmSkriptAddon.mm400.events.custom.mmMythicSpawnerSpawnEvent;
 import com.gmail.berndivader.mmSkriptAddon.mm400.classes.*;
 
 import ch.njol.skript.Skript;
@@ -13,6 +14,7 @@ import ch.njol.skript.registrations.EventValues;
 import ch.njol.skript.util.Getter;
 import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMobDeathEvent;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 
 public class Events {
 	
@@ -49,6 +51,19 @@ public class Events {
 			public MythicDrops get(MythicMobDeathEvent e) {
 				MythicDrops md = new MythicDrops(e.getDrops());
 				return md;
+			}}, 0);
+		Skript.registerEvent("MythicSpawnerSpawnEvent", SimpleEvent.class, mmMythicSpawnerSpawnEvent.class, "mythicspawner spawnevent");
+		EventValues.registerEventValue(mmMythicSpawnerSpawnEvent.class, MythicSpawner.class, new Getter<MythicSpawner, mmMythicSpawnerSpawnEvent>() {
+			@Override
+			@Nullable
+			public MythicSpawner get(mmMythicSpawnerSpawnEvent e) {
+				return e.getMs();
+			}}, 0);
+		EventValues.registerEventValue(mmMythicSpawnerSpawnEvent.class, ActiveMob.class, new Getter<ActiveMob, mmMythicSpawnerSpawnEvent>() {
+			@Override
+			@Nullable
+			public ActiveMob get(mmMythicSpawnerSpawnEvent e) {
+				return e.getAm();
 			}}, 0);
 	}
 }
