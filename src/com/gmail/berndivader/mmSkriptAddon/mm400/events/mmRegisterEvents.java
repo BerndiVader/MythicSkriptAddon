@@ -14,8 +14,10 @@ import com.gmail.berndivader.mmSkriptAddon.mm400.events.custom.mmMythicMobSpawnE
 import com.gmail.berndivader.mmSkriptAddon.mm400.events.custom.mmMythicSpawnerSpawnEvent;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
+import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicConditionLoadEvent;
 import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMechanicLoadEvent;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.xikage.mythicmobs.skills.SkillCondition;
 import io.lumine.xikage.mythicmobs.skills.SkillMechanic;
 
 public class mmRegisterEvents implements Listener {
@@ -48,8 +50,15 @@ public class mmRegisterEvents implements Listener {
 	@EventHandler
 	public void onMythicMobsCustomMechanicsLoad(MythicMechanicLoadEvent e) {
 		if (e.getMechanicName().toLowerCase().equals("skriptskill")) {
-			SkillMechanic skill = new mmSkriptSkill(e.getContainer(), e.getConfig());
-			e.register(skill);
+			SkillMechanic skill;
+			if ((skill = new mmSkriptSkill(e.getContainer(), e.getConfig())) != null) e.register(skill);
+		}
+	}
+	@EventHandler
+	public void onMythicMobsCustomConditionsLoad(MythicConditionLoadEvent e) {
+		if (e.getConditionName().toLowerCase().equals("skriptcondition")) {
+			SkillCondition condition;
+			if ((condition = new mmSkriptCondition(e.getConditionName(), e.getConfig())) != null) e.register(condition);
 		}
 	}
 }

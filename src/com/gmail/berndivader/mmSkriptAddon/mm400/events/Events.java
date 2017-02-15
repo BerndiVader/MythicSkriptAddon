@@ -6,14 +6,12 @@ import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 
 import com.gmail.berndivader.mmSkriptAddon.mm400.events.custom.mmMythicMobSpawnEvent;
+import com.gmail.berndivader.mmSkriptAddon.mm400.events.custom.mmMythicMobsSkriptConditionEvent;
 import com.gmail.berndivader.mmSkriptAddon.mm400.events.custom.mmMythicMobsSkriptSkill;
 import com.gmail.berndivader.mmSkriptAddon.mm400.events.custom.mmMythicSpawnerSpawnEvent;
-import com.gmail.berndivader.mmSkriptAddon.mm400.expressions.event.EventSkillArgs;
-import com.gmail.berndivader.mmSkriptAddon.mm400.expressions.event.EventSkillName;
-import com.gmail.berndivader.mmSkriptAddon.mm400.expressions.event.EventTarget;
-import com.gmail.berndivader.mmSkriptAddon.mm400.expressions.event.EventTrigger;
-import com.gmail.berndivader.mmSkriptAddon.mm400.expressions.event.TargetType;
+import com.gmail.berndivader.mmSkriptAddon.mm400.expressions.event.*;
 import com.gmail.berndivader.mmSkriptAddon.mm400.classes.*;
+import com.gmail.berndivader.mmSkriptAddon.mm400.effects.Conditions.SetConditionMeet;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
@@ -84,10 +82,19 @@ public class Events {
 			public Location get(mmMythicMobsSkriptSkill e) {
 				return e.getTargetLocation();
 		}}, 0);
-		Skript.registerExpression(EventTarget.class, Entity.class, ExpressionType.SIMPLE, "event-target");
-		Skript.registerExpression(EventTrigger.class, Entity.class, ExpressionType.SIMPLE, "event-trigger");
-		Skript.registerExpression(EventSkillName.class, String.class, ExpressionType.SIMPLE, "event-skillname");
-		Skript.registerExpression(EventSkillArgs.class, String.class, ExpressionType.SIMPLE, "event-skillargs");
-		Skript.registerExpression(TargetType.class, String.class, ExpressionType.SIMPLE, "event-targettype");
+		Skript.registerExpression(EventTarget.class, Entity.class, ExpressionType.SIMPLE, "skill-target");
+		Skript.registerExpression(EventTrigger.class, Entity.class, ExpressionType.SIMPLE, "skill-trigger");
+		Skript.registerExpression(EventSkillName.class, String.class, ExpressionType.SIMPLE, "skill-name");
+		Skript.registerExpression(EventSkillArgs.class, String.class, ExpressionType.SIMPLE, "skill-args");
+		Skript.registerExpression(TargetType.class, String.class, ExpressionType.SIMPLE, "skill-targettype");
+		
+		Skript.registerEvent("CustomSkriptConditionEvent", SimpleEvent.class, mmMythicMobsSkriptConditionEvent.class, "mythicmobs skriptconditionevent");
+		Skript.registerExpression(ConditionActiveMob.class, ActiveMob.class, ExpressionType.SIMPLE, "condition-activemob");
+		Skript.registerExpression(ConditionEntity.class, Entity.class, ExpressionType.SIMPLE, "condition-entity");
+		Skript.registerExpression(ConditionLocation.class, Location.class, ExpressionType.SIMPLE, "condition-location");
+		Skript.registerExpression(ConditionName.class, String.class, ExpressionType.SIMPLE, "condition-name");
+		Skript.registerExpression(ConditionArgs.class, String.class, ExpressionType.SIMPLE, "condition-args");
+		Skript.registerExpression(MeetCondtion.class, Boolean.class, ExpressionType.SIMPLE, "condition-meet");
+		Skript.registerEffect(SetConditionMeet.class, "set condition meet to %boolean%");
 	}
 }

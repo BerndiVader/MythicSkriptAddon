@@ -5,7 +5,6 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.gmail.berndivader.mmSkriptAddon.NMS.*;
-import com.gmail.berndivader.mmSkriptAddon.mm251.mm251Code;
 import com.gmail.berndivader.mmSkriptAddon.mm260.mm260Code;
 import com.gmail.berndivader.mmSkriptAddon.mm400.mm400Code;
 
@@ -29,10 +28,7 @@ public class Main extends JavaPlugin {
 			Skript.registerAddon(this);
 	    	strMMVer = Bukkit.getServer().getPluginManager().getPlugin("MythicMobs").getDescription().getVersion();
 			mmVer = Integer.valueOf(strMMVer.replaceAll("\\.", ""));
-			if (mmVer >= 245 && mmVer <= 251) {
-				Bukkit.getLogger().info("NOT SUPPORTED YET!");
-				mm251Code.register();
-			} else if (mmVer == 2511) {
+		if (mmVer == 2511) {
 				Bukkit.getLogger().info("NOT SUPPORTED YET!");
 				mm260Code.register();
 			} else if (mmVer == 400) {

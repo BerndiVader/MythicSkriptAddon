@@ -38,12 +38,12 @@ on mythicspawner spawnevent:
 Called when the mob casted the skill skriptskill.
 Returns:
 event-activemob = activemob who casted the skill
-event-targettype = what kind of target? there are 3 possibilities: NONE, ENTITY, LOCATION
-event-target = target entity if targettype = ENTITY
-event-trigger = trigger entity
-event-skillname = name of skriptskill skill
-event-skillargs = arguments for the skriptskill
 event-location = location if the targettype is LOCATION
+skill-targettype = what kind of target? there are 3 possibilities: NONE, ENTITY, LOCATION
+skill-target = target entity if targettype = ENTITY
+skill-trigger = trigger entity
+skill-name = name of skriptskill skill
+skill-args = arguments for the skriptskill
 Example:
 ```
 MythicMob mob.yml:
@@ -55,11 +55,40 @@ skriptpig:
 
 Skript part:
 on mythicmobs skriptskillevent:
-	if event-skillname is "msg":
-		if event-targettype is "ENTITY":
-			event-target is a player
-			send event-skillargs to event-target
+	if skill-name is "msg":
+		if skill-targettype is "ENTITY":
+			skill-target is a player
+			send skill-args to skill-target
 ```
+
+### on mythicmobs skriptconditionevent:
+Called on a skills skriptcondition.
+Returns:
+condition-activemob = activemob who cast the skill
+condition-entity = entity who cast the skill
+condition-location = location to check
+condition-name = name of the condition
+condition-args = arguments of the condition
+condition-meet = if the condition is meet or not (you must set this by yourself) standart = false
+
+Example:
+
+MythicMobs skill.yml:
+skskill:
+  Conditions:
+  - skriptcondition{c=weather;args=clear}
+  Coolddown: 1
+  Skills:
+  - skriptskill{s=msg;args="Nice weather today! Isnt it, <target.name>?"}
+  
+Skript part:
+on mythicmobs skriptconditionevent:
+	if condition-name is "weather":
+		if condition-args is "clear":
+			if weather in world of condition-entity is clear:
+				set condition meet to true
+			else:
+				set condition meet to false
 
 
 ## Conditions:
