@@ -72,7 +72,7 @@ condition-args = arguments of the condition
 condition-meet = if the condition is meet or not (you must set this by yourself) standart = false
 
 Example:
-
+```
 MythicMobs skill.yml:
 skskill:
   Conditions:
@@ -89,7 +89,7 @@ on mythicmobs skriptconditionevent:
 				set condition meet to true
 			else:
 				set condition meet to false
-
+```
 
 ## Conditions:
 
