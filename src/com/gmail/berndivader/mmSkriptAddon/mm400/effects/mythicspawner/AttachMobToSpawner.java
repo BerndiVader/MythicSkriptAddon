@@ -35,7 +35,7 @@ public class AttachMobToSpawner extends Effect {
 		ActiveMob am = skriptMob.getSingle(e);
 		MythicSpawner ms = skriptSpawner.getSingle(e);
 		if (ms==null || am==null) return;
-		if (!ms.mobs.contains(am.getUniqueId())) {
+		if (!ms.getAssociatedMobs().contains(am.getUniqueId())) {
 			ms.trackMob(am);
 		}
 	}

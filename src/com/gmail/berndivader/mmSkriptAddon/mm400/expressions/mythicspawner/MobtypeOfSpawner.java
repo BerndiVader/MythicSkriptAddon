@@ -40,6 +40,6 @@ public class MobtypeOfSpawner extends SimpleExpression<String> {
 	@Nullable
 	protected String[] get(Event e) {
 		if (!(skriptSpawner.getSingle(e) instanceof MythicSpawner)) return null;
-		return new String[]{skriptSpawner.getSingle(e).mobName};
+		return new String[]{skriptSpawner.getSingle(e).getTypeName()};
 	}
 }

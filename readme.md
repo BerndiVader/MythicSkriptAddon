@@ -1,5 +1,5 @@
 #MythicMobs Skript Addon:
-for MythicMobs 4.0.0 Build1930-1941
+for MythicMobs 4.0.0 Release Version
 
 
 ## Classes:

@@ -33,6 +33,6 @@ public class SetMobTypeOfSpawner extends Effect {
 		MythicSpawner ms = skriptSpawner.getSingle(e);
 		String mobtype = skriptMobType.getSingle(e);
 		if (mobtype.isEmpty() || ms==null) return;
-		ms.mobName=mobtype;
+		ms.setType(mobtype);
 	}
 }

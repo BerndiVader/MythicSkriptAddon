@@ -34,7 +34,7 @@ public class ConditionSpawnerContainsMob extends Condition {
 		ActiveMob am = skriptMob.getSingle(e);
 		MythicSpawner ms = skriptSpawner.getSingle(e);
 		if (am==null || ms==null) return false;
-		if (ms.mobs.contains(am.getUniqueId())) return true;
+		if (ms.getAssociatedMobs().contains(am.getUniqueId())) return true;
 		return false;
 	}
 

@@ -41,7 +41,7 @@ public class GetMaxMobsFromSpawner extends SimpleExpression<Number> {
 	@Nullable
 	protected Number[] get(Event e) {
 		MythicSpawner ms = mythicSpawner.getSingle(e);
-		Number amount = bool ? ms.getNumberOfMobs()+ms.getNumberOfCachedMobs() : ms.maxMobs;
+		Number amount = bool ? ms.getNumberOfMobs()+ms.getNumberOfCachedMobs() : ms.getMaxMobs();
 		return new Number[]{amount};
 	}
 }

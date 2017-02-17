@@ -33,6 +33,6 @@ public class SetMovLevelofSpawner extends Effect {
 	protected void execute(Event e) {
 		MythicSpawner ms = skriptSpawner.getSingle(e);
 		if (ms==null) return;
-		ms.mobLevel=skriptMobLevel.getSingle(e).intValue();
+		ms.setMobLevel(skriptMobLevel.getSingle(e).intValue());
 	}
 }

@@ -48,7 +48,7 @@ public class GetAllMobsFromSpawner extends SimpleExpression<ActiveMob> {
 		ActiveMob am = null;
 		MythicSpawner ms = mythicSpawner.getSingle(e);
 		if (ms==null) return null;
-		for (UUID uuid : ms.mobs) {
+		for (UUID uuid : ms.getAssociatedMobs()) {
 			if (MythicMobs.inst().getMobManager().getActiveMob(uuid).isPresent()) am = MythicMobs.inst().getMobManager().getActiveMob(uuid).get();
 			if (am!=null) ams.add(am);
 		}
