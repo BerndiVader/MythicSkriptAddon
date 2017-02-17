@@ -41,6 +41,7 @@ public class Expressions {
 		Skript.registerExpression(ExprGetPks.class, Number.class, ExpressionType.SIMPLE,"playerkills of activemob %activemob%");
 		Skript.registerExpression(ExprGetSignal.class, String.class, ExpressionType.SIMPLE,"lastsignal of activemob %activemob%");
 		Skript.registerExpression(ExprGetDisplayName.class, String.class, ExpressionType.SIMPLE, "displayname of activemob %activemob%");
+		Skript.registerExpression(ExprGetMobType.class, String.class, ExpressionType.SIMPLE, "mobtype of activemob %activemob%");
 		Skript.registerExpression(ExprGetOwner.class, Entity.class, ExpressionType.SIMPLE, "owner of activemob %activemob%");
 		
 		//MythicSpawner Expressions

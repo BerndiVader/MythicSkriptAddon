@@ -167,6 +167,9 @@ on right click on entity:
 ### displayname of activemob %activemob%
 Returns the displayname as string of the ActiveMob, if it has one.
 
+### mobtype of activemob %activemob%
+Returns the MythicMob MobType of the ActiveMob as string.
+
 ### owner of activemob %activemob%
 Returns the owner of the ActiveMob as entity, if there is a owner present.
 
