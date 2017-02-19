@@ -35,9 +35,9 @@ public class Effects {
 				"make activemob %activemob% cast skill %string% with trigger %entity% at target %entity%",
 				"make activemob %activemob% cast skill %string% with trigger %entity% at location %location%");
 		Skript.registerEffect(MakePlayerCastSkill.class, 
-				"make player %entity% cast skill %string% with trigger %entity% at entity %entity%",
-				"make player %entity% cast skill %string% with trigger %entity% at location %location%",
-				"make player %entity% cast skill %string% with trigger %entity% at self");
+				"make player %entity% cast skill %string% with trigger %entity% at entity %entity% with delay %number% and repeat %number%",
+				"make player %entity% cast skill %string% with trigger %entity% at location %location% with delay %number% and repeat %number%",
+				"make player %entity% cast skill %string% with trigger %entity% at self with delay %number% and repeat %number%");
 		
 		//mythicspawner
 		

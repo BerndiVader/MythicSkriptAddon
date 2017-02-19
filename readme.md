@@ -253,22 +253,22 @@ Gets you the MythicMob Drops from the MythicMobDeathEvent. Only works in the myt
 
 #### for Player:
 
-### make player %entity% cast skill %string% with trigger %entity% at entity %entity%
-### make player %entity% cast skill %string% with trigger %entity% at location %location%
-### make player %entity% cast skill %string% with trigger %entity% at self
+### make player %entity% cast skill %string% with trigger %entity% at entity %entity% with delay %number% and repeat %number%
+### make player %entity% cast skill %string% with trigger %entity% at location %location% with delay %number% and repeat %number%
+### make player %entity% cast skill %string% with trigger %entity% at self with delay %number% and repeat %number%
+
 Example:
 ```
 #Skriptpart:
 
 on left click:
 	if player's tool is a sword:
+		target is set
 		cancel event
-		if "%target%" is "<none>":
-			stop
-		make player player cast skill "Damage" with trigger player at entity target
+		make player player cast skill "Damage" with trigger player at entity target with delay 0 and repeat 0
 	else if player's tool is dirt:
 		cancel event
-		make player player cast skill "Heal" with trigger player at self
+		make player player cast skill "Heal" with trigger player at self with delay 10 and repeat 20
 
 #MythicMob skill part:
 Heal:
@@ -282,8 +282,7 @@ Damage:
   - distance{d=<10} true
   - distance{d=>3} true
   Skills:
-  - effect:particleline{particle=lava;amount=10;vSpread=0.10;hSpread=0.10;Speed=0.1;yoffset=1;ystartoffset=0;distancebetween=5} @target
-  - delay 5
+  - effect:particleline{particle=lava;amount=20;vSpread=0.10;hSpread=0.10;Speed=0.2;yoffset=1;ystartoffset=0;distancebetween=1} @target
   - damage @target
 ```
 
