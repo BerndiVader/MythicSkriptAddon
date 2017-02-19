@@ -315,6 +315,11 @@ Use this effect to send the signal %string% to the %activemob% with the trigger 
 ### remove activemob %activemob%
 Use this effect to remove the ActiveMob.
 
+### make activemob %activemob% cast skill %string% with trigger %entity% at target %entity%
+### make activemob %activemob% cast skill %string% with trigger %entity% at location %location%
+Use this effect to make an activemob cast a skill.
+
+
 
 #### for MythicSpawner:
 

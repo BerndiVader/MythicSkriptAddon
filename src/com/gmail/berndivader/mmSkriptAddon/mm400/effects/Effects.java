@@ -31,6 +31,9 @@ public class Effects {
 		Skript.registerEffect(RemoveMob.class, "remove activemob %activemob%");
 		Skript.registerEffect(SetHealth.class, "set health of activemob %activemob% to %number%");
 		Skript.registerEffect(SetMaxHealth.class, "set maxhealth of activemob %activemob% to %number%");
+		Skript.registerEffect(MakeMobCastSkill.class, 
+				"make activemob %activemob% cast skill %string% with trigger %entity% at target %entity%",
+				"make activemob %activemob% cast skill %string% with trigger %entity% at location %location%");
 		
 		//mythicspawner
 		

@@ -2,6 +2,7 @@ package com.gmail.berndivader.mmSkriptAddon.mm400.expressions;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.event.Event;
+
 import javax.annotation.Nullable;
 
 import ch.njol.skript.lang.Expression;
@@ -35,7 +36,6 @@ public class ExprGetActiveMob extends SimpleExpression<ActiveMob>{
 	public String toString(@Nullable Event arg0, boolean arg1) {
 		return null;
 	}
-
 	@Override
 	@Nullable
 	protected ActiveMob[] get(Event e) {
