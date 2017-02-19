@@ -34,6 +34,10 @@ public class Effects {
 		Skript.registerEffect(MakeMobCastSkill.class, 
 				"make activemob %activemob% cast skill %string% with trigger %entity% at target %entity%",
 				"make activemob %activemob% cast skill %string% with trigger %entity% at location %location%");
+		Skript.registerEffect(MakePlayerCastSkill.class, 
+				"make player %entity% cast skill %string% with trigger %entity% at entity %entity%",
+				"make player %entity% cast skill %string% with trigger %entity% at location %location%",
+				"make player %entity% cast skill %string% with trigger %entity% at self");
 		
 		//mythicspawner
 		

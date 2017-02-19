@@ -5,6 +5,7 @@ for MythicMobs 4.0.0 Release Version
 ## Classes:
 
 #### activemob
+#### activeplayer
 #### mythicspawner
 #### mobdrop
 #### mobitem
@@ -249,6 +250,39 @@ Gets you the MythicMob Drops from the MythicMobDeathEvent. Only works in the myt
 
 
 ## Effects:
+
+#### for Player:
+
+### make player %entity% cast skill %string% with trigger %entity% at entity %entity%
+### make player %entity% cast skill %string% with trigger %entity% at location %location%
+### make player %entity% cast skill %string% with trigger %entity% at self
+Example:
+```
+#Skriptpart:
+
+on left click:
+	if player's tool is a sword:
+		cancel event
+		if "%target%" is "<none>":
+			stop
+		make player player cast skill "LichBlockMask" with trigger player at entity target
+	else if player's tool is dirt:
+		cancel event
+		make player player cast skill "Heal" with trigger player at self
+
+#MythicMob skill part:
+Heal:
+  Skills:
+  - effect:particles{particle=heart;amount=8;vSpread=0.5;hSpread=0.5;Spped=0.01;yoffset=1} @self
+  - heal{a=2;overheal=false} @self
+
+damageskill:
+  Skills:
+  - effect:particleline{particle=lava;amount=10;vSpread=0.10;hSpread=0.10;Speed=0.1;yoffset=1;ystartoffset=0;distancebetween=5} @target
+  - delay 5
+  - damage @target
+```
+
 
 #### for ActiveMob:
 
