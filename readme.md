@@ -265,7 +265,7 @@ on left click:
 		cancel event
 		if "%target%" is "<none>":
 			stop
-		make player player cast skill "LichBlockMask" with trigger player at entity target
+		make player player cast skill "Damage" with trigger player at entity target
 	else if player's tool is dirt:
 		cancel event
 		make player player cast skill "Heal" with trigger player at self
@@ -276,7 +276,11 @@ Heal:
   - effect:particles{particle=heart;amount=8;vSpread=0.5;hSpread=0.5;Spped=0.01;yoffset=1} @self
   - heal{a=2;overheal=false} @self
 
-damageskill:
+Damage:
+  TargetConditions:
+  - lineofsight true
+  - distance{d=<10} true
+  - distance{d=>3} true
   Skills:
   - effect:particleline{particle=lava;amount=10;vSpread=0.10;hSpread=0.10;Speed=0.1;yoffset=1;ystartoffset=0;distancebetween=5} @target
   - delay 5
