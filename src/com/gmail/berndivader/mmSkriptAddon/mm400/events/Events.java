@@ -56,6 +56,7 @@ public class Events {
 				MythicDrops md = new MythicDrops(e.getDrops());
 				return md;
 		}}, 0);
+		Skript.registerExpression(DeathEventAttacker.class, Entity.class, ExpressionType.SIMPLE, "event-killer");
 		Skript.registerEvent("MythicSpawnerSpawnEvent", SimpleEvent.class, mmMythicSpawnerSpawnEvent.class, "mythicspawner spawnevent");
 		EventValues.registerEventValue(mmMythicSpawnerSpawnEvent.class, MythicSpawner.class, new Getter<MythicSpawner, mmMythicSpawnerSpawnEvent>() {
 			@Override

@@ -42,4 +42,9 @@ public class ActivePlayer implements SkillCaster {
 	public int getLevel() {
 		return this.level;
 	}
+
+	@Override
+	public float getPower() {
+		return 0;
+	}
 }

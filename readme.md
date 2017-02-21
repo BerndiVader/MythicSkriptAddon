@@ -17,10 +17,14 @@ for MythicMobs 4.0.0 Release Version
 Called whenever MythicMobs spawns an ActiveMob. Returns event-activemob & event-entity.
 
 ### on mythicmob deathevent
-Called whenever a MythicMob dies. Returns event-activemob & event-mobdrop
+Called whenever a MythicMob dies. Returns 
+##### event-activemob
+##### event-mobdrop
+##### event-killer
 Example:
 ```
 on mythicmob deathevent:
+	send "You killed a MythicMob!" to event-killer
 	if displayname of event-activemob is "Super Zombie":
 		loop all items of mobdrop event-mobdrop:
 			if "%loop-mobitem%" contains "<do_not_drop>":
@@ -28,7 +32,9 @@ on mythicmob deathevent:
 ```
 
 ### on mythicspawner spawnevent
-Called whenever a MythicMobs CustomSpawner spawned a MythicMob. Returns event-activemob & event-mythicspawner
+Called whenever a MythicMobs CustomSpawner spawned a MythicMob. Returns
+##### event-activemob
+##### event-mythicspawner
 Example:
 ```
 on mythicspawner spawnevent:
@@ -38,13 +44,13 @@ on mythicspawner spawnevent:
 ### on mythicmobs skriptskillevent:
 Called when the mob casted the skill skriptskill.
 Returns:
-event-activemob = activemob who casted the skill
-event-location = location if the targettype is LOCATION
-skill-targettype = what kind of target? there are 3 possibilities: NONE, ENTITY, LOCATION
-skill-target = target entity if targettype = ENTITY
-skill-trigger = trigger entity
-skill-name = name of skriptskill skill
-skill-args = arguments for the skriptskill
+##### event-activemob = activemob who casted the skill
+##### event-location = location if the targettype is LOCATION
+##### skill-targettype = what kind of target? there are 3 possibilities: NONE, ENTITY, LOCATION
+##### skill-target = target entity if targettype = ENTITY
+##### skill-trigger = trigger entity
+##### skill-name = name of skriptskill skill
+##### skill-args = arguments for the skriptskill
 Example:
 ```
 MythicMob mob.yml:
@@ -65,12 +71,12 @@ on mythicmobs skriptskillevent:
 ### on mythicmobs skriptconditionevent:
 Called on a skills skriptcondition.
 Returns:
-condition-activemob = activemob who cast the skill
-condition-entity = entity who cast the skill
-condition-location = location to check
-condition-name = name of the condition
-condition-args = arguments of the condition
-condition-meet = if the condition is meet or not (you must set this by yourself) standart = false
+##### condition-activemob = activemob who cast the skill
+##### condition-entity = entity who cast the skill
+##### condition-location = location to check
+##### condition-name = name of the condition
+##### condition-args = arguments of the condition
+##### condition-meet = if the condition is meet or not (you must set this by yourself) standart = false
 
 Example:
 ```
