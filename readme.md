@@ -14,10 +14,14 @@ for MythicMobs 4.0.0 Release Version
 ## Events:
 
 ### on mythicmob spawnevent
-Called whenever MythicMobs spawns an ActiveMob. Returns event-activemob & event-entity.
+#### Called whenever MythicMobs spawns an ActiveMob.
+###### Returns:
+##### event-activemob
+##### event-entity
 
 ### on mythicmob deathevent
-Called whenever a MythicMob dies. Returns 
+#### Called whenever a MythicMob dies.
+###### Returns: 
 ##### event-activemob
 ##### event-mobdrop
 ##### event-killer
@@ -25,14 +29,15 @@ Example:
 ```
 on mythicmob deathevent:
 	send "You killed a MythicMob!" to event-killer
-	if displayname of event-activemob is "Super Zombie":
+	if displayname of activemob event-activemob is "Super Zombie":
 		loop all items of mobdrop event-mobdrop:
 			if "%loop-mobitem%" contains "<do_not_drop>":
 				remove mobitem loop-mobitem from mobdrop event-mobdrop
 ```
 
 ### on mythicspawner spawnevent
-Called whenever a MythicMobs CustomSpawner spawned a MythicMob. Returns
+#### Called whenever a MythicMobs CustomSpawner spawns a MythicMob.
+###### Returns:
 ##### event-activemob
 ##### event-mythicspawner
 Example:
@@ -42,21 +47,21 @@ on mythicspawner spawnevent:
 ```
 
 ### on mythicmobs skriptskillevent:
-Called when the mob casted the skill skriptskill.
-Returns:
+#### Called when the mob casted the skill skriptskill.
+###### Returns:
 ##### event-activemob = activemob who casted the skill
-##### event-location = location if the targettype is LOCATION
 ##### skill-targettype = what kind of target? there are 3 possibilities: NONE, ENTITY, LOCATION
 ##### skill-target = target entity if targettype = ENTITY
+##### event-location = location if the targettype is LOCATION
 ##### skill-trigger = trigger entity
 ##### skill-name = name of skriptskill skill
 ##### skill-args = arguments for the skriptskill
 Example:
 ```
 MythicMob mob.yml:
-skriptpig:
+skriptmonkey:
   Type: pig
-  Display: 'Skriptskill Pig'
+  Display: 'a Skriptmonkey Pig'
   Skills:
   - skriptskill{skill=msg;args="Hallo wie gehts, <target.name>?"} @trigger ~onInteract 1
 
@@ -69,8 +74,8 @@ on mythicmobs skriptskillevent:
 ```
 
 ### on mythicmobs skriptconditionevent:
-Called on a skills skriptcondition.
-Returns:
+#### Called on a skills skriptcondition.
+###### Returns:
 ##### condition-activemob = activemob who cast the skill
 ##### condition-entity = entity who cast the skill
 ##### condition-location = location to check
@@ -86,7 +91,7 @@ skskill:
   - skriptcondition{c=weather;args=clear}
   Coolddown: 1
   Skills:
-  - skriptskill{s=msg;args="Nice weather today! Isnt it, <target.name>?"}
+  - message{msg="Nice weather today! Isnt it, <target.name>?"}
   
 Skript part:
 on mythicmobs skriptconditionevent:
@@ -101,37 +106,36 @@ on mythicmobs skriptconditionevent:
 ## Conditions:
 
 ### %entity% instanceof activemob
-true if the entity is a activemob:
+#### True if the entity is a ActiveMob:
 
 Example:
 ```
 on damage of player:
 	if attacker instanceof activemob:
-	    set {_am} to attacker
+	    set {_am} to activemob of attacker
 ```
 
-### %activemob% isdead
-True if the ActiveMob is dead
+### activemob %activemob% isdead
+#### True if the ActiveMob is dead
 	
-### %activemob% has threattable
-true if the activemob has a threattable:
+### activemob %activemob% has threattable
+#### True if the ActiveMob has a threattable:
 
 Example:
 ```
 on damage of player:
 	if attacker instanceof activemob:
-		set {_am} to attacker
-		if {_am} has threattable:
+		set {_am} to activemob of attacker
+		if activemob {_am} has threattable:
 			dropcombat for activemob {_am}
 ```
 
-### %activemob% has mythicspawner
-true if the activemob has a mythicspawner:
-
+### activemob %activemob% has mythicspawner
+#### true if the activemob has a mythicspawner:
 Example:
 ```		
 on activemob spawnevent:
-	if event-activemob has mythicspawner:
+	if activemob event-activemob has mythicspawner:
 		set {_mythicspawner} to mythicspawner of event-activemob
 ```
 

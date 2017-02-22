@@ -7,11 +7,11 @@ public class Conditions {
 		Skript.registerCondition(ConditionEntityIsActiveMob.class, 
 				"%entity% [is ]instanceof activemob");
 		Skript.registerCondition(ActiveMobIsDead.class, 
-				"%activemob% isdead");
+				"activemob %activemob% isdead");
 		Skript.registerCondition(HasThreatTable.class, 
-				"%activemob% has threattable");
+				"activemob %activemob% has threattable");
 		Skript.registerCondition(ConditionAmHasCustomSpawner.class,
-				"%activemob% has mythicspawner");
+				"activemob %activemob% has mythicspawner");
 		Skript.registerCondition(ConditionSpawnerContainsMob.class,
 				"mythicspawner %mythicspawner% contains activemob %activemob%");
 	}
