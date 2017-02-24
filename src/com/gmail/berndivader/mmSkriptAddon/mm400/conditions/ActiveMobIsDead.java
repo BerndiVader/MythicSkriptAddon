@@ -13,6 +13,7 @@ import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 public class ActiveMobIsDead extends Condition {
 	private Expression<ActiveMob> activeMob;
 	private ActiveMob am;
+	
 
 	@SuppressWarnings("unchecked")
 	@Override
