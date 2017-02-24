@@ -31,7 +31,7 @@ public class Main extends JavaPlugin {
 		if (mmVer == 2511) {
 				Bukkit.getLogger().info("NOT SUPPORTED YET!");
 				mm260Code.register();
-			} else if (mmVer >= 400) {
+			} else if (mmVer >= 401) {
 				mm400Code.register();
 			}
 		}
