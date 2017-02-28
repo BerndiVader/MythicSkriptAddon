@@ -49,7 +49,8 @@ on mythicspawner spawnevent:
 ### on mythicmobs skriptskillevent:
 #### Called when the mob casted the skill skriptskill.
 ###### Returns:
-##### event-activemob = activemob who casted the skill
+##### event-activmob = activemob if the caster is a activemob
+##### event-entity = entity who casted the skill
 ##### skill-targettype = what kind of target? there are 3 possibilities: NONE, ENTITY, LOCATION
 ##### skill-target = target entity if targettype = ENTITY
 ##### event-location = location if the targettype is LOCATION
@@ -76,7 +77,7 @@ on mythicmobs skriptskillevent:
 ### on mythicmobs skriptconditionevent:
 #### Called on a skills skriptcondition.
 ###### Returns:
-##### condition-activemob = activemob who cast the skill
+##### condition-activemob = activemob if the caster is a activemob
 ##### condition-entity = entity who cast the skill
 ##### condition-location = location to check
 ##### condition-name = name of the condition

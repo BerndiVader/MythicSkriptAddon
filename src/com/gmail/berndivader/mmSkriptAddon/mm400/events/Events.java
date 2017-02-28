@@ -71,17 +71,26 @@ public class Events {
 				return e.getAm();
 		}}, 0);
 		Skript.registerEvent("CustomSkriptSkillEvent", SimpleEvent.class, mmMythicMobsSkriptSkill.class, "mythicmobs skriptskillevent");
-		EventValues.registerEventValue(mmMythicMobsSkriptSkill.class, ActiveMob.class, new Getter<ActiveMob, mmMythicMobsSkriptSkill>() {
+		EventValues.registerEventValue(mmMythicMobsSkriptSkill.class, Entity.class, new Getter<Entity, mmMythicMobsSkriptSkill>() {
 			@Override
 			@Nullable
-			public ActiveMob get(mmMythicMobsSkriptSkill e) {
-				return e.getCaster();
+			public Entity get(mmMythicMobsSkriptSkill e) {
+				return e.getCaster().getEntity().getBukkitEntity();
 		}}, 0);
 		EventValues.registerEventValue(mmMythicMobsSkriptSkill.class, Location.class, new Getter<Location, mmMythicMobsSkriptSkill>() {
 			@Override
 			@Nullable
 			public Location get(mmMythicMobsSkriptSkill e) {
 				return e.getTargetLocation();
+		}}, 0);
+		EventValues.registerEventValue(mmMythicMobsSkriptSkill.class, ActiveMob.class, new Getter<ActiveMob, mmMythicMobsSkriptSkill>() {
+			@Override
+			@Nullable
+			public ActiveMob get(mmMythicMobsSkriptSkill e) {
+				if (e.getCaster() instanceof ActiveMob) {
+					return (ActiveMob)e.getCaster();
+				}
+				return null;
 		}}, 0);
 		Skript.registerExpression(EventTarget.class, Entity.class, ExpressionType.SIMPLE, "skill-target");
 		Skript.registerExpression(EventTrigger.class, Entity.class, ExpressionType.SIMPLE, "skill-trigger");

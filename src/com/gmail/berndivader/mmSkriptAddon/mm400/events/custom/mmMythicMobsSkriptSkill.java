@@ -6,7 +6,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 import io.lumine.xikage.mythicmobs.adapters.AbstractEntity;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.xikage.mythicmobs.skills.SkillCaster;
 
 public class mmMythicMobsSkriptSkill extends Event {
 	private enum TargetType {
@@ -17,12 +17,12 @@ public class mmMythicMobsSkriptSkill extends Event {
 	private static final HandlerList handlers = new HandlerList();
 	private Entity targetEntity=null, trigger=null;
 	private Location targetLocation=null;
-	private ActiveMob caster;
+	private SkillCaster caster;
 	private String skill, args;
 	private TargetType targettype;
 
-	public mmMythicMobsSkriptSkill(ActiveMob am, Entity target, Location targetloc, AbstractEntity t, String s, String a) {
-		this.caster = am; skill = s; args = a.substring(1, a.length()-1);
+	public mmMythicMobsSkriptSkill(SkillCaster caster, Entity target, Location targetloc, AbstractEntity t, String s, String a) {
+		this.caster = caster; skill = s; args = a.substring(1, a.length()-1);
 		if (t!=null) trigger = t.getBukkitEntity();
 		this.targettype = TargetType.NONE;
 		if (target instanceof Entity) {
@@ -34,7 +34,7 @@ public class mmMythicMobsSkriptSkill extends Event {
 		}
 	}
 	
-	public ActiveMob getCaster() {
+	public SkillCaster getCaster() {
 		return this.caster;
 	}
 	public Entity getTargetEntity() {

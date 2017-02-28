@@ -8,7 +8,6 @@ import io.lumine.xikage.mythicmobs.adapters.AbstractEntity;
 import io.lumine.xikage.mythicmobs.adapters.AbstractLocation;
 import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
 import io.lumine.xikage.mythicmobs.io.MythicLineConfig;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import io.lumine.xikage.mythicmobs.skills.INoTargetSkill;
 import io.lumine.xikage.mythicmobs.skills.ITargetedEntitySkill;
 import io.lumine.xikage.mythicmobs.skills.ITargetedLocationSkill;
@@ -30,10 +29,8 @@ public class mmSkriptSkill extends SkillMechanic implements ITargetedEntitySkill
 	@Override
 	public boolean cast(SkillMetadata data) {
 		SkillCaster caster = data.getCaster();
-		if (!(caster instanceof ActiveMob)) return false;
-		ActiveMob am = (ActiveMob)caster;
 		String args = SkillString.parseMobVariables(this.skriptArgs, caster, caster.getEntity(), data.getTrigger());
-		mmMythicMobsSkriptSkill e = new mmMythicMobsSkriptSkill(am,null,null,data.getTrigger(),skill,args);
+		mmMythicMobsSkriptSkill e = new mmMythicMobsSkriptSkill(caster,null,null,data.getTrigger(),skill,args);
 		Bukkit.getServer().getPluginManager().callEvent(e);
 		return true;
 	}
@@ -41,10 +38,8 @@ public class mmSkriptSkill extends SkillMechanic implements ITargetedEntitySkill
 	@Override
 	public boolean castAtLocation(SkillMetadata data, AbstractLocation target) {
 		SkillCaster caster = data.getCaster();
-		if (!(caster instanceof ActiveMob)) return false;
-		ActiveMob am = (ActiveMob)caster;
 		String args = SkillString.parseMobVariables(this.skriptArgs, caster, caster.getEntity(), data.getTrigger());
-		mmMythicMobsSkriptSkill e = new mmMythicMobsSkriptSkill(am,null,BukkitAdapter.adapt(target),data.getTrigger(),skill,args);
+		mmMythicMobsSkriptSkill e = new mmMythicMobsSkriptSkill(caster,null,BukkitAdapter.adapt(target),data.getTrigger(),skill,args);
 		Bukkit.getServer().getPluginManager().callEvent(e);
 		return true;
 	}
@@ -52,10 +47,8 @@ public class mmSkriptSkill extends SkillMechanic implements ITargetedEntitySkill
 	@Override
 	public boolean castAtEntity(SkillMetadata data, AbstractEntity target) {
 		SkillCaster caster = data.getCaster();
-		if (!(caster instanceof ActiveMob)) return false;
-		ActiveMob am = (ActiveMob)caster;
 		String args = SkillString.parseMobVariables(this.skriptArgs, caster, target, data.getTrigger());
-		mmMythicMobsSkriptSkill e = new mmMythicMobsSkriptSkill(am,BukkitAdapter.adapt(target),null,data.getTrigger(),skill,args);
+		mmMythicMobsSkriptSkill e = new mmMythicMobsSkriptSkill(caster,BukkitAdapter.adapt(target),null,data.getTrigger(),skill,args);
 		Bukkit.getServer().getPluginManager().callEvent(e);
 		return true;
 	}
