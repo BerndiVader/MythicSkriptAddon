@@ -48,6 +48,7 @@ public class MakeMobCastSkill extends Effect {
 		HashSet<Entity> etargets = new HashSet<Entity>();
 		HashSet<Location> ltargets = new HashSet<Location>();
 		ActiveMob am = skriptMob.getSingle(e);
+		
 		Entity trigger = bukkitTrigger.getSingle(e);
 		String skill = skriptSkill.getSingle(e);
 		if (bool) {

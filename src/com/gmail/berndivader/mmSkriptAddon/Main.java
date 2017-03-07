@@ -26,11 +26,12 @@ public class Main extends JavaPlugin {
 		chk = getNMSUtil();
 		if (chk) {
 			Skript.registerAddon(this);
-	    	strMMVer = Bukkit.getServer().getPluginManager().getPlugin("MythicMobs").getDescription().getVersion();
-			mmVer = Integer.valueOf(strMMVer.replaceAll("\\.", ""));
+	    	strMMVer = Bukkit.getServer().getPluginManager().getPlugin("MythicMobs").getDescription().getVersion().replaceAll("[\\D]", "");
+			mmVer = Integer.valueOf(strMMVer);
 		if (mmVer == 2511) {
 				Bukkit.getLogger().info("NOT SUPPORTED YET!");
 				mm260Code.register();
+				Bukkit.getPluginManager().disablePlugin(Main.plugin);
 			} else if (mmVer >= 401) {
 				mm400Code.register();
 			}
@@ -40,6 +41,7 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		Bukkit.getLogger().info("mmSkriptAddon disabled!");
+		Main.plugin = null;
 	}
 	private boolean getNMSUtil() {
 		String v;
