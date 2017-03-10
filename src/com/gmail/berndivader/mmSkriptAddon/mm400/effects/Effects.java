@@ -39,6 +39,11 @@ public class Effects {
 				"make player %entity% cast skill %string% with trigger %entity% at location %location% with delay %number% and repeat %number%",
 				"make player %entity% cast skill %string% with trigger %entity% at self with delay %number% and repeat %number%");
 		
+		// 10.3.2017 update
+		Skript.registerEffect(ModThreatofEntity.class, "inc threat of %entity% by %number% from activemob %activemob%", "dec threat of %entity by %number% from activemob %activemob%");
+		Skript.registerEffect(RemoveThreatEntity.class, "remove threat of %entity% from activemob %activemob%");
+		Skript.registerEffect(ClearThreatTable.class, "clear threattable of activemob %activemob%");
+		
 		//mythicspawner
 		
 		Skript.registerEffect(ActivateMythicSpawner.class, "activate mythicspawner %mythicspawner%",

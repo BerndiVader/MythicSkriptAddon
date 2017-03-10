@@ -43,6 +43,9 @@ public class Expressions {
 		Skript.registerExpression(ExprGetDisplayName.class, String.class, ExpressionType.SIMPLE, "displayname of activemob %activemob%");
 		Skript.registerExpression(ExprGetMobType.class, String.class, ExpressionType.SIMPLE, "mobtype of activemob %activemob%");
 		Skript.registerExpression(ExprGetOwner.class, Entity.class, ExpressionType.SIMPLE, "owner of activemob %activemob%");
+		// update 10.3.2017
+		Skript.registerExpression(ExprGetThreatTable.class, Entity.class, ExpressionType.SIMPLE, "get threattable of activemob %activemob%");
+		Skript.registerExpression(ExprGetThreatValueOf.class, Number.class, ExpressionType.SIMPLE, "get threatvalue of %entity% from activemob %activemob%");
 		
 		//MythicSpawner Expressions
 

@@ -1,6 +1,27 @@
 #MythicMobs Skript Addon:
 for MythicMobs 4.0.1 Release or higher
 
+** Update 0.81a 10.3.2017
+Advanced ActiveMobs ThreatTable support
+
+// get threattable of activemob %activemob%
+// returns a list with all entities of the activemobs threattable
+
+// get threatvalue of %entity% from activemob %activemob%
+// returns the value as number of threat from entity out of activemobs threattable NOTE: entity have to be a threat of activemob
+
+
+// inc threat of %entity% by %number% from activemob %activemob%
+// dec threat of %entity by %number% from activemob %activemob%
+// Increases (inc) or decreases (dec) the threat by amount of the entity from activemobs threattable
+
+// remove threat of %entity% from activemob %activemob%
+// Remove the entity from activemobs threattable
+
+// clear threattable of activemob %activemob%
+// This clear the complete threattable of the activemob
+
+
 
 ## Classes:
 
@@ -191,6 +212,12 @@ Get the entity instance of the entity which caused the last trigger on the activ
 ### toptarget of activemob %activemob%
 Get the entity instance of the activemobs target, or the topthreatholder if the activemob has a threadtable: set {_target} to toptarget of {_am}
 
+### get threattable of activemob %activemob%
+Returns a list with all entities of the activemobs threattable
+
+### get threatvalue of %entity% from activemob %activemob%
+Returns the threat value as number for entity out of activemobs threattable NOTE: entity have to be a threat of activemob
+
 ### uuid of activemob %activemob%
 Returns a string with the uuid of the activemob: set {_uuid} to uuid of {_am}
 
@@ -367,6 +394,21 @@ Use this effect to remove the ActiveMob.
 ### make activemob %activemob% cast skill %string% with trigger %entity% at location %location%
 Use this effect to make an activemob cast a skill.
 
+### get threattable of activemob %activemob%
+Returns a list with all entities of the activemobs threattable.
+
+### get threatvalue of %entity% from activemob %activemob%
+Returns the value as number of threat from entity out of activemobs threattable NOTE: entity have to be a threat of activemob
+
+### inc threat of %entity% by %number% from activemob %activemob%
+### dec threat of %entity by %number% from activemob %activemob%
+Increases (inc) or decreases (dec) the threat by amount of the entity from activemobs threattable.
+
+### remove threat of %entity% from activemob %activemob%
+Remove the entity from activemobs threattable.
+
+### clear threattable of activemob %activemob%
+This clear the complete threattable of the activemob.
 
 
 #### for MythicSpawner:
