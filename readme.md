@@ -1,4 +1,4 @@
-#MythicMobs Skript Addon:
+# MythicMobs Skript Addon:
 for MythicMobs 4.0.1 Release or higher
 
 ** Update 26.3.2017 v0.82a
