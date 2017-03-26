@@ -38,11 +38,21 @@ public class Effects {
 				"make player %entity% cast skill %string% with trigger %entity% at entity %entity% with delay %number% and repeat %number%",
 				"make player %entity% cast skill %string% with trigger %entity% at location %location% with delay %number% and repeat %number%",
 				"make player %entity% cast skill %string% with trigger %entity% at self with delay %number% and repeat %number%");
-		
-		// 10.3.2017 update
 		Skript.registerEffect(ModThreatofEntity.class, "inc threat of %entity% by %number% from activemob %activemob%", "dec threat of %entity by %number% from activemob %activemob%");
 		Skript.registerEffect(RemoveThreatEntity.class, "remove threat of %entity% from activemob %activemob%");
 		Skript.registerEffect(ClearThreatTable.class, "clear threattable of activemob %activemob%");
+		
+		// new 26.3.2017
+		Skript.registerEffect(SetDamage.class, "set damage of activemob %activemob% to %number%");
+		Skript.registerEffect(SetKnockbackResist.class, "set knockbackresist of activemob %activemob% to %number%");
+		Skript.registerEffect(SetArmor.class, "set armor of activemob %activemob% to %number%");
+		Skript.registerEffect(SetSpeed.class, "set speed of activemob %activemob% to %number%");
+		Skript.registerEffect(SetAttackSpeed.class, "set attackspeed of activemob %activemob% to %number%");
+		Skript.registerEffect(SetFollowRange.class, "set followrange of activemob %activemob% to %number%");
+		
+		Skript.registerEffect(TriggerSkill.class, 
+				"trigger %string% for activemob %activemob%",
+				"trigger %string% for activemob %activemob% with triggerentity %entity%");
 		
 		//mythicspawner
 		

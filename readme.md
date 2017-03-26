@@ -1,26 +1,56 @@
 #MythicMobs Skript Addon:
 for MythicMobs 4.0.1 Release or higher
 
-** Update 0.81a 10.3.2017
-Advanced ActiveMobs ThreatTable support
+** Update 26.3.2017 v0.82a
 
-// get threattable of activemob %activemob%
-// returns a list with all entities of the activemobs threattable
+Conditions:
 
-// get threatvalue of %entity% from activemob %activemob%
-// returns the value as number of threat from entity out of activemobs threattable NOTE: entity have to be a threat of activemob
+// activemob %activemob% has immunitytable
+// Test if activemob has immunitytable enabled
 
+Effects:
 
-// inc threat of %entity% by %number% from activemob %activemob%
-// dec threat of %entity by %number% from activemob %activemob%
-// Increases (inc) or decreases (dec) the threat by amount of the entity from activemobs threattable
+// set damage of activemob %activemob% to %number%
+// change the attackdamage
 
-// remove threat of %entity% from activemob %activemob%
-// Remove the entity from activemobs threattable
+// set knockbackresist of activemob %activemob% to %number%
+// Change Knockback resist
 
-// clear threattable of activemob %activemob%
-// This clear the complete threattable of the activemob
+// set armor of activemob %activemob% to %number%
+// Change armor stats (only >1.9)
 
+// set attackspeed of activemob %activemob% to %number%
+// Change attackspeed (only >1.9)
+
+// set followrange of activemob %activemob% to %number%
+// Change follow range
+
+// set speed of activemob %activemob% to %number%
+// Change movement speed
+
+// trigger %string% for activemob %activemob%
+// trigger %string% for activemob %activemob% with triggerentity %entity%
+// Trigger activemob for trigger defined in %string%
+// Valid triggers are: DEFAULT, ATTACK, BOW_HIT, BLOCK, COMBAT, CROUCH, UNCROUCH, DAMAGED, DROPCOMBAT, DEATH, ENTERCOMBAT, EXPLODE, INTERACT, KILL, KILLPLAYER, PLAYERDEATH, SHOOT, SIGNAL, SPAWN, SPLASH_POTION, SWING, TARGETCHANGE, TELEPORT, TIMER, USE, READY
+```
+skript part:
+
+on damage of entity:
+	victim instanceof activemob
+	event-entity is arrow
+	set {_am} to activemob of victim
+	trigger "bow_hit" for activemob {_am} with triggerentity attacker
+	
+Mob.yml:
+
+Monkey:
+  Type: zombie
+  Display: "MythicMobs Monkey"
+  Health: 40
+  Armor: 10
+  Skills:
+  - message{msg="Ouch! Stop shooting arrows at me!"} @trigger ~onBowHit 1
+```
 
 
 ## Classes:
@@ -246,6 +276,7 @@ Returns the playerkills of the activemob: set {_kills} to playerkills of {_am}
 Returns the lastest signal of the activemob, if there is one: set {_signal} to lastsignal of {_am}
 
 
+
 #### for MythicSpawner:
 
 ### mythicspawner of %activemob%
@@ -410,6 +441,48 @@ Remove the entity from activemobs threattable.
 ### clear threattable of activemob %activemob%
 This clear the complete threattable of the activemob.
 
+### set damage of activemob %activemob% to %number%
+Change the attackdamage
+
+### set knockbackresist of activemob %activemob% to %number%
+Change Knockback resist
+
+### set armor of activemob %activemob% to %number%
+Change armor stats (only >1.9)
+
+### set attackspeed of activemob %activemob% to %number%
+Change attackspeed (only >1.9)
+
+### set followrange of activemob %activemob% to %number%
+Change follow range
+
+### set speed of activemob %activemob% to %number%
+Change movement speed
+
+### trigger %string% for activemob %activemob%
+### trigger %string% for activemob %activemob% with triggerentity %entity%
+Trigger activemob for trigger defined in %string%
+Valid triggers are: DEFAULT, ATTACK, BOW_HIT, BLOCK, COMBAT, CROUCH, UNCROUCH, DAMAGED, DROPCOMBAT, DEATH, ENTERCOMBAT, EXPLODE, INTERACT, KILL, KILLPLAYER, PLAYERDEATH, SHOOT, SIGNAL, SPAWN, SPLASH_POTION, SWING, TARGETCHANGE, TELEPORT, TIMER, USE, READY
+```
+skript part:
+
+on damage of entity:
+	victim instanceof activemob
+	event-entity is arrow
+	set {_am} to activemob of victim
+	trigger "bow_hit" for activemob {_am} with triggerentity attacker
+	
+	
+Mob.yml:
+
+Monkey:
+  Type: zombie
+  Display: "MythicMobs Monkey"
+  Health: 40
+  Armor: 10
+  Skills:
+  - message{msg="Ouch! Stop shooting arrows at me!"} @trigger ~onBowHit 1
+```
 
 #### for MythicSpawner:
 
