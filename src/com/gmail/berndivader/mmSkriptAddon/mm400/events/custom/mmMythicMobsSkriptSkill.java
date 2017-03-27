@@ -22,7 +22,10 @@ public class mmMythicMobsSkriptSkill extends Event {
 	private TargetType targettype;
 
 	public mmMythicMobsSkriptSkill(SkillCaster caster, Entity target, Location targetloc, AbstractEntity t, String s, String a) {
-		this.caster = caster; skill = s; args = a.substring(1, a.length()-1);
+		this.caster = caster; skill = s;
+		if (args.startsWith("\"") && args.endsWith("\"")) {
+			args = a.substring(1, a.length()-1);
+		}
 		if (t!=null) trigger = t.getBukkitEntity();
 		this.targettype = TargetType.NONE;
 		if (target instanceof Entity) {
