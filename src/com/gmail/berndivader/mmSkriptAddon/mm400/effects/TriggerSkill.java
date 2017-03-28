@@ -39,8 +39,12 @@ public class TriggerSkill extends Effect {
 	@Override
 	protected void execute(Event e) {
 		ActiveMob am = this.activeMob.getSingle(e);
-		SkillTrigger trigger = SkillTrigger.valueOf(this.trigger.getSingle(e).toUpperCase());
-		if (trigger==null) return;
+		SkillTrigger trigger;
+		try {
+			trigger = SkillTrigger.valueOf(this.trigger.getSingle(e).toUpperCase());
+		} catch (Exception ex) {
+			return;
+		}
 		@SuppressWarnings("unused")
 		TriggeredSkill ts = !bool?new TriggeredSkill(trigger, am, null, true)
 				:new TriggeredSkill(trigger, am, BukkitAdapter.adapt(this.scriptEntity.getSingle(e)), true);
