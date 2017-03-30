@@ -1,6 +1,12 @@
 # MythicMobs Skript Addon:
 for MythicMobs 4.0.1 Release or higher
 
+### Update 30.3.2017 v0.83a
+## look into the updatev083a.txt file for more details
+##### Changed meet condition default to true
+##### Added skriptspawncondition for MythicMobs RandomSpawners to work with MythicMobs SnapShot 2105 or greater.
+
+
 ** Update 26.3.2017 v0.82a
 
 Conditions:
@@ -133,11 +139,12 @@ on mythicmobs skriptskillevent:
 ##### condition-location = location to check
 ##### condition-name = name of the condition
 ##### condition-args = arguments of the condition
-##### condition-meet = if the condition is meet or not (you must set this by yourself) standart = false
+##### condition-meet = if the condition is meet or not (you must set this by yourself) standard = true (changed from false to true in update in 0.83a)
 
 Example:
 ```
-MythicMobs skill.yml:
+For Skill condition:
+
 skskill:
   Conditions:
   - skriptcondition{c=weather;args=clear}
@@ -145,8 +152,35 @@ skskill:
   Skills:
   - message{msg="Nice weather today! Isnt it, <target.name>?"}
   
+For RandomSpawner condition:
+
+RandomMonkey:
+  Mobname: Monkey1
+  Worlds: world
+  Chance: 1
+  Priority: 1
+  Action: replace
+  Conditions:
+  - skriptspawncondition{c=region;args=test}
+
+  
 Skript part:
+
 on mythicmobs skriptconditionevent:
+
+	if condition-location is set:
+		if "%condition-name%" is "region":
+			set condition meet to false
+			set {_mobtypes::*} to condition-args split at ","
+			set {_regionname} to {_mobtypes::1}
+			delete {_mobtypes::1}
+			# make a list of all arguments
+			set {_region::*} to regions at condition-location
+			loop {_region::*}:
+				if "%loop-value%" contains {_regionname}:
+					set condition meet to true
+					stop
+					
 	if condition-name is "weather":
 		if condition-args is "clear":
 			if weather in world of condition-entity is clear:

@@ -1,0 +1,41 @@
+# Updates in v0.83a
+
+##### Changed meet condition default to true
+##### Added skriptspawncondition for MythicMobs RandomSpawners to work with MythicMobs SnapShot 2105 or greater.
+
+#### new MythicMobs Condition:
+
+- skriptspawncondition{c=skriptcondition;args=arguments}
+  - Meanwhile RandomSpawnerConditions only work with Location. So you always have to check with condition-location
+
+#### Example:  
+
+```
+
+MythicMobs part:
+
+RandomMonkey:
+  Mobname: Monkey1
+  Worlds: world
+  Chance: 1
+  Priority: 1
+  Action: replace
+  Conditions:
+  - skriptspawncondition{c=region;args=test}
+  
+Skript part:
+
+on mythicmobs skriptconditionevent:
+	if condition-location is set:
+		if "%condition-name%" is "region":
+			set condition meet to false
+			set {_mobtypes::*} to condition-args split at ","
+			set {_regionname} to {_mobtypes::1}
+			delete {_mobtypes::1}
+			# make a list of all arguments
+			set {_region::*} to regions at condition-location
+			loop {_region::*}:
+				if "%loop-value%" contains {_regionname}:
+					set condition meet to true
+					stop
+```
