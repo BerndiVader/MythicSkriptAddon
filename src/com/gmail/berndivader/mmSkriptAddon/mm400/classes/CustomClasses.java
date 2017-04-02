@@ -8,6 +8,12 @@ import ch.njol.skript.expressions.base.EventValueExpression;
 import ch.njol.skript.lang.ParseContext;
 import ch.njol.skript.registrations.Classes;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.xikage.mythicmobs.skills.SkillTargeter;
+import io.lumine.xikage.mythicmobs.skills.targeters.ConsoleTargeter;
+import io.lumine.xikage.mythicmobs.skills.targeters.IEntitySelector;
+import io.lumine.xikage.mythicmobs.skills.targeters.ILocationSelector;
+import io.lumine.xikage.mythicmobs.skills.targeters.MTOrigin;
+import io.lumine.xikage.mythicmobs.skills.targeters.MTTriggerLocation;
 import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 
 public class CustomClasses {
@@ -113,6 +119,37 @@ public class CustomClasses {
 					@Override
 					public String getVariableNamePattern() {
 						// TODO Auto-generated method stub
+						return ".+";
+					}
+		}));
+		Classes.registerClass(new ClassInfo<SkillTargeter>(SkillTargeter.class,"skilltargeter").name("skilltargeter").user("skilltargeter")
+				.defaultExpression(new EventValueExpression<SkillTargeter>(SkillTargeter.class))
+				.parser(new Parser<SkillTargeter>() {
+					@Override
+					@Nullable
+					public SkillTargeter parse(String targeter, ParseContext context) {
+						return null;
+					}
+					@Override
+					@Nullable
+					public String toString(SkillTargeter targeter, int flags) {
+						String type = "unsupported";
+						if (targeter instanceof IEntitySelector) {
+							type = "EntitySelector";
+						} else if ((targeter instanceof ILocationSelector) || (targeter instanceof MTOrigin) 
+								|| (targeter instanceof MTTriggerLocation)) {
+							type = "LocationSelector";
+						} else if (targeter instanceof ConsoleTargeter) {
+							type = "ConsoleTargeter";
+						}
+						return type;
+					}
+					@Override
+					public String toVariableNameString(SkillTargeter targeter) {
+						return targeter.toString();
+					}
+					@Override
+					public String getVariableNamePattern() {
 						return ".+";
 					}
 		}));

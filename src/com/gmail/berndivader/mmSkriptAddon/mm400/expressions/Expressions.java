@@ -11,6 +11,7 @@ import com.gmail.berndivader.mmSkriptAddon.mm400.expressions.mythicspawner.*;
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.xikage.mythicmobs.skills.SkillTargeter;
 import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 
 public class Expressions {
@@ -43,10 +44,14 @@ public class Expressions {
 		Skript.registerExpression(ExprGetDisplayName.class, String.class, ExpressionType.SIMPLE, "displayname of activemob %activemob%");
 		Skript.registerExpression(ExprGetMobType.class, String.class, ExpressionType.SIMPLE, "mobtype of activemob %activemob%");
 		Skript.registerExpression(ExprGetOwner.class, Entity.class, ExpressionType.SIMPLE, "owner of activemob %activemob%");
-		// update 10.3.2017
 		Skript.registerExpression(ExprGetThreatTable.class, Entity.class, ExpressionType.SIMPLE, "get threattable of activemob %activemob%");
 		Skript.registerExpression(ExprGetThreatValueOf.class, Number.class, ExpressionType.SIMPLE, "get threatvalue of %entity% from activemob %activemob%");
 		
+		// update 1.4.2017
+		Skript.registerExpression(getTargetSelector.class, SkillTargeter.class, ExpressionType.SIMPLE, "mythicmobs targeter %string%");
+		Skript.registerExpression(getEntitiesFromSelector.class, Entity.class, ExpressionType.SIMPLE, "targetentities of %entity% for targeter %skilltargeter%");
+		Skript.registerExpression(getLocationsFromSelector.class, Location.class, ExpressionType.SIMPLE, "targetlocations of %entity% for targeter %skilltargeter%");
+
 		//MythicSpawner Expressions
 
 		Skript.registerExpression(ExprGetMythicSpawner.class, MythicSpawner.class, ExpressionType.SIMPLE, "mythicspawner of activemob %activemob%");
