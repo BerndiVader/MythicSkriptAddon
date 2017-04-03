@@ -1,11 +1,17 @@
 # MythicMobs Skript Addon:
 for MythicMobs 4.0.1 Release or higher
 
+### Update 2.3.2017 v0.84a
+## look into the updatev084a.txt file for more details
+##### Added new class SkillTargeter
+##### Added new expression mythicmobs targeter %string%
+##### Added new expression targetentities of %entity% for targeter %skilltargeter%
+##### Added new expression targetlocations of %entity% for targeter %skilltargeter%
+
 ### Update 30.3.2017 v0.83a
 ## look into the updatev083a.txt file for more details
 ##### Changed meet condition default to true
 ##### Added skriptspawncondition for MythicMobs RandomSpawners to work with MythicMobs SnapShot 2105 or greater.
-
 
 ** Update 26.3.2017 v0.82a
 
@@ -58,6 +64,7 @@ Monkey:
   - message{msg="Ouch! Stop shooting arrows at me!"} @trigger ~onBowHit 1
 ```
 
+# Syntax:
 
 ## Classes:
 
@@ -66,6 +73,7 @@ Monkey:
 #### mythicspawner
 #### mobdrop
 #### mobitem
+#### skilltargeter
 
 
 ## Events:
@@ -163,6 +171,7 @@ RandomMonkey:
   Conditions:
   - skriptspawncondition{c=region;args=test}
 
+!!!!SKRIPTSPAWNCONDITION ONLY WORK ON MYTHICMOBS SNAPSHOT 2105 OR LATER!!!!
   
 Skript part:
 
@@ -231,6 +240,41 @@ True if the ActiveMob is attached to the MythicSpawner
 
 ## Expressions:
 
+
+#### for all Entities:
+
+### mythicmobs targeter %string%
+- Get a MythicMobs targeter to filter entities/locations for any entity.
+- %string% is any valid mythicmmobs targeter used in the mythicmobs targeter format.
+- set {_targeter} to mythicmobs targeter "@PIR{r=30}"
+- will set the targeter to pir with radius 30
+
+### targetentities of %entity% for targeter %skilltargeter%
+- set {_targeter} to mythicmobs targeter "@PIR{r=30}"
+- set {_targets::*} to targetentities of event-entity for targeter {_targeter}
+- first set the {_targeter} to @pir{r=30} and then filter all players for entity event-entitiy with targeter {_targeter}
+
+### targetlocations of %entity% for targeter %skilltargeter%
+- set {_targeter} to mythicmobs targeter "@Ring{radius=10;points=5}"
+- set {locations::*} to targetlocations of event-entity for targeter {_targeter}
+- first set the {_targeter} to @Ring{radius=10;points=5} and then create a ring of locations for entity event-entitiy with targeter {_targeter}
+```
+Skript Example:
+
+on right click on entity:
+	if event-entity instanceof activemob:
+		set {_am} to activemob of event-entity
+		set {_targeter} to mythicmobs targeter "@Ring{radius=10;points=5}"
+		if "%{_targeter}%" is "EntitySelector":
+			set {_targets::*} to targetentities of event-entity for targeter {_targeter}
+			broadcast "%{_targets::*}%"
+		else if "%{_targeter}%" is "LocationSelector":
+			set {_targets::*} to targetlocations of event-entity for targeter {_targeter}
+			broadcast "%{_targets::*}%"
+```
+  
+
+  
 #### for ActiveMob:
 
 ### activemob of %entity%
