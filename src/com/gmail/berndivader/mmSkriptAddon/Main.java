@@ -48,7 +48,7 @@ public class Main extends JavaPlugin {
 		try {v = Bukkit.getServer().getClass().getPackage().getName().replace(".",  ",").split(",")[3];
 		} catch (ArrayIndexOutOfBoundsException e) {return false;}
 		if (v.equals("v1_8_R3") || v.equals("v1_8_R2")) {nmsutils=new NMSUtil18();}
-		else if (v.equals("v1_9_R1") || v.equals("v1_9_R2") || v.equals("v1_10_R1") || v.equals("v1_11_R1")) {nmsutils=new NMSUtil19();}
+		else if (v.equals("v1_9_R1") || v.equals("v1_9_R2") || v.equals("v1_10_R1") || v.equals("v1_11_R1") || v.equals("v1_12_R1")) {nmsutils=new NMSUtil19();}
 		return nmsutils!=null;
 	}
 }

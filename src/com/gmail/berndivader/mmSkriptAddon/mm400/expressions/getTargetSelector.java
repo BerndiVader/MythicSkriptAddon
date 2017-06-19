@@ -44,10 +44,6 @@ public class getTargetSelector extends SimpleExpression<SkillTargeter> {
 	protected SkillTargeter[] get(Event e) {
 	    Optional<SkillTargeter> maybeTargeter = Optional.empty();
 		String targeterName = this.targeterString.getSingle(e);
-//        SkillCaster caster = MythicMobs.inst().getAPIHelper().isMythicMob(this.bukkitEntity.getSingle(e))
-//        		?MythicMobs.inst().getAPIHelper().getMythicMobInstance(this.bukkitEntity.getSingle(e))
-//        		:new ActivePlayer(this.bukkitEntity.getSingle(e));
-//        SkillMetadata data = new SkillMetadata(SkillTrigger.API, caster, caster.getEntity(), caster.getLocation(), null, null, 1.0f);
 		targeterName = targeterName.startsWith("@")?targeterName:"@"+targeterName;
 		maybeTargeter = Optional.of(AbstractSkill.parseSkillTargeter(targeterName));
 		if (maybeTargeter.isPresent()) {

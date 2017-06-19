@@ -1,6 +1,8 @@
 # MythicMobs Skript Addon:
 for MythicMobs 4.0.1 Release or higher
 
+### Update 19.6.2017 v0.85a
+## added 1.12 support
 ### Update 2.3.2017 v0.84a
 ## look into the updatev084a.txt file for more details
 ##### Added new class SkillTargeter
