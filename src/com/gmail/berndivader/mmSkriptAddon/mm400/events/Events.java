@@ -49,6 +49,18 @@ public class Events {
 			public ActiveMob get(MythicMobDeathEvent e) {
 				return e.getMob();
 		}}, 0);
+		EventValues.registerEventValue(MythicMobDeathEvent.class, Location.class, new Getter<Location, MythicMobDeathEvent>() {
+			@Override
+			@Nullable
+			public Location get(MythicMobDeathEvent e) {
+				return e.getEntity().getLocation();
+		}}, 0);
+		EventValues.registerEventValue(MythicMobDeathEvent.class, Entity.class, new Getter<Entity, MythicMobDeathEvent>() {
+			@Override
+			@Nullable
+			public Entity get(MythicMobDeathEvent e) {
+				return e.getEntity();
+		}}, 0);
 		EventValues.registerEventValue(MythicMobDeathEvent.class, MythicDrops.class, new Getter<MythicDrops, MythicMobDeathEvent>() {
 			@Override
 			@Nullable

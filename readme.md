@@ -1,6 +1,8 @@
 # MythicMobs Skript Addon:
 for MythicMobs 4.0.1 Release or higher
 
+### Update 21.6.2017 v0.86a
+## added event-location and event-entity to death event
 ### Update 19.6.2017 v0.85a
 ## added 1.12 support
 ### Update 2.3.2017 v0.84a
@@ -92,6 +94,8 @@ Monkey:
 ##### event-activemob
 ##### event-mobdrop
 ##### event-killer
+##### event-location
+##### event-entity
 Example:
 ```
 on mythicmob deathevent:
