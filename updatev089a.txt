@@ -1,0 +1,24 @@
+# Updates in v0.89a (not gone 90 needs some testing)
+
+##### Added new expression convert %entity%(%player%) into mythicmob %string% with level %number%
+##### Added new effect remove mythic from activemob %activemob%
+
+### convert %entity%(%player%) into mythicmob %string% with level %number%
+  - for all living entities including players.
+  - if you use a player the mythicmobs type need to be persistent true! and you have to handle world changing and deaths otherwise mythicmobs will crash.
+  
+### remove mythic from activemob %activemob%
+  - make every mythicmobs into a common bukkit entity. including players.
+  
+
+#### Example:  
+
+```
+Skript part:
+
+on right click:
+	if player's tool is a arrow:
+		broadcast "now doing some mythics!"
+		set {_am} to convert player into mythicmob "MythicPlayer" with level 1
+		broadcast "%uuid of activemob {_am}%"
+```

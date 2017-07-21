@@ -49,6 +49,8 @@ public class Expressions {
 		Skript.registerExpression(getTargetSelector.class, SkillTargeter.class, ExpressionType.SIMPLE, "mythicmobs targeter %string%");
 		Skript.registerExpression(getEntitiesFromSelector.class, Entity.class, ExpressionType.SIMPLE, "targetentities of %entity% for targeter %skilltargeter%");
 		Skript.registerExpression(getLocationsFromSelector.class, Location.class, ExpressionType.SIMPLE, "targetlocations of %entity% for targeter %skilltargeter%");
+		Skript.registerExpression(ConvertToMythicMob.class, ActiveMob.class, ExpressionType.SIMPLE,
+				"convert %entity% into mythicmob %string% with level %number%");
 
 		//MythicSpawner Expressions
 

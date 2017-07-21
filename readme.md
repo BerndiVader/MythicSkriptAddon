@@ -1,6 +1,9 @@
 # MythicMobs Skript Addon:
 for MythicMobs 4.0.1 Release or higher
 
+### Update 21.7.2017 v0.89a
+## added expression convert %entity%(%player%) into mythicmob %string% with level %number%
+## added effect remove mythic from activemob %activemob%
 ### Update 21.6.2017 v0.86a
 ## added event-location and event-entity to death event
 ### Update 19.6.2017 v0.85a
@@ -249,6 +252,11 @@ True if the ActiveMob is attached to the MythicSpawner
 
 #### for all Entities:
 
+
+### convert %entity%(%player%) into mythicmob %string% with level %number%
+- for all living entities including players.
+- if you use a player the mythicmobs type need to be persistent true! and you have to handle world changing and deaths otherwise mythicmobs will crash.
+
 ### mythicmobs targeter %string%
 - Get a MythicMobs targeter to filter entities/locations for any entity.
 - %string% is any valid mythicmmobs targeter used in the mythicmobs targeter format.
@@ -441,6 +449,10 @@ Damage:
 
 
 #### for ActiveMob:
+
+
+### remove mythic from activemob %activemob%
+- make every mythicmobs into a common bukkit entity. including players.
 
 ### spawn mythicmob %string% at location %location% in world %string%
 Spawns a MythicMob with mobtype %string% at the given location in the given world. Returns the ActiveMob instance of the spawned MythicMob. Mobtype string is case sensitive!

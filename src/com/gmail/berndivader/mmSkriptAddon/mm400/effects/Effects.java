@@ -54,6 +54,8 @@ public class Effects {
 				"trigger %string% for activemob %activemob%",
 				"trigger %string% for activemob %activemob% with triggerentity %entity%");
 		
+		Skript.registerEffect(RemoveMythicFromEntity.class, "remove mythic from activemob %activemob%");
+		
 		//mythicspawner
 		
 		Skript.registerEffect(ActivateMythicSpawner.class, "activate mythicspawner %mythicspawner%",
