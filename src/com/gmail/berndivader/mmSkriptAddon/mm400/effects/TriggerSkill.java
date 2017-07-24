@@ -5,6 +5,8 @@ import javax.annotation.Nullable;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.Event;
 
+import com.gmail.berndivader.mmSkriptAddon.AbstractTriggeredSkill;
+
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -12,7 +14,6 @@ import ch.njol.util.Kleenean;
 import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import io.lumine.xikage.mythicmobs.skills.SkillTrigger;
-import io.lumine.xikage.mythicmobs.skills.TriggeredSkill;
 
 public class TriggerSkill extends Effect {
 	private Expression<String> trigger;
@@ -46,7 +47,7 @@ public class TriggerSkill extends Effect {
 			return;
 		}
 		@SuppressWarnings("unused")
-		TriggeredSkill ts = !bool?new TriggeredSkill(trigger, am, null, true)
-				:new TriggeredSkill(trigger, am, BukkitAdapter.adapt(this.scriptEntity.getSingle(e)), true);
+		AbstractTriggeredSkill ts = !bool?new AbstractTriggeredSkill(trigger, am, null)
+				:new AbstractTriggeredSkill(trigger, am, BukkitAdapter.adapt(this.scriptEntity.getSingle(e)));
 	}
 }
