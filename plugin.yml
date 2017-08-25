@@ -1,4 +1,4 @@
 name: mmSkriptAddon
 main: com.gmail.berndivader.mmSkriptAddon.Main
-version: 0.89a
+version: 0.90a
 depend: [MythicMobs, Skript]

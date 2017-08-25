@@ -1,6 +1,7 @@
 # MythicMobs Skript Addon:
 for MythicMobs 4.0.1 Release or higher
 
+### Update 25.8.2017 v0.90a added 1.12.1 support
 ### Update 21.7.2017 v0.89a
 ## added expression convert %entity%(%player%) into mythicmob %string% with level %number%
 ## added effect remove mythic from activemob %activemob%
