@@ -1,6 +1,7 @@
 # MythicMobs Skript Addon:
 for MythicMobs 4.0.1 Release or higher
 
+### Update 1.9.2017 v0.91a spawn expression now allows world as string or world as world object
 ### Update 25.8.2017 v0.90a added 1.12.1 support
 ### Update 21.7.2017 v0.89a
 ## added expression convert %entity%(%player%) into mythicmob %string% with level %number%
@@ -455,8 +456,8 @@ Damage:
 ### remove mythic from activemob %activemob%
 - make every mythicmobs into a common bukkit entity. including players.
 
-### spawn mythicmob %string% at location %location% in world %string%
-Spawns a MythicMob with mobtype %string% at the given location in the given world. Returns the ActiveMob instance of the spawned MythicMob. Mobtype string is case sensitive!
+### spawn mythicmob %string% at location %location% in world %string% (or) %world%
+Spawns a MythicMob with mobtype %string% at the given location in the given world. World object can be string or world. Returns the ActiveMob instance of the spawned MythicMob. Mobtype string is case sensitive!
 
 Example:
 ```

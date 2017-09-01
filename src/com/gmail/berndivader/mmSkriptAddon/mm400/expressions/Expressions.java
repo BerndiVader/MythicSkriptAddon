@@ -20,7 +20,7 @@ public class Expressions {
 		//ActiveMob Expressions
 		
 		Skript.registerExpression(SpawnMythicMob.class, ActiveMob.class, ExpressionType.SIMPLE, 
-				"spawn mythicmob %string% at location %location% in world %string%");
+				"spawn mythicmob %string% at location %location% in world %object%");
 		Skript.registerExpression(ExprGetActiveMobs.class, ActiveMob.class, ExpressionType.SIMPLE,
 				"all activemobs in world %string%","all activemobs");
 		Skript.registerExpression(ExprGetActiveMob.class, ActiveMob.class, ExpressionType.SIMPLE, 
