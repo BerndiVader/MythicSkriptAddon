@@ -1,0 +1,54 @@
+package com.gmail.berndivader.mmSkriptAddon.mm400.expressions.mythicmob;
+
+import javax.annotation.Nullable;
+
+import org.bukkit.entity.EntityType;
+import org.bukkit.event.Event;
+
+import ch.njol.skript.lang.Expression;
+import ch.njol.skript.lang.SkriptParser.ParseResult;
+import ch.njol.skript.lang.util.SimpleExpression;
+import ch.njol.util.Kleenean;
+import io.lumine.xikage.mythicmobs.MythicMobs;
+import io.lumine.xikage.mythicmobs.mobs.MythicMob;
+
+public class GetEntityType extends SimpleExpression<EntityType>{
+	protected MythicMobs mythicmobs = MythicMobs.inst();
+	protected Expression<MythicMob> skMythicMob; 
+
+	@Override
+	public boolean isSingle() {
+		return true;
+	}
+
+	@Override
+	public Class<? extends EntityType> getReturnType() {
+		return EntityType.class;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean init(Expression<?>[] expr, int matched, Kleenean var3, ParseResult var4) {
+		this.skMythicMob = (Expression<MythicMob>) expr[0];
+		return true;
+	}
+
+	@Override
+	public String toString(@Nullable Event var1, boolean var2) {
+		return null;
+	}
+
+	@Override
+	@Nullable
+	protected EntityType[] get(Event e) {
+		EntityType et = null;
+		MythicMob mm = this.skMythicMob.getSingle(e);
+		String t = mm.getEntityType().toUpperCase();
+		try {
+			et = EntityType.valueOf(t);
+		} catch (Exception ex) {
+			et = EntityType.UNKNOWN;
+		}
+		return new EntityType[]{et};
+	}
+}

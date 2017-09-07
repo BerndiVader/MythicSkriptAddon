@@ -8,6 +8,7 @@ import ch.njol.skript.expressions.base.EventValueExpression;
 import ch.njol.skript.lang.ParseContext;
 import ch.njol.skript.registrations.Classes;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.xikage.mythicmobs.mobs.MythicMob;
 import io.lumine.xikage.mythicmobs.skills.SkillTargeter;
 import io.lumine.xikage.mythicmobs.skills.targeters.ConsoleTargeter;
 import io.lumine.xikage.mythicmobs.skills.targeters.IEntitySelector;
@@ -18,6 +19,28 @@ import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 
 public class CustomClasses {
 	public static void register() {
+		Classes.registerClass(new ClassInfo<MythicMob>(MythicMob.class,"mythicmob").name("mythicmob").user("mythicmob")
+				.defaultExpression(new EventValueExpression<MythicMob>(MythicMob.class))
+				.parser(new Parser<MythicMob>() {
+					@Override
+					@Nullable
+					public MythicMob parse(String mythicmob, ParseContext context) {
+						return null;
+					}
+					@Override
+					@Nullable
+					public String toString(MythicMob mm, int flags) {
+						return mm.getInternalName();
+					}
+					@Override
+					public String toVariableNameString(MythicMob mm) {
+						return mm.getInternalName();
+					}
+					@Override
+					public String getVariableNamePattern() {
+						return ".+";
+					}
+		}));
 		Classes.registerClass(new ClassInfo<ActiveMob>(ActiveMob.class,"activemob").name("activemob").user("activemob")
 				.defaultExpression(new EventValueExpression<ActiveMob>(ActiveMob.class))
 				.parser(new Parser<ActiveMob>() {

@@ -3,14 +3,19 @@ package com.gmail.berndivader.mmSkriptAddon.mm400.expressions;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 
 import com.gmail.berndivader.mmSkriptAddon.mm400.classes.MobItem;
 import com.gmail.berndivader.mmSkriptAddon.mm400.expressions.drops.GetAllDrops;
+import com.gmail.berndivader.mmSkriptAddon.mm400.expressions.mythicmob.GetAllMythicMobs;
+import com.gmail.berndivader.mmSkriptAddon.mm400.expressions.mythicmob.GetEntityType;
+import com.gmail.berndivader.mmSkriptAddon.mm400.expressions.mythicmob.GetMythicMobByName;
 import com.gmail.berndivader.mmSkriptAddon.mm400.expressions.mythicspawner.*;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.xikage.mythicmobs.mobs.MythicMob;
 import io.lumine.xikage.mythicmobs.skills.SkillTargeter;
 import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 
@@ -73,5 +78,11 @@ public class Expressions {
 		//mobdrops & mobitems
 		
 		Skript.registerExpression(GetAllDrops.class, MobItem.class, ExpressionType.SIMPLE, "all items of mobdrop %mobdrop%");
+		
+		//MythicMob types
+		
+		Skript.registerExpression(GetAllMythicMobs.class, MythicMob.class, ExpressionType.SIMPLE,"all mythicmob types");
+		Skript.registerExpression(GetMythicMobByName.class, MythicMob.class, ExpressionType.SIMPLE, "mythicmob with name %string%");
+		Skript.registerExpression(GetEntityType.class, EntityType.class, ExpressionType.SIMPLE, "entitytype of mythicmob %mythicmob%");
 	}
 }
