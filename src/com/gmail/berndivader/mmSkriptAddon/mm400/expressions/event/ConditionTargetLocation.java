@@ -14,7 +14,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 
-public class ConditionLocation extends SimpleExpression<Location> {
+public class ConditionTargetLocation extends SimpleExpression<Location> {
 
 	@Override
 	public boolean isSingle() {
@@ -37,12 +37,12 @@ public class ConditionLocation extends SimpleExpression<Location> {
 
 	@Override
 	public String toString(@Nullable Event var1, boolean var2) {
-		return "condition-location";
+		return "condition-targetlocation";
 	}
 
 	@Override
 	@Nullable
 	protected Location[] get(Event e) {
-		return new Location[]{((mmMythicMobsSkriptConditionEvent)e).getCasterLocation()};
+		return new Location[]{((mmMythicMobsSkriptConditionEvent)e).getTargetLocation()};
 	}
 }

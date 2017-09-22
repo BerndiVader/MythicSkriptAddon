@@ -62,6 +62,9 @@ public class mmRegisterEvents implements Listener {
 		} else if (e.getConditionName().toLowerCase().equals("skriptspawncondition")) {
 			SkillCondition condition;
 			if ((condition = new mmSkriptSpawnCondition(e.getConditionName(), e.getConfig())) != null) e.register(condition);
+		} else if (e.getConditionName().toLowerCase().equals("skripttargetcondition")) {
+			SkillCondition condition;
+			if ((condition = new mmSkriptTargetCondition(e.getConditionName(), e.getConfig())) != null) e.register(condition);
 		}
 	}
 }

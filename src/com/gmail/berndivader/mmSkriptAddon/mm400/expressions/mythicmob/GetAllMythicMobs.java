@@ -29,7 +29,6 @@ public class GetAllMythicMobs extends SimpleExpression<MythicMob> {
 
 	@Override
 	public boolean init(Expression<?>[] expr, int matched, Kleenean var3, ParseResult var4) {
-		
 		return true;
 	}
 

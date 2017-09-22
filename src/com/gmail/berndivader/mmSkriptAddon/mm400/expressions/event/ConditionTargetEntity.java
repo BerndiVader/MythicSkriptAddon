@@ -2,7 +2,7 @@ package com.gmail.berndivader.mmSkriptAddon.mm400.expressions.event;
 
 import javax.annotation.Nullable;
 
-import org.bukkit.Location;
+import org.bukkit.entity.Entity;
 import org.bukkit.event.Event;
 
 import com.gmail.berndivader.mmSkriptAddon.mm400.events.custom.mmMythicMobsSkriptConditionEvent;
@@ -14,7 +14,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 
-public class ConditionLocation extends SimpleExpression<Location> {
+public class ConditionTargetEntity extends SimpleExpression<Entity> {
 
 	@Override
 	public boolean isSingle() {
@@ -22,8 +22,8 @@ public class ConditionLocation extends SimpleExpression<Location> {
 	}
 
 	@Override
-	public Class<? extends Location> getReturnType() {
-		return Location.class;
+	public Class<? extends Entity> getReturnType() {
+		return Entity.class;
 	}
 
 	@Override
@@ -37,12 +37,12 @@ public class ConditionLocation extends SimpleExpression<Location> {
 
 	@Override
 	public String toString(@Nullable Event var1, boolean var2) {
-		return "condition-location";
+		return "condition-targetentity";
 	}
 
 	@Override
 	@Nullable
-	protected Location[] get(Event e) {
-		return new Location[]{((mmMythicMobsSkriptConditionEvent)e).getCasterLocation()};
+	protected Entity[] get(Event e) {
+		return new Entity[]{((mmMythicMobsSkriptConditionEvent)e).getTargetEntity()};
 	}
 }

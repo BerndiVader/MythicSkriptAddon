@@ -43,6 +43,6 @@ public class ConditionEntity extends SimpleExpression<Entity> {
 	@Override
 	@Nullable
 	protected Entity[] get(Event e) {
-		return new Entity[]{((mmMythicMobsSkriptConditionEvent)e).getEntity()};
+		return new Entity[]{((mmMythicMobsSkriptConditionEvent)e).getCasterEntity()};
 	}
 }

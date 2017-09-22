@@ -12,18 +12,18 @@ import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
 import io.lumine.xikage.mythicmobs.io.MythicLineConfig;
 import io.lumine.xikage.mythicmobs.skills.SkillCondition;
 import io.lumine.xikage.mythicmobs.skills.conditions.ConditionAction;
-import io.lumine.xikage.mythicmobs.skills.conditions.IEntityCondition;
-import io.lumine.xikage.mythicmobs.skills.conditions.ILocationCondition;
+import io.lumine.xikage.mythicmobs.skills.conditions.IEntityComparisonCondition;
+import io.lumine.xikage.mythicmobs.skills.conditions.ILocationComparisonCondition;
 
-public class mmSkriptCondition extends SkillCondition 
+public class mmSkriptTargetCondition extends SkillCondition 
 implements 
-IEntityCondition, 
-ILocationCondition {
+IEntityComparisonCondition, 
+ILocationComparisonCondition {
 	private String skConditionName;
 	private String skConditionArgs;
 	private Boolean bool;
 
-	public mmSkriptCondition(String line, MythicLineConfig mlc) {
+	public mmSkriptTargetCondition(String line, MythicLineConfig mlc) {
 		super(line);
 		this.ACTION = ConditionAction.REQUIRED;
 		this.skConditionName = mlc.getString(new String[]{"condition","c"},"");
@@ -32,8 +32,8 @@ ILocationCondition {
 	}
 
 	@Override
-	public boolean check(AbstractLocation t) {
-		Location caster = BukkitAdapter.adapt(t);
+	public boolean check(AbstractLocation c, AbstractLocation t) {
+		Location caster = BukkitAdapter.adapt(c);
 		Location target = BukkitAdapter.adapt(t);
 		mmMythicMobsSkriptConditionEvent e = new mmMythicMobsSkriptConditionEvent(caster, target, this.skConditionName, this.skConditionArgs, this.bool);
 		Bukkit.getServer().getPluginManager().callEvent(e);
@@ -41,8 +41,8 @@ ILocationCondition {
 	}
 
 	@Override
-	public boolean check(AbstractEntity t) {
-		Entity caster = BukkitAdapter.adapt(t);
+	public boolean check(AbstractEntity c, AbstractEntity t) {
+		Entity caster = BukkitAdapter.adapt(c);
 		Entity target = BukkitAdapter.adapt(t);
 		mmMythicMobsSkriptConditionEvent e = new mmMythicMobsSkriptConditionEvent(caster, target, this.skConditionName, this.skConditionArgs, this.bool);
 		Bukkit.getServer().getPluginManager().callEvent(e);

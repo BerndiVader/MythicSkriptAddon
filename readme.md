@@ -1,6 +1,7 @@
 # MythicMobs Skript Addon:
 for MythicMobs 4.0.1 Release or higher
 
+### Update 22.9.2017 V0.92a added skripttargetcondition condition. See conditions for details.
 ### Update 1.9.2017 v0.91a spawn expression now allows world as string or world as world object
 ### Update 25.8.2017 v0.90a added 1.12.1 support
 ### Update 21.7.2017 v0.89a
@@ -170,6 +171,17 @@ skskill:
   Coolddown: 1
   Skills:
   - message{msg="Nice weather today! Isnt it, <target.name>?"}
+  
+
+For TargetConditions:
+
+skskill:
+  Conditions:
+  - skripttargetcondition{c=weather;args=clear}
+  Coolddown: 1
+  Skills:
+  - message{msg="Nice weather today! Isnt it, <target.name>?"}
+
   
 For RandomSpawner condition:
 

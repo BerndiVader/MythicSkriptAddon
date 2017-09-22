@@ -113,7 +113,9 @@ public class Events {
 		Skript.registerEvent("CustomSkriptConditionEvent", SimpleEvent.class, mmMythicMobsSkriptConditionEvent.class, "mythicmobs skriptconditionevent");
 		Skript.registerExpression(ConditionActiveMob.class, ActiveMob.class, ExpressionType.SIMPLE, "condition-activemob");
 		Skript.registerExpression(ConditionEntity.class, Entity.class, ExpressionType.SIMPLE, "condition-entity");
+		Skript.registerExpression(ConditionTargetEntity.class, Entity.class, ExpressionType.SIMPLE, "condition-targetentity");
 		Skript.registerExpression(ConditionLocation.class, Location.class, ExpressionType.SIMPLE, "condition-location");
+		Skript.registerExpression(ConditionTargetLocation.class, Location.class, ExpressionType.SIMPLE, "condition-targetlocation");
 		Skript.registerExpression(ConditionName.class, String.class, ExpressionType.SIMPLE, "condition-name");
 		Skript.registerExpression(ConditionArgs.class, String.class, ExpressionType.SIMPLE, "condition-args");
 		Skript.registerExpression(MeetCondtion.class, Boolean.class, ExpressionType.SIMPLE, "condition-meet");
