@@ -45,7 +45,6 @@ public class ActivePlayer implements SkillCaster {
 
 	@Override
 	public float getPower() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 }

@@ -40,6 +40,6 @@ public class GetMovLevelOfSpawner extends SimpleExpression<Number> {
 	@Nullable
 	protected Number[] get(Event e) {
 		if (!(skriptSpawner.getSingle(e) instanceof MythicSpawner)) return null;
-		return new Number[]{skriptSpawner.getSingle(e).getMobLevel()};
+		return new Number[]{skriptSpawner.getSingle(e).getMobLevel().get()};
 	}
 }

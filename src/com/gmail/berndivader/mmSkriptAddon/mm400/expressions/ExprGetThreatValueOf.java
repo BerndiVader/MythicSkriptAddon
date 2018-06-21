@@ -18,7 +18,7 @@ public class ExprGetThreatValueOf extends SimpleExpression<Number>{
 
 	@Override
 	public boolean isSingle() {
-		return false;
+		return true;
 	}
 
 	@Override

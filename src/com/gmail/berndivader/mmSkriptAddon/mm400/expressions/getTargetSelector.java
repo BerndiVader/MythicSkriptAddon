@@ -12,6 +12,7 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import io.lumine.xikage.mythicmobs.skills.AbstractSkill;
 import io.lumine.xikage.mythicmobs.skills.SkillTargeter;
+import io.lumine.xikage.mythicmobs.skills.targeters.CustomTargeter;
 
 public class getTargetSelector extends SimpleExpression<SkillTargeter> {
 	private Expression<String> targeterString;
@@ -48,6 +49,10 @@ public class getTargetSelector extends SimpleExpression<SkillTargeter> {
 		maybeTargeter = Optional.of(AbstractSkill.parseSkillTargeter(targeterName));
 		if (maybeTargeter.isPresent()) {
             SkillTargeter targeter = maybeTargeter.get();
+   			if (targeter instanceof CustomTargeter
+   					&&((CustomTargeter) targeter).getTargeter().isPresent()) {
+   				targeter=((CustomTargeter) targeter).getTargeter().get();
+   			}
             return new SkillTargeter[] {targeter};
 		}
 		return null;

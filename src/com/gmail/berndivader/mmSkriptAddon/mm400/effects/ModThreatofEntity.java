@@ -39,7 +39,7 @@ public class ModThreatofEntity extends Effect {
 	protected void execute(Event e) {
 		ActiveMob am = this.skriptMob.getSingle(e);
 		AbstractEntity ae = BukkitAdapter.adapt(this.skriptEntity.getSingle(e));
-		Double amount = this.skriptAmount.getSingle(e).doubleValue();
+		double amount = this.skriptAmount.getSingle(e).doubleValue();
 		if (this.bool) {
 			am.getThreatTable().threatGain(ae, amount);
 		} else {

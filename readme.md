@@ -1,6 +1,8 @@
 # MythicMobs Skript Addon:
 for MythicMobs 4.0.1 Release or higher
 
+### Update 21.6.2018 V0.93b fixed get threatvalue now returns single number.
+### Update 4.11.2017 V0.93a targetselectors now support customtargeters
 ### Update 22.9.2017 V0.92a added skripttargetcondition condition. See conditions for details.
 ### Update 1.9.2017 v0.91a spawn expression now allows world as string or world as world object
 ### Update 25.8.2017 v0.90a added 1.12.1 support
@@ -160,6 +162,8 @@ on mythicmobs skriptskillevent:
 ##### condition-name = name of the condition
 ##### condition-args = arguments of the condition
 ##### condition-meet = if the condition is meet or not (you must set this by yourself) standard = true (changed from false to true in update in 0.83a)
+##### condition-targetlocation = the target location if used as targetconditions
+##### condition-targetentity = the target entity if used as targetconditions
 
 Example:
 ```
@@ -176,7 +180,7 @@ skskill:
 For TargetConditions:
 
 skskill:
-  Conditions:
+  TargetConditions:
   - skripttargetcondition{c=weather;args=clear}
   Coolddown: 1
   Skills:

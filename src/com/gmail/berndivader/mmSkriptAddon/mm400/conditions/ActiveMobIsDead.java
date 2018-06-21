@@ -24,7 +24,6 @@ public class ActiveMobIsDead extends Condition {
 
 	@Override
 	public String toString(@Nullable Event var1, boolean var2) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

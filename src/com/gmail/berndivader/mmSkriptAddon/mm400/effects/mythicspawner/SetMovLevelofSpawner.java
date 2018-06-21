@@ -9,6 +9,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
+import io.lumine.xikage.mythicmobs.util.types.RandomInt;
 
 public class SetMovLevelofSpawner extends Effect {
 	private Expression<MythicSpawner> skriptSpawner;
@@ -33,6 +34,6 @@ public class SetMovLevelofSpawner extends Effect {
 	protected void execute(Event e) {
 		MythicSpawner ms = skriptSpawner.getSingle(e);
 		if (ms==null) return;
-		ms.setMobLevel(skriptMobLevel.getSingle(e).intValue());
+		ms.setMobLevel(new RandomInt(skriptMobLevel.getSingle(e).intValue()));
 	}
 }
