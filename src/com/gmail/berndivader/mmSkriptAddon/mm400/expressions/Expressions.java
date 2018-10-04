@@ -49,6 +49,7 @@ public class Expressions {
 		Skript.registerExpression(ExprGetDisplayName.class, String.class, ExpressionType.SIMPLE, "displayname of activemob %activemob%");
 		Skript.registerExpression(ExprGetMobType.class, String.class, ExpressionType.SIMPLE, "mobtype of activemob %activemob%");
 		Skript.registerExpression(ExprGetOwner.class, Entity.class, ExpressionType.SIMPLE, "owner of activemob %activemob%");
+		Skript.registerExpression(ExprGetOwnerUUID.class,String.class, ExpressionType.SIMPLE, "owneruuid of activemob %activemob%");
 		Skript.registerExpression(ExprGetThreatTable.class, Entity.class, ExpressionType.SIMPLE, "get threattable of activemob %activemob%");
 		Skript.registerExpression(ExprGetThreatValueOf.class, Number.class, ExpressionType.SIMPLE, "get threatvalue of %entity% from activemob %activemob%");
 		Skript.registerExpression(getTargetSelector.class, SkillTargeter.class, ExpressionType.SIMPLE, "mythicmobs targeter %string%");

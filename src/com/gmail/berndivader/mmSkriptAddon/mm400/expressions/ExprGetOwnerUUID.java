@@ -4,8 +4,6 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Entity;
 import org.bukkit.event.Event;
 
 import ch.njol.skript.lang.Expression;
@@ -14,7 +12,7 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 
-public class ExprGetOwner extends SimpleExpression<Entity> {
+public class ExprGetOwnerUUID extends SimpleExpression<String> {
 	private Expression<ActiveMob> activeMob;
 
 	@Override
@@ -23,8 +21,8 @@ public class ExprGetOwner extends SimpleExpression<Entity> {
 	}
 
 	@Override
-	public Class<? extends Entity> getReturnType() {
-		return Entity.class;
+	public Class<? extends String> getReturnType() {
+		return String.class;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -42,11 +40,11 @@ public class ExprGetOwner extends SimpleExpression<Entity> {
 
 	@Override
 	@Nullable
-	protected Entity[] get(Event e) {
+	protected String[] get(Event e) {
 		ActiveMob am = activeMob.getSingle(e);
 		if (am!=null && am.getOwner().isPresent()) {
 			UUID uuid = am.getOwner().get();
-			return new Entity[]{Bukkit.getEntity(uuid)};
+			return new String[]{uuid.toString()};
 		};
 		return null;
 	}

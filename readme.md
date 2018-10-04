@@ -1,6 +1,7 @@
 # MythicMobs Skript Addon:
 for MythicMobs 4.0.1 Release or higher
 
+### Update 4.10.2018 v0.95a added MythicMobs 4.4.0 support. Added owneruuid of activemob expression.
 ### Update 21.6.2018 V0.93b fixed get threatvalue now returns single number.
 ### Update 4.11.2017 V0.93a targetselectors now support customtargeters
 ### Update 22.9.2017 V0.92a added skripttargetcondition condition. See conditions for details.
@@ -345,6 +346,9 @@ Returns the MythicMob MobType of the ActiveMob as string.
 
 ### owner of activemob %activemob%
 Returns the owner of the ActiveMob as entity, if there is a owner present.
+
+### owneruuid of activemob %activemob%
+Returns the owner uuid of the ActiveMob as string, if there is a owner present. This is for compatibility to bukkit ver below 1.12.
 
 ### lastaggro of activemob %activemob%
 Get the entity instance of the entity which caused the last trigger on the activemob: set {_lastaggro} to lastaggro of {_am}
