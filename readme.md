@@ -1,6 +1,9 @@
 # MythicMobs Skript Addon:
-for MythicMobs 4.0.1 Release or higher
+### for MythicMobs 4.0.1 Release or higher
 
+# [DOWNLOAD](http://mc.hackerzlair.org:8080/job/MythicSkriptAddon/) [![Build Status](http://mc.hackerzlair.org:8080/job/MythicSkriptAddon/badge/icon)] <br>
+
+### Update 6.2.2019 v0.96a project to gradle, Skript 2.3.3 & MythicMobs 4.5.1 support.
 ### Update 4.10.2018 v0.95a added MythicMobs 4.4.0 support. Added owneruuid of activemob expression.
 ### Update 21.6.2018 V0.93b fixed get threatvalue now returns single number.
 ### Update 4.11.2017 V0.93a targetselectors now support customtargeters
