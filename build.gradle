@@ -18,13 +18,7 @@ task processbuildnumber {
 repositories {
     maven {
         url "http://mc.hackerzlair.org:8888/repository/public"
-   }    
-    maven {
-    	url 'https://repo.destroystokyo.com/repository/maven-public/'
-   }    
-    maven {
-        url "https://jitpack.io"
-   }    
+   	}
 }
 
 dependencies {
