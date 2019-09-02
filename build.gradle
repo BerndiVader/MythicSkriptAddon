@@ -16,8 +16,6 @@ task processbuildnumber {
 }
 
 repositories {
-    jcenter()
-    mavenCentral()
     maven {
         url "http://mc.hackerzlair.org:8888/repository/public"
    }    
@@ -30,9 +28,9 @@ repositories {
 }
 
 dependencies {
-	compileOnly "org.spigotmc:spigot:1.13.2"
-	compileOnly "io.lumine.xikage:mythicmobs:4.5.1"
-    compileOnly 'com.github.SkriptLang:Skript:+'
+	compileOnly "org.spigotmc:spigot:+"
+    compileOnly "io.lumine.xikage:mythicmobs:+"
+    compileOnly "com.github.SkriptLang:Skript:+"
 }
 
 processResources {

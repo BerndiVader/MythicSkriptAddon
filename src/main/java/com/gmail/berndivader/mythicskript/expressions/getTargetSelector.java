@@ -6,11 +6,12 @@ import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;
 
+import com.gmail.berndivader.mythicskript.Reflections;
+
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.skills.AbstractSkill;
 import io.lumine.xikage.mythicmobs.skills.SkillTargeter;
 import io.lumine.xikage.mythicmobs.skills.targeters.CustomTargeter;
 
@@ -46,7 +47,7 @@ public class getTargetSelector extends SimpleExpression<SkillTargeter> {
 	    Optional<SkillTargeter> maybeTargeter = Optional.empty();
 		String targeterName = this.targeterString.getSingle(e);
 		targeterName = targeterName.startsWith("@")?targeterName:"@"+targeterName;
-		maybeTargeter = Optional.of(AbstractSkill.parseSkillTargeter(targeterName));
+		maybeTargeter = Optional.of(Reflections.parseSkillTargeter(targeterName));
 		if (maybeTargeter.isPresent()) {
             SkillTargeter targeter = maybeTargeter.get();
    			if (targeter instanceof CustomTargeter

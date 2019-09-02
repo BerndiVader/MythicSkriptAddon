@@ -19,6 +19,7 @@ import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 
 public class CustomClasses {
 	public static void register() {
+		
 		Classes.registerClass(new ClassInfo<MythicMob>(MythicMob.class,"mythicmob").name("mythicmob").user("mythicmob")
 				.defaultExpression(new EventValueExpression<MythicMob>(MythicMob.class))
 				.parser(new Parser<MythicMob>() {
