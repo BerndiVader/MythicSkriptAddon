@@ -47,7 +47,7 @@ public class getTargetSelector extends SimpleExpression<SkillTargeter> {
 	    Optional<SkillTargeter> maybeTargeter = Optional.empty();
 		String targeterName = this.targeterString.getSingle(e);
 		targeterName = targeterName.startsWith("@")?targeterName:"@"+targeterName;
-		maybeTargeter = Optional.of(Reflections.parseSkillTargeter(targeterName));
+		maybeTargeter = Optional.of((SkillTargeter)Reflections.parseSkillTargeter(targeterName));
 		if (maybeTargeter.isPresent()) {
             SkillTargeter targeter = maybeTargeter.get();
    			if (targeter instanceof CustomTargeter
