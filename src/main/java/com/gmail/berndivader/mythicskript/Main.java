@@ -20,7 +20,6 @@ public class Main extends JavaPlugin {
 	public void onEnable() {
 		plugin=this;
 		if(Bukkit.getPluginManager().getPlugin("MythicMobs")!=null&&Bukkit.getPluginManager().getPlugin("Skript")!=null){
-			Reflections.init();
 			Skript.registerAddon(this);
 			register();
 		}
