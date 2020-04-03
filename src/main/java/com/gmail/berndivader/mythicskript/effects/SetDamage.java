@@ -37,13 +37,11 @@ public class SetDamage extends Effect {
 		double amount = this.amount.getSingle(e).doubleValue();
 		if (am==null || !am.getEntity().isLiving()) return;
 		if (MythicMobs.inst().getMinecraftVersion()>=9) {
-			LivingEntity le = am.getLivingEntity();
+			LivingEntity le = (LivingEntity)am.getEntity();
 			if (le.getAttribute(org.bukkit.attribute.Attribute.GENERIC_ATTACK_DAMAGE)!=null) {
 				AttributeInstance ai = le.getAttribute(org.bukkit.attribute.Attribute.GENERIC_ATTACK_DAMAGE);
 				ai.setBaseValue(amount);
 			}
-		} else {
-			MythicMobs.inst().getVolatileCodeHandler().setAttackDamage(am.getEntity().getBukkitEntity(), amount);
 		}
 	}
 	

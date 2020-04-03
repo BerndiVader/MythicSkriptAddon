@@ -23,8 +23,8 @@ import io.lumine.xikage.mythicmobs.skills.SkillMetadata;
 import io.lumine.xikage.mythicmobs.skills.SkillTargeter;
 import io.lumine.xikage.mythicmobs.skills.SkillTrigger;
 import io.lumine.xikage.mythicmobs.skills.targeters.ILocationSelector;
-import io.lumine.xikage.mythicmobs.skills.targeters.MTOrigin;
 import io.lumine.xikage.mythicmobs.skills.targeters.MTTriggerLocation;
+import io.lumine.xikage.mythicmobs.skills.targeters.OriginTargeter;
 
 public class getLocationsFromSelector extends SimpleExpression<Location>{
 	private Expression<Entity> bukkitEntity;
@@ -68,8 +68,8 @@ public class getLocationsFromSelector extends SimpleExpression<Location>{
             for (AbstractLocation ae : data.getLocationTargets()) {
             	eTargets.add(BukkitAdapter.adapt(ae));
             }
-        } else if (targeter instanceof MTOrigin) {
-            data.setLocationTargets(((MTOrigin)targeter).getLocation(data.getOrigin()));
+        } else if (targeter instanceof OriginTargeter) {
+            data.setLocationTargets(((OriginTargeter)targeter).getLocation(data.getOrigin()));
             for (AbstractLocation ae : data.getLocationTargets()) {
             	eTargets.add(BukkitAdapter.adapt(ae));
             }

@@ -39,7 +39,7 @@ public class ActivePlayer implements SkillCaster {
 	}
 
 	@Override
-	public int getLevel() {
+	public double getLevel() {
 		return this.level;
 	}
 

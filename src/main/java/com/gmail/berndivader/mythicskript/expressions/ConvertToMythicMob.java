@@ -71,7 +71,7 @@ public class ConvertToMythicMob extends SimpleExpression <ActiveMob> {
 	public static void addActiveMobToFaction(MythicMob mm, ActiveMob am) {
         if (mm.hasFaction()) {
             am.setFaction(mm.getFaction());
-            am.getLivingEntity().setMetadata("Faction", new FixedMetadataValue(MythicMobs.inst(),mm.getFaction()));
+            am.getEntity().setMetadata("Faction", new FixedMetadataValue(MythicMobs.inst(),mm.getFaction()));
         }
 	}	
     public static void registerActiveMob(ActiveMob am) {

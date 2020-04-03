@@ -37,7 +37,7 @@ public class SetArmor extends Effect {
 		double amount = this.amount.getSingle(e).doubleValue();
 		if (am==null || !am.getEntity().isLiving()) return;
 		if (MythicMobs.inst().getMinecraftVersion()>=9) {
-			LivingEntity le = am.getLivingEntity();
+			LivingEntity le = (LivingEntity)am.getEntity();
 			if (le.getAttribute(org.bukkit.attribute.Attribute.GENERIC_ARMOR)!=null) {
 				AttributeInstance ai = le.getAttribute(org.bukkit.attribute.Attribute.GENERIC_ARMOR);
 				ai.setBaseValue(amount);
