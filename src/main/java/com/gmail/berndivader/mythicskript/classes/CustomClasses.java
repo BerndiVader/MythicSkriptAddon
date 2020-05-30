@@ -7,6 +7,7 @@ import ch.njol.skript.classes.Parser;
 import ch.njol.skript.expressions.base.EventValueExpression;
 import ch.njol.skript.lang.ParseContext;
 import ch.njol.skript.registrations.Classes;
+import io.lumine.xikage.mythicmobs.drops.LootBag;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import io.lumine.xikage.mythicmobs.mobs.MythicMob;
 import io.lumine.xikage.mythicmobs.skills.SkillTargeter;
@@ -20,6 +21,31 @@ import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 public class CustomClasses {
 	public static void register() {
 		
+		Classes.registerClass(new ClassInfo<LootBag>(LootBag.class,"lootbag").name("lootbag").user("lootbag")
+				.defaultExpression(new EventValueExpression<LootBag>(LootBag.class))
+				.parser(new Parser<LootBag>() {
+					
+					@Override
+					@Nullable
+					public LootBag parse(String lootbag, ParseContext context) {
+						return null;
+					}
+					
+					@Override
+					public String getVariableNamePattern() {
+						return ".+";
+					}
+					@Override
+					public String toString(LootBag lootBag, int flags) {
+						return lootBag.toString();
+					}
+					@Override
+					public String toVariableNameString(LootBag arg0) {
+						return arg0.toString();
+					}
+				})
+			);
+			
 		Classes.registerClass(new ClassInfo<MythicMob>(MythicMob.class,"mythicmob").name("mythicmob").user("mythicmob")
 				.defaultExpression(new EventValueExpression<MythicMob>(MythicMob.class))
 				.parser(new Parser<MythicMob>() {

@@ -28,6 +28,7 @@ public class mmSkriptSkill extends SkillMechanic implements ITargetedEntitySkill
 
 	@Override
 	public boolean cast(SkillMetadata data) {
+		
 		SkillCaster caster = data.getCaster();
 		String args = SkillString.parseMobVariables(this.skriptArgs, caster, caster.getEntity(), data.getTrigger());
 		mmMythicMobsSkriptSkill e = new mmMythicMobsSkriptSkill(caster,null,null,data.getTrigger(),skill,args);

@@ -3,6 +3,8 @@ package com.gmail.berndivader.mythicskript.effects;
 import com.gmail.berndivader.mythicskript.effects.mobitems.AddItemToMobDrop;
 import com.gmail.berndivader.mythicskript.effects.mobitems.ChangeMaterialOfMobItem;
 import com.gmail.berndivader.mythicskript.effects.mobitems.RemoveMobItem;
+import com.gmail.berndivader.mythicskript.effects.mobitems.SetOtherLootForLootBag;
+import com.gmail.berndivader.mythicskript.effects.mobitems.SetPhysicalLootForLootBag;
 import com.gmail.berndivader.mythicskript.effects.mythicspawner.ActivateMythicSpawner;
 import com.gmail.berndivader.mythicskript.effects.mythicspawner.AttachMobToSpawner;
 import com.gmail.berndivader.mythicskript.effects.mythicspawner.CooldownMythicSpawner;
@@ -42,7 +44,6 @@ public class Effects {
 		Skript.registerEffect(RemoveThreatEntity.class, "remove threat of %entity% from activemob %activemob%");
 		Skript.registerEffect(ClearThreatTable.class, "clear threattable of activemob %activemob%");
 		
-		// new 26.3.2017
 		Skript.registerEffect(SetDamage.class, "set damage of activemob %activemob% to %number%");
 		Skript.registerEffect(SetKnockbackResist.class, "set knockbackresist of activemob %activemob% to %number%");
 		Skript.registerEffect(SetArmor.class, "set armor of activemob %activemob% to %number%");
@@ -70,6 +71,9 @@ public class Effects {
 		Skript.registerEffect(AttachMobToSpawner.class, "attach activemob %activemob% to mythicspawner %mythicspawner%");
 
 		//mobdrops & mobitems
+		
+		Skript.registerEffect(SetPhysicalLootForLootBag.class, "set [physical] loot [for] [lootbag] %lootbag% to [(%-itemstack%|%-itemstacks%)]");
+		Skript.registerEffect(SetOtherLootForLootBag.class, "set [other] loot [for] [lootbag] %lootbag% to [(%-string%|%-strings%)]");
 		
 		Skript.registerEffect(RemoveMobItem.class, "remove mobitem %mobitem% from mobdrop %mobdrop%","clear mobdrop %mobdrop%");
 		Skript.registerEffect(ChangeMaterialOfMobItem.class, "set material of mobitem %mobitem% to %string%");

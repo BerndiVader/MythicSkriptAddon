@@ -4,9 +4,12 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.inventory.ItemStack;
 
 import com.gmail.berndivader.mythicskript.classes.MobItem;
 import com.gmail.berndivader.mythicskript.expressions.drops.GetAllDrops;
+import com.gmail.berndivader.mythicskript.expressions.drops.GetLootBagItems;
+import com.gmail.berndivader.mythicskript.expressions.drops.GetLootBagOthers;
 import com.gmail.berndivader.mythicskript.expressions.mythicmob.GetAllMythicMobs;
 import com.gmail.berndivader.mythicskript.expressions.mythicmob.GetEntityType;
 import com.gmail.berndivader.mythicskript.expressions.mythicmob.GetMythicMobByName;
@@ -61,6 +64,7 @@ public class Expressions {
 		//MythicSpawner Expressions
 
 		Skript.registerExpression(ExprGetMythicSpawner.class, MythicSpawner.class, ExpressionType.SIMPLE, "mythicspawner of activemob %activemob%");
+		Skript.registerExpression(GetMythicSpawner.class,MythicSpawner.class,ExpressionType.SIMPLE,"mythicspawner of name %string%");
 		Skript.registerExpression(SpawnerName.class, String.class, ExpressionType.SIMPLE, "name of mythicspawner %mythicspawner%");
 		Skript.registerExpression(SpawnerLocation.class, Location.class, ExpressionType.SIMPLE, "location of mythicspawner %mythicspawner%");
 		Skript.registerExpression(GetSpawnerWorld.class, World.class, ExpressionType.SIMPLE, "world of mythicspawner %mythicspawner%");
@@ -78,7 +82,9 @@ public class Expressions {
 		
 		//mobdrops & mobitems
 		
+		Skript.registerExpression(GetLootBagOthers.class,String.class,ExpressionType.SIMPLE,"other drop[s] [of] [lootbag] %lootbag%");
 		Skript.registerExpression(GetAllDrops.class, MobItem.class, ExpressionType.SIMPLE, "all items of mobdrop %mobdrop%");
+		Skript.registerExpression(GetLootBagItems.class,ItemStack.class,ExpressionType.SIMPLE,"physical drop[s] [of] [lootbag] %lootbag%");
 		
 		//MythicMob types
 		

@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
+import org.jetbrains.annotations.NotNull;
 
 import com.gmail.berndivader.mythicskript.events.custom.mmMythicMobSpawnEvent;
 import com.gmail.berndivader.mythicskript.events.custom.mmMythicMobsSkriptConditionEvent;
@@ -19,6 +20,8 @@ import ch.njol.skript.lang.util.SimpleEvent;
 import ch.njol.skript.registrations.EventValues;
 import ch.njol.skript.util.Getter;
 import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMobDeathEvent;
+import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMobLootDropEvent;
+import io.lumine.xikage.mythicmobs.drops.LootBag;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 
@@ -29,6 +32,22 @@ public class Events {
 		new mmRegisterEvents();
 
 		// register skript events
+		
+		Skript.registerEvent("MythicMobLootDropEvent", SimpleEvent.class, MythicMobLootDropEvent.class, "mythicmob lootdrop [event]");
+		EventValues.registerEventValue(MythicMobLootDropEvent.class, ActiveMob.class, new Getter<ActiveMob, MythicMobLootDropEvent>() {
+			@Override
+			@NotNull
+			public ActiveMob get(MythicMobLootDropEvent e) {
+				return e.getMob();
+			}
+		}, 0);
+		EventValues.registerEventValue(MythicMobLootDropEvent.class, LootBag.class, new Getter<LootBag, MythicMobLootDropEvent>() {
+			@Override
+			@Nullable
+			public LootBag get(MythicMobLootDropEvent e) {
+				return e.getDrops();
+			}
+		}, 0);
 		Skript.registerEvent("MythicMobSpawnEvent", SimpleEvent.class, mmMythicMobSpawnEvent.class, "mythicmob spawnevent");
 		EventValues.registerEventValue(mmMythicMobSpawnEvent.class, ActiveMob.class, new Getter<ActiveMob, mmMythicMobSpawnEvent>() {
 			@Override
@@ -68,7 +87,6 @@ public class Events {
 				MythicDrops md = new MythicDrops(e.getDrops());
 				return md;
 		}}, 0);
-		Skript.registerExpression(DeathEventAttacker.class, Entity.class, ExpressionType.SIMPLE, "event-killer");
 		Skript.registerEvent("MythicSpawnerSpawnEvent", SimpleEvent.class, mmMythicSpawnerSpawnEvent.class, "mythicspawner spawnevent");
 		EventValues.registerEventValue(mmMythicSpawnerSpawnEvent.class, MythicSpawner.class, new Getter<MythicSpawner, mmMythicSpawnerSpawnEvent>() {
 			@Override
@@ -104,6 +122,7 @@ public class Events {
 				}
 				return null;
 		}}, 0);
+		Skript.registerExpression(DeathEventAttacker.class, Entity.class, ExpressionType.SIMPLE, "event-killer");
 		Skript.registerExpression(EventTarget.class, Entity.class, ExpressionType.SIMPLE, "skill-target");
 		Skript.registerExpression(EventTrigger.class, Entity.class, ExpressionType.SIMPLE, "skill-trigger");
 		Skript.registerExpression(EventSkillName.class, String.class, ExpressionType.SIMPLE, "skill-name");

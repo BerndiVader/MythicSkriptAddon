@@ -8,36 +8,38 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
+import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 
-public class SpawnerName extends SimpleExpression<String> {
-	private Expression<MythicSpawner> skriptSpawner;
-	
+public class GetMythicSpawner extends SimpleExpression<MythicSpawner> {
+	private Expression<String> spawnerName;
+
 	@Override
 	public boolean isSingle() {
 		return true;
 	}
 
 	@Override
-	public Class<? extends String> getReturnType() {
-		return String.class;
+	public Class<? extends MythicSpawner> getReturnType() {
+		return MythicSpawner.class;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean init(Expression<?>[] expr, int var2, Kleenean var3, ParseResult var4) {
-		skriptSpawner = (Expression<MythicSpawner>) expr[0];
+	public boolean init(Expression<?>[] expr, int i, Kleenean var3, ParseResult var4) {
+		spawnerName = (Expression<String>) expr[0];
 		return true;
 	}
 
 	@Override
 	public String toString(@Nullable Event var1, boolean var2) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	@Nullable
-	protected String[] get(Event e) {
-		return new String[]{skriptSpawner.getSingle(e).getName()};
+	protected MythicSpawner[] get(Event e) {
+		return new MythicSpawner[] {MythicMobs.inst().getSpawnerManager().getSpawnerByName(spawnerName.getSingle(e))};
 	}
 }

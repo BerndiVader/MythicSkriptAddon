@@ -50,3 +50,8 @@ task createPom  {
         }
     }.writeTo("./build/libs/"+project.name+"-"+project.version+".xml")
 }
+
+task copy152(type: Copy) {
+	from "build/libs/"+project.name+"-"+project.version+".jar"
+    into "c:/dev15/plugins/"
+}
