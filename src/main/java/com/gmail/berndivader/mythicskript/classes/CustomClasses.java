@@ -14,8 +14,8 @@ import io.lumine.xikage.mythicmobs.skills.SkillTargeter;
 import io.lumine.xikage.mythicmobs.skills.targeters.ConsoleTargeter;
 import io.lumine.xikage.mythicmobs.skills.targeters.IEntitySelector;
 import io.lumine.xikage.mythicmobs.skills.targeters.ILocationSelector;
-import io.lumine.xikage.mythicmobs.skills.targeters.MTTriggerLocation;
 import io.lumine.xikage.mythicmobs.skills.targeters.OriginTargeter;
+import io.lumine.xikage.mythicmobs.skills.targeters.TriggerLocationTargeter;
 import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 
 public class CustomClasses {
@@ -187,7 +187,7 @@ public class CustomClasses {
 						if (targeter instanceof IEntitySelector) {
 							type = "EntitySelector";
 						} else if ((targeter instanceof ILocationSelector) || (targeter instanceof OriginTargeter) 
-								|| (targeter instanceof MTTriggerLocation)) {
+								|| (targeter instanceof TriggerLocationTargeter)) {
 							type = "LocationSelector";
 						} else if (targeter instanceof ConsoleTargeter) {
 							type = "ConsoleTargeter";

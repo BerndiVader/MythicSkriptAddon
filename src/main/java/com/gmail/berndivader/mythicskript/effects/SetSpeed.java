@@ -10,7 +10,6 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 
 public class SetSpeed extends Effect {
@@ -36,12 +35,10 @@ public class SetSpeed extends Effect {
 		ActiveMob am = this.activeMob.getSingle(e);
 		double amount = this.amount.getSingle(e).doubleValue();
 		if (am==null || !am.getEntity().isLiving()) return;
-		if (MythicMobs.inst().getMinecraftVersion()>=9) {
-			LivingEntity le = (LivingEntity)am.getEntity();
-			if (le.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MOVEMENT_SPEED)!=null) {
-				AttributeInstance ai = le.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MOVEMENT_SPEED);
-				ai.setBaseValue(amount);
-			}
+		LivingEntity le = (LivingEntity)am.getEntity();
+		if (le.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MOVEMENT_SPEED)!=null) {
+			AttributeInstance ai = le.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MOVEMENT_SPEED);
+			ai.setBaseValue(amount);
 		}
 	}
 

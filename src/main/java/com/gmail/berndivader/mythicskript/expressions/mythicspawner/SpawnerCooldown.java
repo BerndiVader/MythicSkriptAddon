@@ -28,7 +28,7 @@ public class SpawnerCooldown extends SimpleExpression<Number> {
 	@Override
 	public boolean init(Expression<?>[] expr, int i, Kleenean var3, ParseResult var4) {
 		skriptSpawner = (Expression<MythicSpawner>) expr[0];
-		bool = i == 0 ? true : false;
+		bool=i==0;
 		return true;
 	}
 
