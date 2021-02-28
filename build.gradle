@@ -22,9 +22,9 @@ repositories {
 }
 
 dependencies {
-	compileOnly "org.spigotmc:spigot:+"
-    compileOnly "io.lumine.xikage:mythicmobs:+"
-    compileOnly "com.github.SkriptLang:Skript:+"
+    compileOnly	"org.spigotmc:spigot-1.16.5:+"
+    compileOnly	"io.lumine.xikage:mythicmobs:+"
+    compileOnly	"com.github.SkriptLang:Skript:+"
 }
 
 processResources {
