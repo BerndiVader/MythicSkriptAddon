@@ -51,7 +51,9 @@ public class mmRegisterEvents implements Listener {
 	
 	@EventHandler
 	public void onMythicMobsCustomMechanicsLoad(MythicMechanicLoadEvent e) {
-		if (e.getMechanicName().toLowerCase().equals("skriptskill")) {
+		if(e.getMechanicName().toLowerCase().equals("skriptfunction")) {
+			e.register(new SkriptfunctionMechanic(e.getMechanicName(),e.getConfig()));
+		} else if (e.getMechanicName().toLowerCase().equals("skriptskill")) {
 			SkillMechanic skill;
 			if ((skill = new mmSkriptSkill(e.getContainer(), e.getConfig())) != null) e.register(skill);
 		}
