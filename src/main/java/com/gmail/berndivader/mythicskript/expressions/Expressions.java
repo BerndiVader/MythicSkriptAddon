@@ -14,6 +14,14 @@ import com.gmail.berndivader.mythicskript.expressions.mythicmob.GetAllMythicMobs
 import com.gmail.berndivader.mythicskript.expressions.mythicmob.GetEntityType;
 import com.gmail.berndivader.mythicskript.expressions.mythicmob.GetMythicMobByName;
 import com.gmail.berndivader.mythicskript.expressions.mythicspawner.*;
+import com.gmail.berndivader.mythicskript.expressions.skillmetadata.GetCaster;
+import com.gmail.berndivader.mythicskript.expressions.skillmetadata.GetCause;
+import com.gmail.berndivader.mythicskript.expressions.skillmetadata.GetEntityTargets;
+import com.gmail.berndivader.mythicskript.expressions.skillmetadata.GetExecuteAfterDeath;
+import com.gmail.berndivader.mythicskript.expressions.skillmetadata.GetOriginLocation;
+import com.gmail.berndivader.mythicskript.expressions.skillmetadata.GetPower;
+import com.gmail.berndivader.mythicskript.expressions.skillmetadata.GetTargetLocations;
+import com.gmail.berndivader.mythicskript.expressions.skillmetadata.GetTrigger;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
@@ -91,5 +99,19 @@ public class Expressions {
 		Skript.registerExpression(GetAllMythicMobs.class, MythicMob.class, ExpressionType.SIMPLE,"all mythicmob types");
 		Skript.registerExpression(GetMythicMobByName.class, MythicMob.class, ExpressionType.SIMPLE, "mythicmob with name %string%");
 		Skript.registerExpression(GetEntityType.class, EntityType.class, ExpressionType.SIMPLE, "entitytype of mythicmob %mythicmob%");
+		
+		/*
+		 * SkillMetadata Expressions
+		 */
+		
+		Skript.registerExpression(GetCaster.class,Entity.class,ExpressionType.SIMPLE,"[get] caster [of] [skilldata] %skilldata%");
+		Skript.registerExpression(GetCause.class,String.class,ExpressionType.SIMPLE,"[get] cause [of] [skilldata] %skilldata%");
+		Skript.registerExpression(GetEntityTargets.class,Entity.class,ExpressionType.SIMPLE,"[get] entitytargets [of] [skilldata] %skilldata%");
+		Skript.registerExpression(GetTargetLocations.class,Location.class,ExpressionType.SIMPLE,"[get] locationtargets [of] [skilldata] %skilldata%");
+		Skript.registerExpression(GetExecuteAfterDeath.class,Boolean.class,ExpressionType.SIMPLE,"[get] executeafterdeath [of] [skilldata] %skilldata%");
+		Skript.registerExpression(GetOriginLocation.class,Location.class,ExpressionType.SIMPLE,"[get] origin [of] [skilldata] %skilldata%");
+		Skript.registerExpression(GetPower.class,Float.class,ExpressionType.SIMPLE,"[get] power [of] [skilldata] %skilldata%");
+		Skript.registerExpression(GetTrigger.class,Entity.class,ExpressionType.SIMPLE,"[get] trigger [entity] [of] [skilldata] %skilldata%");
+		
 	}
 }
