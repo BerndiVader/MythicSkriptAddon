@@ -10,6 +10,7 @@ import ch.njol.skript.registrations.Classes;
 import io.lumine.xikage.mythicmobs.drops.LootBag;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import io.lumine.xikage.mythicmobs.mobs.MythicMob;
+import io.lumine.xikage.mythicmobs.skills.SkillMetadata;
 import io.lumine.xikage.mythicmobs.skills.SkillTargeter;
 import io.lumine.xikage.mythicmobs.skills.targeters.ConsoleTargeter;
 import io.lumine.xikage.mythicmobs.skills.targeters.IEntitySelector;
@@ -43,6 +44,28 @@ public class CustomClasses {
 					public String toVariableNameString(LootBag arg0) {
 						return arg0.toString();
 					}
+				})
+			);
+		
+		Classes.registerClass(new ClassInfo<SkillMetadata>(SkillMetadata.class,"skilldata").name("skilldata").user("skilldata")
+				.defaultExpression(new EventValueExpression<SkillMetadata>(SkillMetadata.class))
+				.parser(new Parser<SkillMetadata>() {
+
+					@Override
+					public String getVariableNamePattern() {
+						return ".+";
+					}
+
+					@Override
+					public String toString(SkillMetadata data, int flags) {
+						return data.toString();
+					}
+
+					@Override
+					public String toVariableNameString(SkillMetadata data) {
+						return data.toString();
+					}
+					
 				})
 			);
 			
