@@ -1,9 +1,12 @@
 # MythicMobs Skript Addon:
-### for MythicMobs 4.10.0 free
+### for MythicMobs 4.11 free and Skript 2.4.1 or higher
 
 # [DOWNLOAD](http://mc.hackerzlair.org:8080/job/MythicSkriptAddon/) [![Build Status](http://mc.hackerzlair.org:8080/job/MythicSkriptAddon/badge/icon)] <br>
 
-
+### Update 28.2.2021 V0.99a updated readme. added not documented expressions and effects for lootbag class.
+### Update 28.2.2021 V0.99a updated readme. added not documented event "on mythicmob lootdrop"
+### Update 28.2.2021 V0.99a updated readme. added not documented expressions for mythicmob mob-types and classes lootbag, mythicmob, skilldata
+### Update 28.2.2021 v0.99a update to MythicMobs 4.11.0, added skriptfunction mechanic.
 ### Update 18.9.2020 v0.98b update to MythicMobs 4.10.0 free.
 ### Update 3.4.2020 v0.98a update to Skript 2.4.1 & MythicMobs 4.9.0 free.
 ### Update 6.2.2019 v0.96a project to gradle, Skript 2.3.3 & MythicMobs 4.5.1 support.
@@ -93,9 +96,81 @@ Monkey:
 #### mobdrop
 #### mobitem
 #### skilltargeter
+#### lootbag
+#### mythicmob
+#### skilldata
+
+
+## mythicmobs mechanics:
+
+
+### scriptfunction:
+##### call a skript function as a mechanic.
+
+Depending on the targeter of the skill there is either a location, an entity ore none of both. The skilldata is required. It represents the metadatas of the skill. Possible fields to get are: caster, cause, trigger,
+entitytargets, locationtargets, origin, executeafterdeath and the power of the skill. The target lists holding the whole targets of the targeter used by the skill, while the location/entity field of the function itself,
+holds the current target.<br>
+Return type is a boolean which indicates if the skript executed properly.<br><br>
+
+Example:
+```
+MythicMob yml:
+SpamMonkey:
+  Type: Zombie
+  Skills:
+  - skriptfunction{name=example_skill} @selflocation ~onSpawn
+  
+Skript part:
+function example_skill(skilldata: SKILLDATA, location: location, entity: entity) :: boolean:
+
+	broadcast "targetlocation: %{_location}%"
+	broadcast "targetentity: %{_entity}%"
+
+	set {_caster} to caster of {_skilldata}
+	set {_cause} to cause of {_skilldata}
+	set {_trigger} to trigger of {_skilldata}
+	set {_entities::*} to entitytargets of {_skilldata}
+	set {_locations::*} to locationtargets of {_skilldata}
+	set {_origin} to origin of {_skilldata}
+	set {_afterdeath} to executeafterdeath of {_skilldata}
+	set {_power} to power of {_skilldata}
+	
+	broadcast "%{_caster}% :: %{_cause}% :: %{_trigger}% :: %{_entities::*}% :: %{_locations::*}% :: %{_origin}% :: %{_afterdeath}% :: %{_power}%"
+	return true  
+```
+
 
 
 ## Events:
+
+### on mythicmob lootdrop
+#### Called whenever a MythicMob drops loot
+###### Returns:
+##### event-activemob
+##### event-killer
+##### event-lootbag
+Example:
+```
+on mythicmob lootdrop event:
+	set physical loot for event-lootbag to {_items::*}
+	add "exp 1000" to {_items::*}
+	add "money 666" to {_items::*}
+	set other loot for event-lootbag to {_items::*}
+```
+The example above clears all physical drops, and change the other drops to receive xp 1000 and money 666. this depends on the supported drop types.
+
+While this example would set the physical loot to the same itemstack list:
+```
+on mythicmob lootdrop event:
+	set {_items::*} to physical drops of event-lootbag
+	set {_others::*} to other drops of event-lootbag
+	
+# go ahead and change or modify both lists to your wish
+# when you finishd change the lootbag 
+
+	set physical loot for event-lootbag to {_items::*}
+	set other loot for event-lootbag to {_others::*}
+```
 
 ### on mythicmob spawnevent
 #### Called whenever MythicMobs spawns an ActiveMob.
@@ -132,6 +207,7 @@ on mythicspawner spawnevent:
 	broadcast "a %displayname of activemob event-activemob% just spawned at %location of activemob event-activemob%"
 ```
 
+#### DEPRECATED use skriptfunction instead!!
 ### on mythicmobs skriptskillevent:
 #### Called when the mob casted the skill skriptskill.
 ###### Returns:
@@ -171,7 +247,6 @@ on mythicmobs skriptskillevent:
 ##### condition-meet = if the condition is meet or not (you must set this by yourself) standard = true (changed from false to true in update in 0.83a)
 ##### condition-targetlocation = the target location if used as targetconditions
 ##### condition-targetentity = the target entity if used as targetconditions
-
 Example:
 ```
 For Skill condition:
@@ -270,6 +345,7 @@ on activemob spawnevent:
 
 ### mythicspawner %mythicspawner% contains activemob %activemob%
 True if the ActiveMob is attached to the MythicSpawner	
+
 
 
 ## Expressions:
@@ -431,11 +507,43 @@ Returns the number of spawned mobs or the number of MaxMobs that can be spawned.
 
 
 
-#### for MobDrops & MobItems:
+#### for MobDrops, MobItems & Lootbags:
 
 ### all items of mobdrop %mobdrop%
 Gets you the MythicMob Drops from the MythicMobDeathEvent. Only works in the mythicmob deathevent!
 
+### physical drop[s] [of] [lootbag] %lootbag%
+Returns all physical items of the lootbag as a itemstack array.
+
+### other drop[s] [of] [lootbag] %lootbag%
+Returns all other drops of the lootbag as a string array.
+
+
+#### for Skilldata:
+
+### [get] caster [of] [skilldata] %skilldata%
+Get the caster as entity.
+
+### [get] cause [of] [skilldata] %skilldata%"
+Get the cause as string
+
+### [get] entitytargets [of] [skilldata] %skilldata%"
+Get a list of all entities if a multitarget targeter is used.
+
+### [get] locationtargets [of] [skilldata] %skilldata%"
+Get a list of all locations if a multitarget targeter is used.
+
+### [get] executeafterdeath [of] [skilldata] %skilldata%"
+returns a boolean if it should be executed after casters death. Not avail for all MythicMobs Versions.
+
+### [get] origin [of] [skilldata] %skilldata%
+Get the origin location.
+
+### [get] power [of] [skilldata] %skilldata%
+Get power of the skill as float.
+
+### [get] trigger [entity] [of] [skilldata] %skilldata%
+Get the trigger of the mechanic as entity.
 
 
 ## Effects:
@@ -632,9 +740,39 @@ Activates the MythicSpawner.
 Register the given ActiveMob to the MythicSpawner.
 
 
-#### for MobDrops & MobItems:
+#### for MobDrops, MobItems & Lootbags:
 
-### remove mobitem %mobitem% from mobdrop %mobdrop% || clear mobdrop %mobdrop%
+### set [physical] loot [for] [lootbag] %lootbag% to [(%-itemstack%|%-itemstacks%)]
+Replace the itemstack of the defined lootbag. Valid input is an itemstack or an itemstack array. See other loot for examples.
+
+### set [other] loot [for] [lootbag] %lootbag% to [(%-string%|%-strings%)]
+Replace the none physical items of an lootbag. valid input is a string or a string array.
+
+Example:
+```
+on mythicmob lootdrop event:
+	set physical loot for event-lootbag to {_items::*}
+	add "exp 1000" to {_items::*}
+	add "money 666" to {_items::*}
+	set other loot for event-lootbag to {_items::*}
+```
+The example above clears all physical drops, and change the other drops to receive xp 1000 and money 666. this depends on the supported drop types.
+
+While this example would set the physical loot to the same itemstack list:
+```
+on mythicmob lootdrop event:
+	set {_items::*} to physical drops of event-lootbag
+	set {_others::*} to other drops of event-lootbag
+	
+# go ahead and change or modify both lists to your wish
+# when you finishd change the lootbag 
+
+	set physical loot for event-lootbag to {_items::*}
+	set other loot for event-lootbag to {_others::*}
+```
+
+
+### remove mobitem %mobitem% from mobdrop %mobdrop% || clear mobdrop %mobdrop% 
 Remove the given mobitem from the mobdrop or clears the mobdrop completely.
 
 ### set material of mobitem %mobitem% to %string%
@@ -643,14 +781,14 @@ Change the materialtype of the given mobitem into a new Materialtype. %string% h
 Example:
 ```
 on mythicmob deathevent:
-	loop all items of mobdrop event-mobdrop:
+	loop all items of mobdrop event-mobdrop: 
 		if "%loop-mobitem%" contains "STONE":
 			set material of mobitem loop-mobitem to "GRASS"
 		if "%loop-mobitem%" contains "DIRT":
 			remove mobitem loop-mobitem from mobdrop event-mobdrop
 ```
 
-### add item %itemstack% to mobdrop %mobdrop%
+### add item %itemstack% to mobdrop %mobdrop% 
 Add a new item to the mobdrop of the mythicmob deathevent.
 
 Example:
