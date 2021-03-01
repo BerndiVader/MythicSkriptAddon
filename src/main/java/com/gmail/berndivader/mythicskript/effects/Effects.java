@@ -70,7 +70,7 @@ public class Effects {
 		Skript.registerEffect(MakeSpawnerSpawn.class, "make mythicspawner %mythicspawner% spawn");
 		Skript.registerEffect(AttachMobToSpawner.class, "attach activemob %activemob% to mythicspawner %mythicspawner%");
 
-		//mobdrops & mobitems
+		//mobdrops & mobitems & lootbags
 		
 		Skript.registerEffect(SetPhysicalLootForLootBag.class, "set [physical] loot [for] [lootbag] %lootbag% to [(%-itemstack%|%-itemstacks%)]");
 		Skript.registerEffect(SetOtherLootForLootBag.class, "set [other] loot [for] [lootbag] %lootbag% to [(%-string%|%-strings%)]");

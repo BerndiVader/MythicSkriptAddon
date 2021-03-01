@@ -88,7 +88,7 @@ public class Expressions {
 		Skript.registerExpression(MobtypeOfSpawner.class, String.class, ExpressionType.SIMPLE, "mobtype of mythicspawner %mythicspawner%");
 		Skript.registerExpression(GetMovLevelOfSpawner.class, Number.class, ExpressionType.SIMPLE, "moblevel of mythicspawner %mythicspawner%");
 		
-		//mobdrops & mobitems
+		//mobdrops, mobitems & lootbag 
 		
 		Skript.registerExpression(GetLootBagOthers.class,String.class,ExpressionType.SIMPLE,"other drop[s] [of] [lootbag] %lootbag%");
 		Skript.registerExpression(GetAllDrops.class, MobItem.class, ExpressionType.SIMPLE, "all items of mobdrop %mobdrop%");

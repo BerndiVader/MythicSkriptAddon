@@ -44,23 +44,21 @@ public class SetPhysicalLootForLootBag extends Effect {
 		if(exprItem!=null) {
 			if(exprItem.isSingle()) {
 				BukkitItemStack bit=(BukkitItemStack)BukkitAdapter.adapt(exprItem.getSingle(event));
-				System.err.println("single: "+bit.toString());
-				ItemDrop drop=new ItemDrop("MMSK",null,bit);
-				drop.setAmount(bit.getAmount());
+				ItemDrop drop=new ItemDrop("MMSK_DROP",null,bit);
+				drop.setAmount(1);
 				newDrops.add(drop);
 			} else {
-				ItemStack[]items=(exprItem.getArray(event)).clone();
+				ItemStack[]items=(exprItem.getArray(event));
 				int size=items.length;
 				for(int i1=0;i1<size;i1++) {
 					BukkitItemStack bit=(BukkitItemStack)BukkitAdapter.adapt(items[i1]);
-					System.err.println("array: "+bit.toString());
-					ItemDrop drop=new ItemDrop("MMSK",null,bit);
-					drop.setAmount(bit.getAmount());
+					ItemDrop drop=new ItemDrop("MMSK_DROP",null,bit);
+					drop.setAmount(1);
 					newDrops.add(drop);
 				}
 			}
 		}
-		lootBag.setLootTable(newDrops);
+		lootBag.	setLootTable(newDrops);
 	}
 
 }
