@@ -33,7 +33,7 @@ public class GetAllMobsFromSpawner extends SimpleExpression<ActiveMob> {
 	@Override
 	public boolean init(Expression<?>[] expr, int var2, Kleenean var3, ParseResult var4) {
 		mythicSpawner = (Expression<MythicSpawner>) expr[0];
-		return true;
+		return mythicSpawner!=null;
 	}
 
 	@Override
