@@ -20,6 +20,5 @@ Utils
         String name = search.contains("{") ? search.substring(0, search.indexOf("{")) : search;
         return SkillTargeter.getMythicTargeter(name, mlc);
 	}
-    
 
 }

@@ -23,6 +23,7 @@ public class SetOtherLootForLootBag extends Effect {
 	Expression<LootBag> exprBag;
 	Expression<String> exprString;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean init(Expression<?>[] expr, int arg1, Kleenean arg2, ParseResult arg3) {
 		if(expr.length>1) {
@@ -37,6 +38,7 @@ public class SetOtherLootForLootBag extends Effect {
 		return exprBag.getSingle(arg0).toString();
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	protected void execute(Event event) {
 		LootBag lootBag=exprBag.getSingle(event);
@@ -55,6 +57,7 @@ public class SetOtherLootForLootBag extends Effect {
 	}
 	
 	static void setDrops(List<String>dropList,LootBag lootBag) {
+		@SuppressWarnings("rawtypes")
 		Map<Class,Drop>intangibleDrops=new HashMap<Class,Drop>();
 		for(String type:dropList) {
 			Drop drop=Drop.getDrop("MMSK_DROP",type);

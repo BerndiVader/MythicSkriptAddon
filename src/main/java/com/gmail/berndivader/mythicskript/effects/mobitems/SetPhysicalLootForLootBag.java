@@ -22,6 +22,7 @@ public class SetPhysicalLootForLootBag extends Effect {
 	Expression<LootBag> exprBag;
 	Expression<ItemStack> exprItem;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean init(Expression<?>[] expr, int arg1, Kleenean arg2, ParseResult arg3) {
 		if(expr.length>1) {

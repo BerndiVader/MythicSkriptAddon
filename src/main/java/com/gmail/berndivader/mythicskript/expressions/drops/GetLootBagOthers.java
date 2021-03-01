@@ -31,6 +31,7 @@ public class GetLootBagOthers extends SimpleExpression<String> {
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean init(Expression<?>[] expression, int arg1, Kleenean arg2, ParseResult arg3) {
 		bagExpr=(Expression<LootBag>)expression[0];

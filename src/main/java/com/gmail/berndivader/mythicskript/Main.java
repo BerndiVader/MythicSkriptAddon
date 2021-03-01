@@ -27,7 +27,7 @@ public class Main extends JavaPlugin {
 	
 	@Override
 	public void onDisable() {
-		Bukkit.getLogger().info("mmSkriptAddon disabled!");
+		Bukkit.getLogger().info("MythicSk disabled!");
 		Main.plugin = null;
 	}
 	
