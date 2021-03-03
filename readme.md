@@ -1,7 +1,7 @@
 # MythicMobs Skript Addon:
 ### for MythicMobs 4.11 free and Skript 2.4.1 or higher
 
-# [DOWNLOAD](http://mc.hackerzlair.org:8080/job/MythicSkriptAddon/) [![Build Status](http://mc.hackerzlair.org:8080/job/MythicSkriptAddon/badge/icon)] <br>
+# [DOWNLOAD](https://mc.hackerzlair.org/jenkins/job/MythicSkriptAddon/) [![Build Status](https://mc.hackerzlair.org/jenkins/job/MythicSkriptAddon/badge/icon)] <br>
 
 ### Update 28.2.2021 V0.99a updated readme. added not documented expressions and effects for lootbag class.
 ### Update 28.2.2021 V0.99a updated readme. added not documented event "on mythicmob lootdrop"
@@ -104,7 +104,7 @@ Monkey:
 ## mythicmobs mechanics:
 
 
-### scriptfunction:
+### skriptfunction:
 ##### call a skript function as a mechanic.
 
 Depending on the targeter of the skill there is either a location, an entity ore none of both. The skilldata is required. It represents the metadatas of the skill. Possible fields to get are: caster, cause, trigger,
