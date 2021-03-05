@@ -3,6 +3,8 @@
 
 # [DOWNLOAD](https://mc.hackerzlair.org/jenkins/job/MythicSkriptAddon/) [![Build Status](https://mc.hackerzlair.org/jenkins/job/MythicSkriptAddon/badge/icon)] <br>
 
+### Update 5.5.2921 V0.99c updated readme. added targeter function. 
+### Update 3.3.2021 V0.99b updated readme. added condition function. 
 ### Update 28.2.2021 V0.99a updated readme. added not documented expressions and effects for lootbag class.
 ### Update 28.2.2021 V0.99a updated readme. added not documented event "on mythicmob lootdrop"
 ### Update 28.2.2021 V0.99a updated readme. added not documented expressions for mythicmob mob-types and classes lootbag, mythicmob, skilldata
@@ -103,8 +105,10 @@ Monkey:
 
 ## mythicmobs mechanics:
 
-
 ### skriptfunction:
+### skfunction:
+#### mythicmobs syntax: skfunction{name=skript_function_name} @ANYTARGETER
+#### skript syntax: function skript_function_name(data: skilldata, [location: locatin], [entity: entity]) :: boolean:
 ##### call a skript function as a mechanic.
 
 Depending on the targeter of the skill there is either a location, an entity ore none of both. The skilldata is required. It represents the metadatas of the skill. Possible fields to get are: caster, cause, trigger,
@@ -114,13 +118,13 @@ Return type is a boolean which indicates if the skript executed properly.<br><br
 
 Example:
 ```
-MythicMob yml:
+# MythicMob yml:
 SpamMonkey:
   Type: Zombie
   Skills:
   - skriptfunction{name=example_skill} @selflocation ~onSpawn
   
-Skript part:
+# Skript part:
 function example_skill(skilldata: SKILLDATA, location: location, entity: entity) :: boolean:
 
 	broadcast "targetlocation: %{_location}%"
@@ -137,6 +141,114 @@ function example_skill(skilldata: SKILLDATA, location: location, entity: entity)
 	
 	broadcast "%{_caster}% :: %{_cause}% :: %{_trigger}% :: %{_entities::*}% :: %{_locations::*}% :: %{_origin}% :: %{_afterdeath}% :: %{_power}%"
 	return true  
+```
+
+## mythicmobs conditions:
+
+### skfunction:
+### skriptfunction:
+#### mythicmobs syntax: skfunction{name=skript_function_name}
+#### skript syntax:
+#### function skript_function_name(entity: entity) :: boolean: to check an entity
+#### function skript_function-name(location: location) :: boolean: to check a location
+#### function skript_function_name(caster: entity, target: entity) :: boolean: to compare entities
+#### function skript_function_name(caster: location, target: location) :: boolean: to compare locations
+#### fucntion skript_function_name(caster: entity, target: location) :: boolean: to compare entity with a location
+##### call a skript function as mythicmobs condition.
+
+Depending on the function paramters, its an entity, location, entity/entity compare, location/location compare or entity/location compare condition. The return type
+is required to be a boolean.
+
+Example:
+```
+# MythicMob yml:
+SpamMonkey:
+  Type: zombie
+  Display: SkMonkey
+  Skills:
+  - skill{s=skript_skillcondition_example} @trigger ~onInteract
+  - skill{s=skript_skillcondition_example} @triggerlocation ~onDamaged
+  
+skript_skillcondition_example:
+    Conditions:
+    - skfunction{name=example_skill_condition}
+    TargetConditions:
+    - skfunction{name=example_skill_condition}
+    - skfunction{name=compare_skill_condition}
+    - skfunction{name=compare_location_condition}
+    Skills:
+    - message{msg="example_skill_condition is true"} @world
+  
+# Skript part:
+function example_targeter(skilldata: skilldata) :: locations:
+	set {_location} to location of caster of {_skilldata}
+	set {_location} to location of caster of {_skilldata}
+	set {_location} to location of caster of {_skilldata}
+	set {_location} to location of caster of {_skilldata}
+	return {_t::*}
+
+function example_skill(skilldata: SKILLDATA, location: location, entity: entity) :: boolean:
+	set {_caster} to caster of {_skilldata}
+	set {_cause} to cause of {_skilldata}
+	set {_trigger} to trigger of {_skilldata}
+	set {_entities::*} to entitytargets of {_skilldata}
+	set {_locations::*} to locationtargets of {_skilldata}
+	set {_origin} to origin of {_skilldata}
+	set {_afterdeath} to executeafterdeath of {_skilldata}
+	set {_power} to power of {_skilldata}
+	broadcast "%{_caster}% :: %{_cause}% :: %{_trigger}% :: %{_entities::*}% :: %{_locations::*}% :: %{_origin}% :: %{_afterdeath}% :: %{_power}%"
+	return true
+	
+function example_skill_condition(entity: entity) :: boolean:
+	broadcast "entity: %{_entity}%"
+	return true
+	
+function compare_skill_condition(caster: entity, target: entity) :: boolean:
+	broadcast "caster: %{_caster}% :: target: %{_target}%"
+	return true
+	
+function compare_location_condition(caster: location, target: location) :: boolean:
+	broadcast "caster's location: %{_caster}% :: target's location: %{_target}%"
+	return true
+```
+
+
+## mythicmobs targeters:
+
+### skfunction:
+### skriptfunction:
+#### mythicmobs syntax: skfunction{name=skript_function_name}
+#### skript syntax: 
+#### function skript_function_name(skilldata: skilldata) :: entities:
+#### function skript_function_name(skilldata: skilldata) :: locations:
+##### depending on the return type of the function its either a entity targeter or a location targeter. returns a list of targets
+
+The skilldata parameter is required. See skilldata class and skilldata expressions for information how to get data out of the skilldata object. the return type has
+to be a list of entities or a list of locations, or an empty list if no targets found.
+
+Example:
+```
+# MythicMobs part:
+SpamMonkey:
+  Type: zombie
+  Display: SkMonkey
+  Skills:
+  - skill{s=skript_targeter_example_skill} @skfunction{name=example_targeter} ~onDamaged
+
+skript_targeter_example_skill:
+    Skills:
+    - setblock{material=STONE}    
+
+# Skript part:
+function example_targeter(skilldata: skilldata) :: locations:
+
+	set {_source} to block at location of caster of {_skilldata}
+	set {_trigger} to block at location of trigger of {_skilldata}
+	
+	loop blocks between {_source} and {_trigger}:
+		add location of loop-block to {_t::*}
+		
+	return {_t::*}
 ```
 
 
