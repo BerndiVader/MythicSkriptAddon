@@ -29,7 +29,7 @@ public class SkriptfunctionMechanic extends SkillMechanic implements INoTargetSk
 		name=mlc.getString("name","");
 		function=Functions.getFunction(name);
 		if(function!=null) {
-			parameters=new Object[function.getParameters().length][];			
+			parameters=new Object[function.getParameters().length][];
 			dataPos=locationPos=entityPos=-1;
 			for(int i=0;i<function.getParameters().length;i++) {
 				String type=function.getParameter(i).getType().getCodeName();
@@ -52,50 +52,29 @@ public class SkriptfunctionMechanic extends SkillMechanic implements INoTargetSk
 
 	@Override
 	public boolean cast(SkillMetadata meta) {
-		if(function!=null) {
-			if(dataPos>-1) parameters[dataPos]=new SkillMetadata[] {meta};
-			if(locationPos>-1) parameters[locationPos]=new Location[0];
-			if(entityPos>-1) parameters[entityPos]=new Entity[0];
-			Object[]result=function.execute(parameters);
-			if(result!=null&&(result[0] instanceof Boolean)) {
-				return (boolean)result[0];
-			}
-		} else {
-			Bukkit.getLogger().warning("Cant find function "+name);
-		}
-		return false;
+		if(dataPos>-1) parameters[dataPos]=new SkillMetadata[] {meta};
+		if(locationPos>-1) parameters[locationPos]=new Location[0];
+		if(entityPos>-1) parameters[entityPos]=new Entity[0];
+		function.execute(parameters);
+		return true;
 	}
 
 	@Override
 	public boolean castAtLocation(SkillMetadata meta, AbstractLocation aLocation) {
-		if(function!=null) {
-			if(dataPos>-1) parameters[dataPos]=new SkillMetadata[] {meta};
-			if(locationPos>-1) parameters[locationPos]=new Location[] {BukkitAdapter.adapt(aLocation)};
-			if(entityPos>-1) parameters[entityPos]=new Entity[0];
-			Object[]result=function.execute(parameters);
-			if(result!=null&&(result[0] instanceof Boolean)) {
-				return (boolean)result[0];
-			}
-		} else {
-			Bukkit.getLogger().warning("Cant find function "+name);
-		}
-		return false;
+		if(dataPos>-1) parameters[dataPos]=new SkillMetadata[] {meta};
+		if(locationPos>-1) parameters[locationPos]=new Location[] {BukkitAdapter.adapt(aLocation)};
+		if(entityPos>-1) parameters[entityPos]=new Entity[0];
+		function.execute(parameters);
+		return true;
 	}
 
 	@Override
 	public boolean castAtEntity(SkillMetadata meta, AbstractEntity aEntity) {
-		if(function!=null) {
-			if(dataPos>-1) parameters[dataPos]=new SkillMetadata[] {meta};
-			if(locationPos>-1) parameters[locationPos]=new Location[0];
-			if(entityPos>-1) parameters[entityPos]=new Entity[] {aEntity.getBukkitEntity()};
-			Object[]result=function.execute(parameters);
-			if(result!=null&&(result[0] instanceof Boolean)) {
-				return (boolean)result[0];
-			}
-		} else {
-			Bukkit.getLogger().warning("Cant find function "+name);
-		}
-		return false;
+		if(dataPos>-1) parameters[dataPos]=new SkillMetadata[] {meta};
+		if(locationPos>-1) parameters[locationPos]=new Location[0];
+		if(entityPos>-1) parameters[entityPos]=new Entity[] {aEntity.getBukkitEntity()};
+		function.execute(parameters);
+		return true;
 	}
 
 }
