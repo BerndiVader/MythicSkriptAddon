@@ -43,6 +43,13 @@ public class Events {
 		}, 0);
 		EventValues.registerEventValue(MythicMobLootDropEvent.class, LootBag.class, new Getter<LootBag, MythicMobLootDropEvent>() {
 			@Override
+			@NotNull
+			public LootBag get(MythicMobLootDropEvent e) {
+				return e.getDrops();
+			}
+		}, 0);
+		EventValues.registerEventValue(MythicMobLootDropEvent.class, LootBag.class, new Getter<LootBag, MythicMobLootDropEvent>() {
+			@Override
 			@Nullable
 			public LootBag get(MythicMobLootDropEvent e) {
 				return e.getDrops();
