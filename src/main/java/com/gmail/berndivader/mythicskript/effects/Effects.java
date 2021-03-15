@@ -1,5 +1,6 @@
 package com.gmail.berndivader.mythicskript.effects;
 
+import com.gmail.berndivader.mythicskript.effects.dropmetadata.SetAmount;
 import com.gmail.berndivader.mythicskript.effects.mobitems.AddItemToMobDrop;
 import com.gmail.berndivader.mythicskript.effects.mobitems.ChangeMaterialOfMobItem;
 import com.gmail.berndivader.mythicskript.effects.mobitems.RemoveMobItem;
@@ -78,5 +79,11 @@ public class Effects {
 		Skript.registerEffect(RemoveMobItem.class, "remove mobitem %mobitem% from mobdrop %mobdrop%","clear mobdrop %mobdrop%");
 		Skript.registerEffect(ChangeMaterialOfMobItem.class, "set material of mobitem %mobitem% to %string%");
 		Skript.registerEffect(AddItemToMobDrop.class, "add item %itemstack% to mobdrop %mobdrop%");
+		
+		/*
+		 * dropmeta
+		 */
+		
+		Skript.registerEffect(SetAmount.class, "set amount [for] [dropdata] %dropdata% to %number%");
 	};
 }

@@ -3,7 +3,9 @@
 
 # [DOWNLOAD](https://mc.hackerzlair.org/jenkins/job/MythicSkriptAddon/) [![Build Status](https://mc.hackerzlair.org/jenkins/job/MythicSkriptAddon/badge/icon)] <br>
 
-### Update 5.5.2921 V0.99c updated readme. added targeter function. 
+### Update 15.3.2021 V0.99d update readme.
+### Update 6.3.2021 v0.99d added drop skriptfunction. new class dropdata, new effects and expressions for dropmeta
+### Update 5.3.2921 V0.99c updated readme. added targeter function. 
 ### Update 3.3.2021 V0.99b updated readme. added condition function. 
 ### Update 28.2.2021 V0.99a updated readme. added not documented expressions and effects for lootbag class.
 ### Update 28.2.2021 V0.99a updated readme. added not documented event "on mythicmob lootdrop"
@@ -101,6 +103,7 @@ Monkey:
 #### lootbag
 #### mythicmob
 #### skilldata
+#### dropdata
 
 
 ## mythicmobs mechanics:
@@ -250,6 +253,20 @@ function example_targeter(skilldata: skilldata) :: locations:
 		
 	return {_t::*}
 ```
+
+
+## mythicmobs drops:
+
+### skfunction:
+### skriptfunction:
+#### mythicmobs syntax: skfunction{name=skript_function_name}
+#### skript syntax: 
+#### function skript_function_name(dropdata: dropdata) :: itemstack:
+#### function skript_function_name(dropdata: dropdata) :: string:
+##### depending on the return type of the function its either an itemstack a string. returns a list of drops.
+
+The dropdata parameter is required. See dropdata class and dropdata expressions for information how to get data out of the object. the return type has
+to be a list of itemstacks or a list of stringts, or an empty list if nothing matches.
 
 
 
@@ -656,6 +673,28 @@ Get power of the skill as float.
 
 ### [get] trigger [entity] [of] [skilldata] %skilldata%
 Get the trigger of the mechanic as entity.
+
+
+#### for Dropdata:
+
+### [get] caster [of] [dropdata] %dropdata%
+Get the caster as entity.
+
+### [get] dropper [of] [dropdata] %dropdata%
+Get the dropper as entity.
+
+### [get] cause [of] [dropdata] %dropdata%
+Get the cause as entity.
+
+### [get] trigger [of] [dropdata] %dropdata%
+Get the trigger as entity.
+
+### [get] amount [of] [dropdata] %dropdata%
+Get the amount as number.
+
+### [get] generations [of] [dropdata] %dropdata%
+Get the generation amount as number.
+
 
 
 ## Effects:

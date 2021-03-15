@@ -7,6 +7,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
 import com.gmail.berndivader.mythicskript.classes.MobItem;
+import com.gmail.berndivader.mythicskript.expressions.dropmetadata.GetDropper;
 import com.gmail.berndivader.mythicskript.expressions.drops.GetAllDrops;
 import com.gmail.berndivader.mythicskript.expressions.drops.GetLootBagItems;
 import com.gmail.berndivader.mythicskript.expressions.drops.GetLootBagOthers;
@@ -112,6 +113,17 @@ public class Expressions {
 		Skript.registerExpression(GetOriginLocation.class,Location.class,ExpressionType.SIMPLE,"[get] origin [of] [skilldata] %skilldata%");
 		Skript.registerExpression(GetPower.class,Float.class,ExpressionType.SIMPLE,"[get] power [of] [skilldata] %skilldata%");
 		Skript.registerExpression(GetTrigger.class,Entity.class,ExpressionType.SIMPLE,"[get] trigger [entity] [of] [skilldata] %skilldata%");
+		
+		/*
+		 * DropMetadata Expressions
+		 */
+		
+		Skript.registerExpression(com.gmail.berndivader.mythicskript.expressions.dropmetadata.GetDropper.class,Entity.class,ExpressionType.SIMPLE,"[get] dropper [of] [dropdata] %dropdata%");
+		Skript.registerExpression(com.gmail.berndivader.mythicskript.expressions.dropmetadata.GetCaster.class,Entity.class,ExpressionType.SIMPLE,"[get] caster [of] [dropdata] %dropdata%");
+		Skript.registerExpression(com.gmail.berndivader.mythicskript.expressions.dropmetadata.GetCause.class,Entity.class,ExpressionType.SIMPLE,"[get] cause [of] [dropdata] %dropdata%");
+		Skript.registerExpression(com.gmail.berndivader.mythicskript.expressions.dropmetadata.GetTrigger.class,Entity.class,ExpressionType.SIMPLE,"[get] trigger [of] [dropdata] %dropdata%");
+		Skript.registerExpression(com.gmail.berndivader.mythicskript.expressions.dropmetadata.GetAmount.class,Float.class,ExpressionType.SIMPLE,"[get] amount [of] [dropdata] %dropdata%");
+		Skript.registerExpression(com.gmail.berndivader.mythicskript.expressions.dropmetadata.GetGenerations.class,Integer.class,ExpressionType.SIMPLE,"[get] generations [of] [dropdata] %dropdata%");
 		
 	}
 }
