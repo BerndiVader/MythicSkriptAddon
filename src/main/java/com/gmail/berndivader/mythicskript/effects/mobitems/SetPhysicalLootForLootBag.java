@@ -58,7 +58,7 @@ public class SetPhysicalLootForLootBag extends Effect {
 				}
 			}
 		}
-		lootBag.	setLootTable(newDrops);
+		lootBag.setLootTable(newDrops);
 	}
 
 }
