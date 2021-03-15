@@ -16,11 +16,9 @@ import com.gmail.berndivader.mythicskript.events.custom.mmMythicSpawnerSpawnEven
 import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicConditionLoadEvent;
 import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMechanicLoadEvent;
-import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicTargeterLoadEvent;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import io.lumine.xikage.mythicmobs.skills.SkillCondition;
 import io.lumine.xikage.mythicmobs.skills.SkillMechanic;
-import io.lumine.xikage.mythicmobs.skills.SkillTargeter;
 
 public class mmRegisterEvents implements Listener {
 	private static Plugin plugin = Main.plugin;
@@ -67,16 +65,6 @@ public class mmRegisterEvents implements Listener {
 		} else if (e.getConditionName().toLowerCase().equals("skripttargetcondition")) {
 			SkillCondition condition;
 			if ((condition = new mmSkriptTargetCondition(e.getConditionName(), e.getConfig())) != null) e.register(condition);
-		}
-	}
-	@EventHandler
-	public void onMythicMobsCustomTargeterLoad(MythicTargeterLoadEvent e) {
-		if (e.getTargeterName().toLowerCase().equals("sklocationtargeter")) {
-			SkillTargeter t=new mmSkriptLocationTargeter(e.getConfig());
-			e.register(t);
-		} else if (e.getTargeterName().toLowerCase().equals("skentitytargeter")) {
-			SkillTargeter t=new mmSkriptEntityTargeter(e.getConfig());
-			e.register(t);
 		}
 	}
 }
