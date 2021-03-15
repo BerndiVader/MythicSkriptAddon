@@ -1,6 +1,5 @@
 package com.gmail.berndivader.mythicskript.functions;
 
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
@@ -10,13 +9,17 @@ import com.gmail.berndivader.mythicskript.functions.conditions.CompareEntityLoca
 import com.gmail.berndivader.mythicskript.functions.conditions.CompareLocationsCondition;
 import com.gmail.berndivader.mythicskript.functions.conditions.EntityCondition;
 import com.gmail.berndivader.mythicskript.functions.conditions.LocationCondition;
+import com.gmail.berndivader.mythicskript.functions.drops.ItemDrop;
+import com.gmail.berndivader.mythicskript.functions.drops.MessageDrop;
 import com.gmail.berndivader.mythicskript.functions.mechanics.SkriptfunctionMechanic;
 import com.gmail.berndivader.mythicskript.functions.targeters.EntityTargeter;
 import com.gmail.berndivader.mythicskript.functions.targeters.LocationTargeter;
 
+import ch.njol.skript.Skript;
 import ch.njol.skript.lang.function.Function;
 import ch.njol.skript.lang.function.Parameter;
 import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicConditionLoadEvent;
+import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicDropLoadEvent;
 import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMechanicLoadEvent;
 import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicTargeterLoadEvent;
 import io.lumine.xikage.mythicmobs.io.MythicLineConfig;
@@ -61,7 +64,7 @@ public class Functions implements Listener {
 						} else if(parameters[0].getType().getCodeName().equals("location")) {
 							e.register(new LocationCondition(e.getConditionName(),e.getConfig(),function));
 						} else {
-							Bukkit.getLogger().warning("No valid parameter found for "+name);
+							Skript.warning("No valid parameter found for "+name);
 						}
 					} else if(size==2) {
 						boolean para0=parameters[0].getType().getCodeName().equals("entity");
@@ -76,13 +79,13 @@ public class Functions implements Listener {
 						}
 						
 					} else {
-						Bukkit.getLogger().warning("There was an error with the given paramters for "+name);
+						Skript.warning("There was an error with the given paramters for "+name);
 					}
 				} else {
-					Bukkit.getLogger().warning("The return type for skriptcondition function "+name+" has to be boolean but is "+function.getReturnType().getCodeName());
+					Skript.warning("The return type for skriptcondition function "+name+" has to be boolean but is "+function.getReturnType().getCodeName());
 				}
 			} else {
-				Bukkit.getLogger().warning("Cant find function "+name);
+				Skript.warning("Cant find function "+name);
 			}
 			break;
 		}
@@ -104,10 +107,35 @@ public class Functions implements Listener {
 				} else if(returnType.equals("entity")) {
 					e.register(new EntityTargeter(mlc, function));
 				} else {
-					Bukkit.getLogger().warning("Expected return type for skript targeter "+name+" has to be a entity or location list but is "+returnType);
+					Skript.warning("Expected return type for skript targeter "+name+" has to be a entity or location list but is "+returnType);
 				}
 			} else {
-				Bukkit.getLogger().warning("Cant find function "+name);
+				Skript.warning("Cant find function "+name);
+			}
+			break;
+		}
+		
+	}
+	
+	@EventHandler
+	public void onMythicMobsDropLoad(MythicDropLoadEvent e) {
+		
+		switch(e.getDropName().toLowerCase()) {
+		case "skfunction":
+		case "skriptfunction":
+			String name=e.getConfig().getString("name","");
+			Function<?>function=ch.njol.skript.lang.function.Functions.getFunction(name);
+			if(function!=null) {
+				switch(function.getReturnType().getCodeName()) {
+				case "itemstack":
+					e.register(new ItemDrop(e.getContainer().getConfigLine(),e.getConfig(),function));
+					break;
+				case "string":
+					e.register(new MessageDrop(e.getContainer().getConfigLine(),e.getConfig(),function));
+					break;
+				}
+			} else {
+				Skript.warning("Cant find function "+name);
 			}
 			break;
 		}
