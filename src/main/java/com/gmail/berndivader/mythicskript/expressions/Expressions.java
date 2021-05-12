@@ -7,10 +7,10 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
 import com.gmail.berndivader.mythicskript.classes.MobItem;
-import com.gmail.berndivader.mythicskript.expressions.dropmetadata.GetDropper;
 import com.gmail.berndivader.mythicskript.expressions.drops.GetAllDrops;
 import com.gmail.berndivader.mythicskript.expressions.drops.GetLootBagItems;
 import com.gmail.berndivader.mythicskript.expressions.drops.GetLootBagOthers;
+import com.gmail.berndivader.mythicskript.expressions.mythicitem.ItemStackForMythicItemName;
 import com.gmail.berndivader.mythicskript.expressions.mythicmob.GetAllMythicMobs;
 import com.gmail.berndivader.mythicskript.expressions.mythicmob.GetEntityType;
 import com.gmail.berndivader.mythicskript.expressions.mythicmob.GetMythicMobByName;
@@ -89,11 +89,12 @@ public class Expressions {
 		Skript.registerExpression(MobtypeOfSpawner.class, String.class, ExpressionType.SIMPLE, "mobtype of mythicspawner %mythicspawner%");
 		Skript.registerExpression(GetMovLevelOfSpawner.class, Number.class, ExpressionType.SIMPLE, "moblevel of mythicspawner %mythicspawner%");
 		
-		//mobdrops, mobitems & lootbag 
+		//mobdrops, mobitems, lootbag & mythicitem
 		
 		Skript.registerExpression(GetLootBagOthers.class,String.class,ExpressionType.SIMPLE,"other drop[s] [of] [lootbag] %lootbag%");
 		Skript.registerExpression(GetAllDrops.class, MobItem.class, ExpressionType.SIMPLE, "all items of mobdrop %mobdrop%");
 		Skript.registerExpression(GetLootBagItems.class,ItemStack.class,ExpressionType.SIMPLE,"physical drop[s] [of] [lootbag] %lootbag%");
+		Skript.registerExpression(ItemStackForMythicItemName.class,ItemStack.class,ExpressionType.SIMPLE,"itemstack of mythicitem %string%");
 		
 		//MythicMob types
 		
