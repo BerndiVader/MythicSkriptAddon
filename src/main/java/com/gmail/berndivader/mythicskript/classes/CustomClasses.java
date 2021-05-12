@@ -9,6 +9,7 @@ import ch.njol.skript.lang.ParseContext;
 import ch.njol.skript.registrations.Classes;
 import io.lumine.xikage.mythicmobs.drops.DropMetadata;
 import io.lumine.xikage.mythicmobs.drops.LootBag;
+import io.lumine.xikage.mythicmobs.items.MythicItem;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import io.lumine.xikage.mythicmobs.mobs.MythicMob;
 import io.lumine.xikage.mythicmobs.skills.SkillMetadata;
@@ -22,6 +23,30 @@ import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 
 public class CustomClasses {
 	public static void register() {
+		
+		Classes.registerClass(new ClassInfo<MythicItem>(MythicItem.class,"mythicitem").name("mythicitem").user("mythicitem")
+				.defaultExpression(new EventValueExpression<MythicItem>(MythicItem.class))
+				.parser(new Parser<MythicItem>() {
+
+					@Override
+					public String getVariableNamePattern() {
+						// TODO Auto-generated method stub
+						return ".+";
+					}
+
+					@Override
+					public String toString(MythicItem arg0, int arg1) {
+						// TODO Auto-generated method stub
+						return arg0.toString();
+					}
+
+					@Override
+					public String toVariableNameString(MythicItem arg0) {
+						return arg0.toString();
+					}
+					
+				})
+		);
 		
 		Classes.registerClass(new ClassInfo<DropMetadata>(DropMetadata.class,"dropdata").name("dropdata").user("dropdata")
 			.defaultExpression(new EventValueExpression<DropMetadata>(DropMetadata.class))
