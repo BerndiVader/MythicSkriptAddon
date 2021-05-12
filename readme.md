@@ -3,6 +3,7 @@
 
 # [DOWNLOAD](https://mc.hackerzlair.org/jenkins/job/MythicSkriptAddon/) [![Build Status](https://mc.hackerzlair.org/jenkins/job/MythicSkriptAddon/badge/icon)] <br>
 
+### Update 11.5.2021 V0.99e added mythicitem class. added new expression 'itemstack of mythicitem "name"' [Example](#itemstack of mythicitem %string%)
 ### Update 15.3.2021 V0.99d update readme.
 ### Update 6.3.2021 v0.99d added drop skriptfunction. new class dropdata, new effects and expressions for dropmeta
 ### Update 5.3.2921 V0.99c updated readme. added targeter function. 
@@ -97,6 +98,7 @@ Monkey:
 #### activemob
 #### activeplayer
 #### mythicspawner
+#### mythicitem
 #### mobdrop
 #### mobitem
 #### skilltargeter
@@ -636,7 +638,7 @@ Returns the number of spawned mobs or the number of MaxMobs that can be spawned.
 
 
 
-#### for MobDrops, MobItems & Lootbags:
+#### for MobDrops, MobItems, Lootbags & MythicItems:
 
 ### all items of mobdrop %mobdrop%
 Gets you the MythicMob Drops from the MythicMobDeathEvent. Only works in the mythicmob deathevent!
@@ -646,6 +648,12 @@ Returns all physical items of the lootbag as a itemstack array.
 
 ### other drop[s] [of] [lootbag] %lootbag%
 Returns all other drops of the lootbag as a string array.
+
+### itemstack of mythicitem %string%
+Creates and returns an itemstack for the mythicitem with the name string.
+```
+set {_item} to itemstack of mythicitem "mythicitem"
+```
 
 
 #### for Skilldata:
