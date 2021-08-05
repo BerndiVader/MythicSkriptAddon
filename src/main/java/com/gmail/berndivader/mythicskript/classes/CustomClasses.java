@@ -6,6 +6,7 @@ import ch.njol.skript.classes.ClassInfo;
 import ch.njol.skript.classes.Parser;
 import ch.njol.skript.expressions.base.EventValueExpression;
 import ch.njol.skript.lang.ParseContext;
+import ch.njol.skript.localization.Noun;
 import ch.njol.skript.registrations.Classes;
 import io.lumine.xikage.mythicmobs.drops.DropMetadata;
 import io.lumine.xikage.mythicmobs.drops.LootBag;
@@ -29,6 +30,12 @@ public class CustomClasses {
 				.parser(new Parser<MythicItem>() {
 
 					@Override
+					@Nullable
+					public MythicItem parse(final String s, final ParseContext context) {
+						return null;
+					}
+
+					@Override
 					public String getVariableNamePattern() {
 						// TODO Auto-generated method stub
 						return ".+";
@@ -44,6 +51,7 @@ public class CustomClasses {
 					public String toVariableNameString(MythicItem arg0) {
 						return arg0.toString();
 					}
+
 					
 				})
 		);
@@ -51,6 +59,12 @@ public class CustomClasses {
 		Classes.registerClass(new ClassInfo<DropMetadata>(DropMetadata.class,"dropdata").name("dropdata").user("dropdata")
 			.defaultExpression(new EventValueExpression<DropMetadata>(DropMetadata.class))
 			.parser(new Parser<DropMetadata>() {
+
+				@Override
+				@Nullable
+				public DropMetadata parse(final String s, final ParseContext context) {
+					return null;
+				}
 
 				@Override
 				public String getVariableNamePattern() {
@@ -100,6 +114,11 @@ public class CustomClasses {
 				.parser(new Parser<SkillMetadata>() {
 
 					@Override
+					@Nullable
+					public SkillMetadata parse(final String s, final ParseContext context) {
+						return null;
+					}
+					@Override
 					public String getVariableNamePattern() {
 						return ".+";
 					}
@@ -120,11 +139,13 @@ public class CustomClasses {
 		Classes.registerClass(new ClassInfo<MythicMob>(MythicMob.class,"mythicmob").name("mythicmob").user("mythicmob")
 				.defaultExpression(new EventValueExpression<MythicMob>(MythicMob.class))
 				.parser(new Parser<MythicMob>() {
+
 					@Override
 					@Nullable
 					public MythicMob parse(String mythicmob, ParseContext context) {
 						return null;
 					}
+
 					@Override
 					@Nullable
 					public String toString(MythicMob mm, int flags) {
