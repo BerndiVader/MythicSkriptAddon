@@ -1,7 +1,7 @@
 # MythicMobs Skript Addon:
 ### for MythicMobs 4.11 free and Skript 2.4.1 or higher
 
-# [DOWNLOAD](https://mc.hackerzlair.org/jenkins/job/MythicSkriptAddon/) [![Build Status](https://mc.hackerzlair.org/jenkins/job/MythicSkriptAddon/badge/icon)] <br>
+# [DOWNLOAD](https://mc.hackerzlair.org/jenkins/job/MythicSkript/) [![Build Status](https://mc.hackerzlair.org/jenkins/job/MythicSkript/badge/icon)] <br>
 
 ### Update 11.5.2021 V0.99e added mythicitem class. added new expression 'itemstack of mythicitem "name"' [Example](#itemstack of mythicitem %string%)
 ### Update 15.3.2021 V0.99d update readme.
