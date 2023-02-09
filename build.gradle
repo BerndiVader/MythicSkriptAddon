@@ -13,7 +13,7 @@ repositories {
 dependencies {
     compileOnly	"org.spigotmc:spigot-1.16.5:+"
     compileOnly	"io.lumine.xikage:mythicmobs:4.11.0"
-    compileOnly	"com.github.SkriptLang:Skript:+"
+    compileOnly	"com.github.SkriptLang:Skript:2.4.1"
 }
 
 processResources {
