@@ -1,9 +1,9 @@
 # MythicMobs Skript Addon:
 ### for MythicMobs 4.11 free and Skript 2.4.1 or higher
 
-# [DOWNLOAD](https://mc.hackerzlair.org/jenkins/job/MythicSkript/) [![Build Status](https://mc.hackerzlair.org/jenkins/job/MythicSkript/badge/icon)] <br>
+# [DOWNLOAD](https://mc.hackerzlair.org/jenkins/job/MythicSkript/) [![Build Status](https://mc.hackerzlair.org/jenkins/job/MythicSkript/badge/icon)]
 
-### Update 11.5.2021 V0.99e added mythicitem class. added new expression 'itemstack of mythicitem "name"' [Example](#itemstack of mythicitem %string%)
+### Update 11.5.2021 V0.99e added mythicitem class. added new expression 'itemstack of mythicitem "name"' <br> Example (#itemstack of mythicitem %string%)
 ### Update 15.3.2021 V0.99d update readme.
 ### Update 6.3.2021 v0.99d added drop skriptfunction. new class dropdata, new effects and expressions for dropmeta
 ### Update 5.3.2921 V0.99c updated readme. added targeter function. 
@@ -643,10 +643,10 @@ Returns the number of spawned mobs or the number of MaxMobs that can be spawned.
 ### all items of mobdrop %mobdrop%
 Gets you the MythicMob Drops from the MythicMobDeathEvent. Only works in the mythicmob deathevent!
 
-### physical drop[s] [of] [lootbag] %lootbag%
+### physical drop(s) (of) (lootbag) %lootbag%
 Returns all physical items of the lootbag as a itemstack array.
 
-### other drop[s] [of] [lootbag] %lootbag%
+### other drop(s) (of) (lootbag) %lootbag%
 Returns all other drops of the lootbag as a string array.
 
 ### itemstack of mythicitem %string%
@@ -658,49 +658,49 @@ set {_item} to itemstack of mythicitem "mythicitem"
 
 #### for Skilldata:
 
-### [get] caster [of] [skilldata] %skilldata%
+### (get) caster (of) (skilldata) %skilldata%
 Get the caster as entity.
 
-### [get] cause [of] [skilldata] %skilldata%"
+### [get] cause (of) (skilldata) %skilldata%"
 Get the cause as string
 
-### [get] entitytargets [of] [skilldata] %skilldata%"
+### (get) entitytargets (of) (skilldata) %skilldata%"
 Get a list of all entities if a multitarget targeter is used.
 
-### [get] locationtargets [of] [skilldata] %skilldata%"
+### (get) locationtargets (of) (skilldata) %skilldata%"
 Get a list of all locations if a multitarget targeter is used.
 
-### [get] executeafterdeath [of] [skilldata] %skilldata%"
+### (get] executeafterdeath (of) (skilldata) %skilldata%"
 returns a boolean if it should be executed after casters death. Not avail for all MythicMobs Versions.
 
-### [get] origin [of] [skilldata] %skilldata%
+### (get] origin (of) [skilldata) %skilldata%
 Get the origin location.
 
-### [get] power [of] [skilldata] %skilldata%
+### (get] power (of) [skilldata) %skilldata%
 Get power of the skill as float.
 
-### [get] trigger [entity] [of] [skilldata] %skilldata%
+### (get] trigger (entity) (of) (skilldata) %skilldata%
 Get the trigger of the mechanic as entity.
 
 
 #### for Dropdata:
 
-### [get] caster [of] [dropdata] %dropdata%
+### (get) caster (of) (dropdata) %dropdata%
 Get the caster as entity.
 
-### [get] dropper [of] [dropdata] %dropdata%
+### (get) dropper (of) (dropdata) %dropdata%
 Get the dropper as entity.
 
-### [get] cause [of] [dropdata] %dropdata%
+### (get) cause (of) (dropdata) %dropdata%
 Get the cause as entity.
 
-### [get] trigger [of] [dropdata] %dropdata%
+### (get) trigger (of) (dropdata) %dropdata%
 Get the trigger as entity.
 
-### [get] amount [of] [dropdata] %dropdata%
+### (get) amount (of) (dropdata) %dropdata%
 Get the amount as number.
 
-### [get] generations [of] [dropdata] %dropdata%
+### (get) generations (of) (dropdata) %dropdata%
 Get the generation amount as number.
 
 
@@ -901,10 +901,10 @@ Register the given ActiveMob to the MythicSpawner.
 
 #### for MobDrops, MobItems & Lootbags:
 
-### set [physical] loot [for] [lootbag] %lootbag% to [(%-itemstack%|%-itemstacks%)]
+### set (physical) loot (for) (lootbag) %lootbag% to (%-itemstack%|%-itemstacks%)
 Replace the itemstack of the defined lootbag. Valid input is an itemstack or an itemstack array. See other loot for examples.
 
-### set [other] loot [for] [lootbag] %lootbag% to [(%-string%|%-strings%)]
+### set (other) loot (for) (lootbag) %lootbag% to (%-string%|%-strings%)
 Replace the none physical items of an lootbag. valid input is a string or a string array.
 
 Example:
