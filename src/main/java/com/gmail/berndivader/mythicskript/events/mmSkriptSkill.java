@@ -21,7 +21,7 @@ public class mmSkriptSkill extends SkillMechanic implements ITargetedEntitySkill
 
 	public mmSkriptSkill(SkillMechanic skill, MythicLineConfig mlc) {
 		super(skill.getConfigLine(), mlc);
-		this.ASYNC_SAFE=false;
+		this.setAsyncSafe(false);
 		this.skill = mlc.getString(new String[]{"skriptskill","skill","s"}, "");
 		this.skriptArgs = mlc.getString(new String[]{"args","a"},"");
 	}

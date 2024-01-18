@@ -29,12 +29,6 @@ public class CustomClasses {
 				.parser(new Parser<MythicItem>() {
 
 					@Override
-					public String getVariableNamePattern() {
-						// TODO Auto-generated method stub
-						return ".+";
-					}
-
-					@Override
 					public String toString(MythicItem arg0, int arg1) {
 						// TODO Auto-generated method stub
 						return arg0.toString();
@@ -51,11 +45,6 @@ public class CustomClasses {
 		Classes.registerClass(new ClassInfo<DropMetadata>(DropMetadata.class,"dropdata").name("dropdata").user("dropdata")
 			.defaultExpression(new EventValueExpression<DropMetadata>(DropMetadata.class))
 			.parser(new Parser<DropMetadata>() {
-
-				@Override
-				public String getVariableNamePattern() {
-					return ".+";
-				}
 
 				@Override
 				public String toString(DropMetadata data, int flags) {
@@ -81,10 +70,6 @@ public class CustomClasses {
 					}
 					
 					@Override
-					public String getVariableNamePattern() {
-						return ".+";
-					}
-					@Override
 					public String toString(LootBag lootBag, int flags) {
 						return lootBag.toString();
 					}
@@ -98,11 +83,6 @@ public class CustomClasses {
 		Classes.registerClass(new ClassInfo<SkillMetadata>(SkillMetadata.class,"skilldata").name("skilldata").user("skilldata")
 				.defaultExpression(new EventValueExpression<SkillMetadata>(SkillMetadata.class))
 				.parser(new Parser<SkillMetadata>() {
-
-					@Override
-					public String getVariableNamePattern() {
-						return ".+";
-					}
 
 					@Override
 					public String toString(SkillMetadata data, int flags) {
@@ -134,10 +114,6 @@ public class CustomClasses {
 					public String toVariableNameString(MythicMob mm) {
 						return mm.getInternalName();
 					}
-					@Override
-					public String getVariableNamePattern() {
-						return ".+";
-					}
 		}));
 		Classes.registerClass(new ClassInfo<ActiveMob>(ActiveMob.class,"activemob").name("activemob").user("activemob")
 				.defaultExpression(new EventValueExpression<ActiveMob>(ActiveMob.class))
@@ -155,10 +131,6 @@ public class CustomClasses {
 					@Override
 					public String toVariableNameString(ActiveMob am) {
 						return am.getUniqueId().toString();
-					}
-					@Override
-					public String getVariableNamePattern() {
-						return ".+";
 					}
 		}));
 		Classes.registerClass(new ClassInfo<MythicSpawner>(MythicSpawner.class,"mythicspawner").name("mythicspawner").user("mythicspawner")
@@ -179,13 +151,7 @@ public class CustomClasses {
 					@Override
 					public String toVariableNameString(MythicSpawner ms) {
 						return ms.getName();
-					}
-
-					@Override
-					public String getVariableNamePattern() {
-						return ".+";
-					}
-					
+					}					
 		}));
 		Classes.registerClass(new ClassInfo<MythicDrops>(MythicDrops.class,"mobdrop").name("mobdrop").user("mobdrop")
 				.defaultExpression(new EventValueExpression<MythicDrops>(MythicDrops.class))
@@ -206,11 +172,6 @@ public class CustomClasses {
 					@Override
 					public String toVariableNameString(MythicDrops drops) {
 						return drops.getDrops().toString();
-					}
-
-					@Override
-					public String getVariableNamePattern() {
-						return ".+";
 					}
 		}));
 		Classes.registerClass(new ClassInfo<MobItem>(MobItem.class,"mobitem").name("mobitem").user("mobitem")
@@ -235,12 +196,6 @@ public class CustomClasses {
 					public String toVariableNameString(MobItem var1) {
 						// TODO Auto-generated method stub
 						return var1.toString();
-					}
-
-					@Override
-					public String getVariableNamePattern() {
-						// TODO Auto-generated method stub
-						return ".+";
 					}
 		}));
 		Classes.registerClass(new ClassInfo<SkillTargeter>(SkillTargeter.class,"skilltargeter").name("skilltargeter").user("skilltargeter")
@@ -268,10 +223,6 @@ public class CustomClasses {
 					@Override
 					public String toVariableNameString(SkillTargeter targeter) {
 						return targeter.toString();
-					}
-					@Override
-					public String getVariableNamePattern() {
-						return ".+";
 					}
 		}));
 	}

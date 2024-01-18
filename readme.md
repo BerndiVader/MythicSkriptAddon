@@ -1,8 +1,9 @@
 # MythicMobs Skript Addon:
-### for MythicMobs 4.11 free and Skript 2.4.1 or higher
+### for MythicMobs 5.0.2 free and Skript 2.8.0
 
-# [DOWNLOAD](https://mc.hackerzlair.org/jenkins/job/MythicSkript/) [![Build Status](https://mc.hackerzlair.org/jenkins/job/MythicSkript/badge/icon)]
+# [DOWNLOAD](https://berndivader.pii.at/jenkins/job/MythicSkript/) [![Build Status](https://berndivader.pii.at/jenkins/job/MythicSkript/badge/icon)]
 
+### Uodate 18.1.2024 V0.99f compiled with MythicMobs 4.12.0 and Skript 2.8.0 and Spigot 1.16.5
 ### Update 11.5.2021 V0.99e added mythicitem class. added new expression 'itemstack of mythicitem "name"' <br> Example (#itemstack of mythicitem %string%)
 ### Update 15.3.2021 V0.99d update readme.
 ### Update 6.3.2021 v0.99d added drop skriptfunction. new class dropdata, new effects and expressions for dropmeta
