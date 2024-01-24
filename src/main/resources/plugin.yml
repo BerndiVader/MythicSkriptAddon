@@ -1,4 +1,5 @@
 name: MythicSkriptAddon
 main: com.gmail.berndivader.mythicskript.Main
 version: ${version}
+api-version: 1.13
 depend: [MythicMobs, Skript]

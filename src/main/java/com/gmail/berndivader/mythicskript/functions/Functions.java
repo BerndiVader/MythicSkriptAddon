@@ -53,7 +53,7 @@ public class Functions implements Listener {
 		case "skriptfunction":
 			MythicLineConfig mlc=e.getConfig();
 			String name=mlc.getString("name","");
-			Function<?>function=ch.njol.skript.lang.function.Functions.getFunction(name);
+			Function<?>function=ch.njol.skript.lang.function.Functions.getGlobalFunction(name);
 			if(function!=null) {
 				if(function.getReturnType().getCodeName().equals("boolean")) {
 					Parameter<?>[]parameters=function.getParameters();
@@ -99,7 +99,7 @@ public class Functions implements Listener {
 		case "skriptfunction":
 			MythicLineConfig mlc=e.getConfig();
 			String name=mlc.getString("name","");
-			Function<?>function=ch.njol.skript.lang.function.Functions.getFunction(name);
+			Function<?>function=ch.njol.skript.lang.function.Functions.getGlobalFunction(name);
 			if(function!=null) {
 				String returnType=function.getReturnType().getCodeName();
 				if(returnType.equals("location")) {
@@ -124,7 +124,7 @@ public class Functions implements Listener {
 		case "skfunction":
 		case "skriptfunction":
 			String name=e.getConfig().getString("name","");
-			Function<?>function=ch.njol.skript.lang.function.Functions.getFunction(name);
+			Function<?>function=ch.njol.skript.lang.function.Functions.getGlobalFunction(name);
 			if(function!=null) {
 				switch(function.getReturnType().getCodeName()) {
 				case "itemstack":

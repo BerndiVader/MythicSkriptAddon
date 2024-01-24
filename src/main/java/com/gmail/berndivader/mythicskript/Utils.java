@@ -3,7 +3,7 @@ package com.gmail.berndivader.mythicskript;
 import io.lumine.xikage.mythicmobs.io.MythicLineConfig;
 import io.lumine.xikage.mythicmobs.skills.SkillTargeter;
 
-public 
+public
 class 
 Utils
 {

@@ -6,7 +6,6 @@ import org.bukkit.event.Event;
 
 import com.gmail.berndivader.mythicskript.events.custom.mmMythicMobsSkriptConditionEvent;
 
-import ch.njol.skript.ScriptLoader;
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -27,7 +26,7 @@ public class MeetCondtion extends SimpleExpression<Boolean> {
 
 	@Override
 	public boolean init(Expression<?>[] e, int var2, Kleenean var3, ParseResult var4) {
-		if (!ScriptLoader.isCurrentEvent(mmMythicMobsSkriptConditionEvent.class)) {
+		if (!getParser().isCurrentEvent(mmMythicMobsSkriptConditionEvent.class)) {
 			Skript.error("Only allowed in SkriptCondition Event!");
 			return false;
 		}

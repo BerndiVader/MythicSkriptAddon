@@ -1,7 +1,5 @@
 package com.gmail.berndivader.mythicskript.classes;
 
-import javax.annotation.Nullable;
-
 import ch.njol.skript.classes.ClassInfo;
 import ch.njol.skript.classes.Parser;
 import ch.njol.skript.expressions.base.EventValueExpression;
@@ -27,6 +25,11 @@ public class CustomClasses {
 		Classes.registerClass(new ClassInfo<MythicItem>(MythicItem.class,"mythicitem").name("mythicitem").user("mythicitem")
 				.defaultExpression(new EventValueExpression<MythicItem>(MythicItem.class))
 				.parser(new Parser<MythicItem>() {
+					
+					@Override
+					public boolean canParse(ParseContext context) {
+						return false;
+					}
 
 					@Override
 					public String toString(MythicItem arg0, int arg1) {
@@ -45,7 +48,12 @@ public class CustomClasses {
 		Classes.registerClass(new ClassInfo<DropMetadata>(DropMetadata.class,"dropdata").name("dropdata").user("dropdata")
 			.defaultExpression(new EventValueExpression<DropMetadata>(DropMetadata.class))
 			.parser(new Parser<DropMetadata>() {
-
+				
+				@Override
+				public boolean canParse(ParseContext context) {
+					return false;
+				}
+				
 				@Override
 				public String toString(DropMetadata data, int flags) {
 					return data.toString();
@@ -64,9 +72,8 @@ public class CustomClasses {
 				.parser(new Parser<LootBag>() {
 					
 					@Override
-					@Nullable
-					public LootBag parse(String lootbag, ParseContext context) {
-						return null;
+					public boolean canParse(ParseContext context) {
+						return false;
 					}
 					
 					@Override
@@ -83,6 +90,11 @@ public class CustomClasses {
 		Classes.registerClass(new ClassInfo<SkillMetadata>(SkillMetadata.class,"skilldata").name("skilldata").user("skilldata")
 				.defaultExpression(new EventValueExpression<SkillMetadata>(SkillMetadata.class))
 				.parser(new Parser<SkillMetadata>() {
+					
+					@Override
+					public boolean canParse(ParseContext context) {
+						return false;
+					}					
 
 					@Override
 					public String toString(SkillMetadata data, int flags) {
@@ -100,16 +112,17 @@ public class CustomClasses {
 		Classes.registerClass(new ClassInfo<MythicMob>(MythicMob.class,"mythicmob").name("mythicmob").user("mythicmob")
 				.defaultExpression(new EventValueExpression<MythicMob>(MythicMob.class))
 				.parser(new Parser<MythicMob>() {
+					
 					@Override
-					@Nullable
-					public MythicMob parse(String mythicmob, ParseContext context) {
-						return null;
-					}
+					public boolean canParse(ParseContext context) {
+						return false;
+					}					
+
 					@Override
-					@Nullable
 					public String toString(MythicMob mm, int flags) {
 						return mm.getInternalName();
 					}
+					
 					@Override
 					public String toVariableNameString(MythicMob mm) {
 						return mm.getInternalName();
@@ -118,16 +131,17 @@ public class CustomClasses {
 		Classes.registerClass(new ClassInfo<ActiveMob>(ActiveMob.class,"activemob").name("activemob").user("activemob")
 				.defaultExpression(new EventValueExpression<ActiveMob>(ActiveMob.class))
 				.parser(new Parser<ActiveMob>() {
+					
 					@Override
-					@Nullable
-					public ActiveMob parse(String activemob, ParseContext context) {
-						return null;
-					}
+					public boolean canParse(ParseContext context) {
+						return false;
+					}					
+
 					@Override
-					@Nullable
 					public String toString(ActiveMob am, int flags) {
 						return am.getType().getInternalName();
 					}
+					
 					@Override
 					public String toVariableNameString(ActiveMob am) {
 						return am.getUniqueId().toString();
@@ -137,15 +151,13 @@ public class CustomClasses {
 				.defaultExpression(new EventValueExpression<MythicSpawner>(MythicSpawner.class))
 				.parser(new Parser<MythicSpawner>() {
 					@Override
-					@Nullable
-					public MythicSpawner parse(String mythicSpawner, ParseContext context) {
-						return null;
+					public boolean canParse(ParseContext context) {
+						return false;
 					}
 					@Override
-					@Nullable
 					public String toString(MythicSpawner ms, int flags) {
 						if (ms!=null) return ms.getInternalName();
-						return null;
+						return "null";
 					}
 
 					@Override
@@ -158,13 +170,11 @@ public class CustomClasses {
 				.parser(new Parser<MythicDrops>() {
 
 					@Override
-					@Nullable
-					public MythicDrops parse(String var1, ParseContext var2) {
-						return null;
+					public boolean canParse(ParseContext context) {
+						return false;
 					}
 
 					@Override
-					@Nullable
 					public String toString(MythicDrops drops, int var2) {
 						return Integer.toString(drops.getDrops().size());
 					}
@@ -179,14 +189,11 @@ public class CustomClasses {
 				.parser(new Parser<MobItem>() {
 
 					@Override
-					@Nullable
-					public MobItem parse(String var1, ParseContext var2) {
-						// TODO Auto-generated method stub
-						return null;
+					public boolean canParse(ParseContext context) {
+						return false;
 					}
 
 					@Override
-					@Nullable
 					public String toString(MobItem item, int var2) {
 						// TODO Auto-generated method stub
 						return item.getItem().toString();
@@ -202,12 +209,10 @@ public class CustomClasses {
 				.defaultExpression(new EventValueExpression<SkillTargeter>(SkillTargeter.class))
 				.parser(new Parser<SkillTargeter>() {
 					@Override
-					@Nullable
-					public SkillTargeter parse(String targeter, ParseContext context) {
-						return null;
+					public boolean canParse(ParseContext context) {
+						return false;
 					}
 					@Override
-					@Nullable
 					public String toString(SkillTargeter targeter, int flags) {
 						String type = "unsupported";
 						if (targeter instanceof IEntitySelector) {

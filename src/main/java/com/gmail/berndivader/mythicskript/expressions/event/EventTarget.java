@@ -7,7 +7,6 @@ import org.bukkit.event.Event;
 
 import com.gmail.berndivader.mythicskript.events.custom.mmMythicMobsSkriptSkill;
 
-import ch.njol.skript.ScriptLoader;
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -30,7 +29,7 @@ public class EventTarget extends SimpleExpression<Entity>{
 
 	@Override
 	public boolean init(Expression<?>[] e, int matchedPattern, Kleenean isDelay, ParseResult parser) {
-		if (!ScriptLoader.isCurrentEvent(mmMythicMobsSkriptSkill.class)) {
+		if (!getParser().isCurrentEvent(mmMythicMobsSkriptSkill.class)) {
 			Skript.error("Only allowed in SkriptSkill Event!");
 			return false;
 		}

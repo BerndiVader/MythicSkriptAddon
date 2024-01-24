@@ -5,7 +5,6 @@ import javax.annotation.Nullable;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.Event;
 
-import ch.njol.skript.ScriptLoader;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
@@ -29,7 +28,7 @@ public class DeathEventAttacker extends SimpleExpression<Entity>{
 
 	@Override
 	public boolean init(Expression<?>[] e, int var2, Kleenean var3, ParseResult var4) {
-		return ScriptLoader.isCurrentEvent(MythicMobDeathEvent.class, MythicMobLootDropEvent.class);
+		return getParser().isCurrentEvent(MythicMobDeathEvent.class, MythicMobLootDropEvent.class);
 	}
 
 	@Override

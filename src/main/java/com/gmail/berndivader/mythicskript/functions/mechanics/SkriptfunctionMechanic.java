@@ -27,7 +27,7 @@ public class SkriptfunctionMechanic extends SkillMechanic implements INoTargetSk
 		super(skill, mlc);
 		
 		name=mlc.getString("name","");
-		function=Functions.getFunction(name);
+		function=Functions.getGlobalFunction(name);
 		if(function!=null) {
 			parameters=new Object[function.getParameters().length][];
 			dataPos=locationPos=entityPos=-1;
