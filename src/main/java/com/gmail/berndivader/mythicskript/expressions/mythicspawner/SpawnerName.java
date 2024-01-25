@@ -31,12 +31,11 @@ public class SpawnerName extends SimpleExpression<String> {
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected String[] get(Event e) {
 		return new String[]{skriptSpawner.getSingle(e).getName()};
 	}

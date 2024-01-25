@@ -21,14 +21,13 @@ public class MakeSpawnerSpawn extends Effect {
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
 	protected void execute(Event e) {
 		MythicSpawner ms = skriptSpawner.getSingle(e);
-		if (ms==null) return;
-		ms.Spawn();
+		if(ms!=null) ms.Spawn();
 	}
 }

@@ -28,14 +28,13 @@ public class SetTarget extends Effect {
 
 	@Override
 	public String toString(@Nullable Event e, boolean var2) {
-		// TODO Auto-generated method stub
-		return null;
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
 	protected void execute(Event e) {
-		ActiveMob am;
-		if ((am = activeMob.getSingle(e)).isDead()) return;
+		ActiveMob am=activeMob.getSingle(e);
+		if (am.isDead()) return;
 		AbstractEntity target = BukkitAdapter.adapt(bukkitEntity.getSingle(e));
 		if (!target.isLiving()) return;
 		if (am.hasThreatTable()) {

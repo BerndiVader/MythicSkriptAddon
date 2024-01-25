@@ -33,12 +33,11 @@ public class GetMaxMobsFromSpawner extends SimpleExpression<Number> {
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected Number[] get(Event e) {
 		MythicSpawner ms = mythicSpawner.getSingle(e);
 		Number amount = bool ? ms.getNumberOfMobs()+ms.getNumberOfCachedMobs() : ms.getMaxMobs().get();

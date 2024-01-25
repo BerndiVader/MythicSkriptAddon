@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.Event;
 
-import com.gmail.berndivader.mythicskript.events.custom.mmMythicMobsSkriptSkill;
+import com.gmail.berndivader.mythicskript.events.skript.MythicSkriptSkillEvent;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Expression;
@@ -29,7 +29,7 @@ public class EventTarget extends SimpleExpression<Entity>{
 
 	@Override
 	public boolean init(Expression<?>[] e, int matchedPattern, Kleenean isDelay, ParseResult parser) {
-		if (!getParser().isCurrentEvent(mmMythicMobsSkriptSkill.class)) {
+		if (!getParser().isCurrentEvent(MythicSkriptSkillEvent.class)) {
 			Skript.error("Only allowed in SkriptSkill Event!");
 			return false;
 		}
@@ -37,13 +37,12 @@ public class EventTarget extends SimpleExpression<Entity>{
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		return "event-target";
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected Entity[] get(Event e) {
-		return new Entity[]{((mmMythicMobsSkriptSkill)e).getTargetEntity()};
+		return new Entity[]{((MythicSkriptSkillEvent)e).getTargetEntity()};
 	}
 }

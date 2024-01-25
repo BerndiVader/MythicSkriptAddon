@@ -7,11 +7,12 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.event.Event;
 
+import com.gmail.berndivader.mythicskript.Utils;
+
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.adapters.AbstractLocation;
 import io.lumine.xikage.mythicmobs.adapters.AbstractWorld;
 import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
@@ -32,19 +33,17 @@ public class SpawnMythicMob extends SimpleExpression<ActiveMob> {
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
 	public boolean isSingle() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public Class<? extends ActiveMob> getReturnType() {
-		// TODO Auto-generated method stub
 		return ActiveMob.class;
 	}
 
@@ -63,7 +62,7 @@ public class SpawnMythicMob extends SimpleExpression<ActiveMob> {
 		}
 		if (location==null || world == null) return null;
 		AbstractLocation loc = new AbstractLocation(world, location.getX(), location.getY()+0.5, location.getZ());
-		if ((am = MythicMobs.inst().getMobManager().spawnMob(mobtype, loc))==null) return null;
+		if ((am = Utils.mobManager.spawnMob(mobtype, loc))==null) return null;
 		return new ActiveMob[]{am};
 	}
 }

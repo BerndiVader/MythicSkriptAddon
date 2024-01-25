@@ -31,12 +31,11 @@ public class GetCause extends SimpleExpression<String> {
 	}
 
 	@Override
-	public String toString(@Nullable Event event, boolean bool) {
-		return "GetCause@"+event.getEventName();
+	public String toString(@Nullable Event e, boolean bool) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected String[] get(Event event) {
 		SkillMetadata meta=data.getSingle(event);
 		if(meta!=null&&meta.getCause()!=null) {

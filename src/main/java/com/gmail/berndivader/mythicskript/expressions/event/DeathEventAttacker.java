@@ -32,12 +32,11 @@ public class DeathEventAttacker extends SimpleExpression<Entity>{
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		return "event-killer";
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected Entity[] get(Event e) {
 		return e instanceof MythicMobDeathEvent?new Entity[]{((MythicMobDeathEvent)e).getKiller()}:new Entity[]{((MythicMobLootDropEvent)e).getKiller()};
 	}

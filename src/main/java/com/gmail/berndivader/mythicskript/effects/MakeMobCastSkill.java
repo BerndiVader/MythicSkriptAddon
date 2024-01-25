@@ -8,11 +8,12 @@ import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.Event;
 
+import com.gmail.berndivader.mythicskript.Utils;
+
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 
@@ -26,7 +27,7 @@ public class MakeMobCastSkill extends Effect {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean init(Expression<?>[] expr, int matchedPattern, Kleenean var3, ParseResult var4) {
-		bool = matchedPattern==0?true:false;
+		bool=matchedPattern==0;
 		skriptMob = (Expression<ActiveMob>) expr[0];
 		skriptSkill = (Expression<String>) expr[1];
 		bukkitTrigger = (Expression<Entity>) expr[2];
@@ -40,7 +41,7 @@ public class MakeMobCastSkill extends Effect {
 
 	@Override
 	public String toString(@Nullable Event e, boolean var2) {
-		return null;
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
@@ -56,6 +57,6 @@ public class MakeMobCastSkill extends Effect {
 		} else {
 			ltargets.add(bukkitLocation.getSingle(e));
 		}
-		MythicMobs.inst().getAPIHelper().castSkill(BukkitAdapter.adapt(am.getEntity()), skill, trigger, BukkitAdapter.adapt(am.getLocation()), etargets, ltargets, 1.0f);
+		Utils.mythicHelper.castSkill(BukkitAdapter.adapt(am.getEntity()), skill, trigger, BukkitAdapter.adapt(am.getLocation()), etargets, ltargets, 1.0f);
 	}
 }

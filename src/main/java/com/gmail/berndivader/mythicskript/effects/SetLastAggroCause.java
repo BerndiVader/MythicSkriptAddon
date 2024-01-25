@@ -27,13 +27,13 @@ public class SetLastAggroCause extends Effect {
 
 	@Override
 	public String toString(@Nullable Event e, boolean bool) {
-		return null;
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
 	protected void execute(Event e) {
-		Entity newaggro;
-		if (!((newaggro = bukkitEntity.getSingle(e)) instanceof LivingEntity)) return;
+		Entity newaggro=bukkitEntity.getSingle(e);
+		if (!(newaggro instanceof LivingEntity)) return;
 		ActiveMob am = activemob.getSingle(e);
 		am.setLastAggroCause(BukkitAdapter.adapt(newaggro));
 	}

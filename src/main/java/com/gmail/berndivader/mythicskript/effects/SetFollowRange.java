@@ -26,8 +26,7 @@ public class SetFollowRange extends Effect {
 
 	@Override
 	public String toString(@Nullable Event e, boolean var2) {
-		// TODO Auto-generated method stub
-		return null;
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
@@ -35,7 +34,7 @@ public class SetFollowRange extends Effect {
 		ActiveMob am = this.activeMob.getSingle(e);
 		double amount = this.amount.getSingle(e).doubleValue();
 		if (am==null || !am.getEntity().isLiving()) return;
-		LivingEntity le = (LivingEntity)am.getEntity();
+		LivingEntity le = (LivingEntity)am.getEntity().getBukkitEntity();
 		if (le.getAttribute(org.bukkit.attribute.Attribute.GENERIC_FOLLOW_RANGE)!=null) {
 			AttributeInstance ai = le.getAttribute(org.bukkit.attribute.Attribute.GENERIC_FOLLOW_RANGE);
 			ai.setBaseValue(amount);

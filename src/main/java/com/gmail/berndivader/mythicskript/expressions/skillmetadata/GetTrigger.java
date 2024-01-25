@@ -32,12 +32,11 @@ public class GetTrigger extends SimpleExpression<Entity> {
 	}
 
 	@Override
-	public String toString(@Nullable Event event, boolean bool) {
-		return "GetTrigger@"+event.getEventName();
+	public String toString(@Nullable Event e, boolean bool) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected Entity[] get(Event event) {
 		SkillMetadata meta=data.getSingle(event);
 		if(meta!=null&&meta.getTrigger()!=null) {

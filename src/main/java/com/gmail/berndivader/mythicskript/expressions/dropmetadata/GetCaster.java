@@ -33,8 +33,8 @@ public class GetCaster extends SimpleExpression<Entity> {
 	}
 
 	@Override
-	public String toString(@Nullable Event event, boolean arg1) {
-		return "GetCaster@"+event.getEventName();
+	public String toString(@Nullable Event e, boolean arg1) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override

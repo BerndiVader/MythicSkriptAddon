@@ -32,12 +32,11 @@ public class GetCaster extends SimpleExpression<Entity> {
 	}
 
 	@Override
-	public String toString(@Nullable Event event, boolean bool) {
-		return "GetCaster@"+event.getEventName();
+	public String toString(@Nullable Event e, boolean bool) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected Entity[] get(Event event) {
 		SkillMetadata meta=data.getSingle(event);
 		if(meta!=null&&meta.getCaster()!=null) {

@@ -4,17 +4,16 @@ import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;
 
+import com.gmail.berndivader.mythicskript.Utils;
+
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.mobs.MobManager;
 import io.lumine.xikage.mythicmobs.mobs.MythicMob;
 
 public class GetMythicMobByName extends SimpleExpression<MythicMob>{
-	protected MobManager mobmanager = MythicMobs.inst().getMobManager();
-	protected Expression<String> skType; 
+	private Expression<String> skType; 
 
 	@Override
 	public boolean isSingle() {
@@ -35,13 +34,12 @@ public class GetMythicMobByName extends SimpleExpression<MythicMob>{
 
 	@Override
 	public String toString(@Nullable Event e, boolean bool) {
-		return null;
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected MythicMob[] get(Event e) {
-		MythicMob mm = this.mobmanager.getMythicMob(this.skType.getSingle(e));
+		MythicMob mm = Utils.mobManager.getMythicMob(this.skType.getSingle(e));
         return new MythicMob[]{mm};
 	}
 }

@@ -37,42 +37,42 @@ public class Expressions {
 		
 		Skript.registerExpression(SpawnMythicMob.class, ActiveMob.class, ExpressionType.SIMPLE, 
 				"spawn mythicmob %string% at location %location% in world %object%");
-		Skript.registerExpression(ExprGetActiveMobs.class, ActiveMob.class, ExpressionType.SIMPLE,
+		Skript.registerExpression(GetActiveMobs.class, ActiveMob.class, ExpressionType.SIMPLE,
 				"all activemobs in world %string%","all activemobs");
-		Skript.registerExpression(ExprGetActiveMob.class, ActiveMob.class, ExpressionType.SIMPLE, 
+		Skript.registerExpression(GetActiveMob.class, ActiveMob.class, ExpressionType.SIMPLE, 
 				"activemob of %entity%","activemob instance %entity%");
-		Skript.registerExpression(ExprGetMobByUUID.class, ActiveMob.class, ExpressionType.SIMPLE, "activemob by uuid %string%");
-		Skript.registerExpression(ExprGetEntityOfMob.class, Entity.class, ExpressionType.SIMPLE, "entity of activemob %activemob%");
-		Skript.registerExpression(ExprGetLocation.class, Location.class, ExpressionType.SIMPLE,"location of activemob %activemob%");
-		Skript.registerExpression(ExprGetWorld.class, World.class, ExpressionType.SIMPLE, "world of activemob %activemob%");
+		Skript.registerExpression(GetMobByUUID.class, ActiveMob.class, ExpressionType.SIMPLE, "activemob by uuid %string%");
+		Skript.registerExpression(GetEntityOfMob.class, Entity.class, ExpressionType.SIMPLE, "entity of activemob %activemob%");
+		Skript.registerExpression(GetLocation.class, Location.class, ExpressionType.SIMPLE,"location of activemob %activemob%");
+		Skript.registerExpression(GetWorld.class, World.class, ExpressionType.SIMPLE, "world of activemob %activemob%");
 
-		Skript.registerExpression(ExprGetLastAggro.class, Entity.class, ExpressionType.SIMPLE, "lastaggro of activemob %activemob%");
-		Skript.registerExpression(ExprGetTopThreat.class, Entity.class, ExpressionType.SIMPLE, "toptarget of activemob %activemob%");
-		Skript.registerExpression(ExprGetUUID.class, String.class, ExpressionType.SIMPLE,"uuid of activemob %activemob%");
-		Skript.registerExpression(ExprGetHealth.class, Number.class, ExpressionType.SIMPLE,"health of activemob %activemob%");
-		Skript.registerExpression(ExprGetMaxHealth.class, Number.class, ExpressionType.SIMPLE, "maxhealth of activemob %activemob%");
-		Skript.registerExpression(ExprGetMythicMobConfig.class, String.class, ExpressionType.SIMPLE,"mlc %string% of activemob %activemob%");
-		Skript.registerExpression(ExprGetFaction.class, String.class, ExpressionType.SIMPLE,"faction of activemob %activemob%");
-		Skript.registerExpression(ExprGetStance.class, String.class, ExpressionType.SIMPLE,"stance of activemob %activemob%");
-		Skript.registerExpression(ExprGetLevel.class, Number.class, ExpressionType.SIMPLE,"level of activemob %activemob%");
-		Skript.registerExpression(ExprGetPks.class, Number.class, ExpressionType.SIMPLE,"playerkills of activemob %activemob%");
-		Skript.registerExpression(ExprGetSignal.class, String.class, ExpressionType.SIMPLE,"lastsignal of activemob %activemob%");
-		Skript.registerExpression(ExprGetDisplayName.class, String.class, ExpressionType.SIMPLE, "displayname of activemob %activemob%");
-		Skript.registerExpression(ExprGetMobType.class, String.class, ExpressionType.SIMPLE, "mobtype of activemob %activemob%");
-		Skript.registerExpression(ExprGetOwner.class, Entity.class, ExpressionType.SIMPLE, "owner of activemob %activemob%");
-		Skript.registerExpression(ExprGetOwnerUUID.class,String.class, ExpressionType.SIMPLE, "owneruuid of activemob %activemob%");
-		Skript.registerExpression(ExprGetThreatTable.class, Entity.class, ExpressionType.SIMPLE, "get threattable of activemob %activemob%");
-		Skript.registerExpression(ExprGetThreatValueOf.class, Number.class, ExpressionType.SIMPLE, "get threatvalue of %entity% from activemob %activemob%");
-		Skript.registerExpression(getTargetSelector.class, SkillTargeter.class, ExpressionType.SIMPLE, "mythicmobs targeter %string%");
-		Skript.registerExpression(getEntitiesFromSelector.class, Entity.class, ExpressionType.SIMPLE, "targetentities of %entity% for targeter %skilltargeter%");
-		Skript.registerExpression(getLocationsFromSelector.class, Location.class, ExpressionType.SIMPLE, "targetlocations of %entity% for targeter %skilltargeter%");
+		Skript.registerExpression(GetLastAggro.class, Entity.class, ExpressionType.SIMPLE, "lastaggro of activemob %activemob%");
+		Skript.registerExpression(GetTopThreat.class, Entity.class, ExpressionType.SIMPLE, "toptarget of activemob %activemob%");
+		Skript.registerExpression(GetUUID.class, String.class, ExpressionType.SIMPLE,"uuid of activemob %activemob%");
+		Skript.registerExpression(GetHealth.class, Number.class, ExpressionType.SIMPLE,"health of activemob %activemob%");
+		Skript.registerExpression(GetMaxHealth.class, Number.class, ExpressionType.SIMPLE, "maxhealth of activemob %activemob%");
+		Skript.registerExpression(GetMythicMobConfig.class, String.class, ExpressionType.SIMPLE,"mlc %string% of activemob %activemob%");
+		Skript.registerExpression(GetFaction.class, String.class, ExpressionType.SIMPLE,"faction of activemob %activemob%");
+		Skript.registerExpression(GetStance.class, String.class, ExpressionType.SIMPLE,"stance of activemob %activemob%");
+		Skript.registerExpression(GetLevel.class, Number.class, ExpressionType.SIMPLE,"level of activemob %activemob%");
+		Skript.registerExpression(GetPlayerKills.class, Number.class, ExpressionType.SIMPLE,"playerkills of activemob %activemob%");
+		Skript.registerExpression(GetSignal.class, String.class, ExpressionType.SIMPLE,"lastsignal of activemob %activemob%");
+		Skript.registerExpression(GetDisplayName.class, String.class, ExpressionType.SIMPLE, "displayname of activemob %activemob%");
+		Skript.registerExpression(GetMobType.class, String.class, ExpressionType.SIMPLE, "mobtype of activemob %activemob%");
+		Skript.registerExpression(GetOwner.class, Entity.class, ExpressionType.SIMPLE, "owner of activemob %activemob%");
+		Skript.registerExpression(GetOwnerUUID.class,String.class, ExpressionType.SIMPLE, "owneruuid of activemob %activemob%");
+		Skript.registerExpression(GetThreatTable.class, Entity.class, ExpressionType.SIMPLE, "get threattable of activemob %activemob%");
+		Skript.registerExpression(GetThreatValueOf.class, Number.class, ExpressionType.SIMPLE, "get threatvalue of %entity% from activemob %activemob%");
+		Skript.registerExpression(GetTargetSelector.class, SkillTargeter.class, ExpressionType.SIMPLE, "mythicmobs targeter %string%");
+		Skript.registerExpression(GetEntitiesFromSelector.class, Entity.class, ExpressionType.SIMPLE, "targetentities of %entity% for targeter %skilltargeter%");
+		Skript.registerExpression(GetLocationsFromSelector.class, Location.class, ExpressionType.SIMPLE, "targetlocations of %entity% for targeter %skilltargeter%");
 		Skript.registerExpression(ConvertToMythicMob.class, ActiveMob.class, ExpressionType.SIMPLE,
 				"convert %entity% into mythicmob %string% with level %number%");
 
 		//MythicSpawner Expressions
 
-		Skript.registerExpression(ExprGetMythicSpawner.class, MythicSpawner.class, ExpressionType.SIMPLE, "mythicspawner of activemob %activemob%");
-		Skript.registerExpression(GetMythicSpawner.class,MythicSpawner.class,ExpressionType.SIMPLE,"mythicspawner of name %string%");
+		Skript.registerExpression(GetMythicSpawnerByActiveMob.class, MythicSpawner.class, ExpressionType.SIMPLE, "mythicspawner of activemob %activemob%");
+		Skript.registerExpression(GetMythicSpawnerByName.class,MythicSpawner.class,ExpressionType.SIMPLE,"mythicspawner of name %string%");
 		Skript.registerExpression(SpawnerName.class, String.class, ExpressionType.SIMPLE, "name of mythicspawner %mythicspawner%");
 		Skript.registerExpression(SpawnerLocation.class, Location.class, ExpressionType.SIMPLE, "location of mythicspawner %mythicspawner%");
 		Skript.registerExpression(GetSpawnerWorld.class, World.class, ExpressionType.SIMPLE, "world of mythicspawner %mythicspawner%");

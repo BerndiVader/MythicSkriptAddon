@@ -31,12 +31,11 @@ public class GetGenerations extends SimpleExpression<Integer> {
 	}
 
 	@Override
-	public String toString(@Nullable Event event, boolean arg1) {
-		return "GetGenerations@"+event.getEventName();
+	public String toString(@Nullable Event e, boolean arg1) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected Integer[] get(Event event) {
 		DropMetadata data=expr.getSingle(event);
 		return new Integer[] {data.getGenerations()};

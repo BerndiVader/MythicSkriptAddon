@@ -6,16 +6,15 @@ import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;
 
+import com.gmail.berndivader.mythicskript.Utils;
+
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.mobs.MythicMob;
 
 public class GetAllMythicMobs extends SimpleExpression<MythicMob> {
-
-	protected MythicMobs mythicmobs = MythicMobs.inst();
 
 	@Override
 	public boolean isSingle() {
@@ -33,14 +32,13 @@ public class GetAllMythicMobs extends SimpleExpression<MythicMob> {
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected MythicMob[] get(Event e) {
-        ArrayList<MythicMob> mobs = new ArrayList<MythicMob>(this.mythicmobs.getMobManager().getMobTypes());
+        ArrayList<MythicMob> mobs = new ArrayList<MythicMob>(Utils.mobManager.getMobTypes());
         return mobs.toArray(new MythicMob[0]);
 	}
 

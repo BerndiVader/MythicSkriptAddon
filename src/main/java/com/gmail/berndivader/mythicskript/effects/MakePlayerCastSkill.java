@@ -11,13 +11,14 @@ import org.bukkit.event.Event;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.gmail.berndivader.mythicskript.ActivePlayer;
-import com.gmail.berndivader.mythicskript.Main;
+import com.gmail.berndivader.mythicskript.MythicSkript;
+import com.gmail.berndivader.mythicskript.Utils;
 
+import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.adapters.AbstractEntity;
 import io.lumine.xikage.mythicmobs.adapters.AbstractLocation;
 import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
@@ -40,8 +41,8 @@ public class MakePlayerCastSkill extends Effect {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean init(Expression<?>[] expr, int matchedPattern, Kleenean var3, ParseResult var4) {
-		bool = matchedPattern==0?true:false;
-		self = matchedPattern==2?true:false;
+		bool=matchedPattern==0;
+		self=matchedPattern==2;
 		skriptPlayer = (Expression<Entity>) expr[0];
 		skriptSkill = (Expression<String>) expr[1];
 		skriptTrigger = (Expression<Entity>) expr[2];
@@ -62,7 +63,7 @@ public class MakePlayerCastSkill extends Effect {
 
 	@Override
 	public String toString(@Nullable Event e, boolean var2) {
-		return null;
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
@@ -84,14 +85,16 @@ public class MakePlayerCastSkill extends Effect {
         HashSet<AbstractLocation> lTargets = new HashSet<AbstractLocation>();
         if (etarget != null) eTargets.add(BukkitAdapter.adapt(etarget));
         if (ltarget != null) lTargets.add(BukkitAdapter.adapt(ltarget));
-		castSkillFromPlayer(caster, skill, trigger, caster.getLocation(), eTargets, lTargets, 1.0f, ttimer, tdelay);
+		if(!castSkillFromPlayer(caster, skill, trigger, caster.getLocation(), eTargets, lTargets, 1.0f, ttimer, tdelay)) {
+			Skript.warning("MythicMobs skill "+skill+" not found!");
+		}
 	}
 
-	private boolean castSkillFromPlayer(Entity e, String skillName, Entity trigger, 
+	private static boolean castSkillFromPlayer(Entity e, String skillName, Entity trigger, 
 			Location origin, HashSet<AbstractEntity> feTargets, HashSet<AbstractLocation> flTargets, float power,
 			int ttimer, long tdelay) {
 
-        Optional<Skill> maybeSkill = MythicMobs.inst().getSkillManager().getSkill(skillName);
+        Optional<Skill> maybeSkill = Utils.mythicMobs.getSkillManager().getSkill(skillName);
         if (!maybeSkill.isPresent()) {
             return false;
         }
@@ -109,7 +112,7 @@ public class MakePlayerCastSkill extends Effect {
         				this.cancel();
         			}
                 } 
-            }.runTaskTimer(Main.plugin, 0, tdelay);
+            }.runTaskTimer(MythicSkript.plugin, 0, tdelay);
         }
 		return true;
 	}

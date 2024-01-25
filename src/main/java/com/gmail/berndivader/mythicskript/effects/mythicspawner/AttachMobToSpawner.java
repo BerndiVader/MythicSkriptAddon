@@ -20,14 +20,13 @@ public class AttachMobToSpawner extends Effect {
 	public boolean init(Expression<?>[] expr, int var2, Kleenean var3, ParseResult var4) {
 		skriptMob = (Expression<ActiveMob>) expr[0];
 		skriptSpawner = (Expression<MythicSpawner>) expr[1];
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		// TODO Auto-generated method stub
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
+
 	}
 
 	@Override

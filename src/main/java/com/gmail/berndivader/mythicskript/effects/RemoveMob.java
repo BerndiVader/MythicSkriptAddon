@@ -22,8 +22,7 @@ public class RemoveMob extends Effect {
 
 	@Override
 	public String toString(@Nullable Event e, boolean var2) {
-		// TODO Auto-generated method stub
-		return null;
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override

@@ -12,8 +12,6 @@ import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 
 public class ActiveMobIsDead extends Condition {
 	private Expression<ActiveMob> activeMob;
-	private ActiveMob am;
-	
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -23,14 +21,13 @@ public class ActiveMobIsDead extends Condition {
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
 	public boolean check(Event e) {
-		if ((am = activeMob.getSingle(e))==null) return true;
-		if (am.isDead()) return true;
-		return false;
+		ActiveMob am=activeMob.getSingle(e);
+		return am==null||am.isDead();
 	}
 }

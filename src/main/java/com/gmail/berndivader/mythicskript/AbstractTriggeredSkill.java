@@ -11,7 +11,6 @@ public class AbstractTriggeredSkill
 implements IParentSkill {
     private SkillMetadata data;
     private boolean cancel = false;
-
     
     public AbstractTriggeredSkill(SkillTrigger cause, ActiveMob am, AbstractEntity trigger) {
         this(cause, am, trigger, null, false);

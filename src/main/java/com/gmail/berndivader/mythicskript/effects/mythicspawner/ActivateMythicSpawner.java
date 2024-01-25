@@ -18,13 +18,13 @@ public class ActivateMythicSpawner extends Effect {
 	@Override
 	public boolean init(Expression<?>[] expr, int matchedPattern, Kleenean var3, ParseResult var4) {
 		skriptSpawner = (Expression<MythicSpawner>) expr[0];
-		bool = matchedPattern == 0 ? true : false;
+		bool=matchedPattern==0;
 		return true;
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override

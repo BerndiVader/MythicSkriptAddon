@@ -1,5 +1,7 @@
 package com.gmail.berndivader.mythicskript.functions.drops;
 
+import javax.annotation.Nullable;
+
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.function.Function;
 import io.lumine.xikage.mythicmobs.drops.Drop;
@@ -21,6 +23,7 @@ public class MessageDrop extends Drop implements IMessagingDrop {
 	}
 
 	@Override
+	@Nullable
 	public String getRewardMessage(DropMetadata data, double value) {
 		parameters[0]=new DropMetadata[] {data};
 		parameters[1]=new Double[] {value};

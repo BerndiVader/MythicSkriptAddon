@@ -9,12 +9,10 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.mobs.MythicMob;
 
 public class GetEntityType extends SimpleExpression<EntityType>{
-	protected MythicMobs mythicmobs = MythicMobs.inst();
-	protected Expression<MythicMob> skMythicMob; 
+	private Expression<MythicMob> skMythicMob; 
 
 	@Override
 	public boolean isSingle() {
@@ -34,12 +32,11 @@ public class GetEntityType extends SimpleExpression<EntityType>{
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected EntityType[] get(Event e) {
 		EntityType et = null;
 		MythicMob mm = this.skMythicMob.getSingle(e);

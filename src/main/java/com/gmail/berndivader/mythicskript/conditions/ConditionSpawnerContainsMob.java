@@ -24,8 +24,8 @@ public class ConditionSpawnerContainsMob extends Condition {
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
@@ -33,8 +33,7 @@ public class ConditionSpawnerContainsMob extends Condition {
 		ActiveMob am = skriptMob.getSingle(e);
 		MythicSpawner ms = skriptSpawner.getSingle(e);
 		if (am==null || ms==null) return false;
-		if (ms.getAssociatedMobs().contains(am.getUniqueId())) return true;
-		return false;
+		return ms.getAssociatedMobs().contains(am.getUniqueId());
 	}
 
 }

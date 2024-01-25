@@ -1,9 +1,10 @@
 package com.gmail.berndivader.mythicskript.effects;
 
 import org.bukkit.Location;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.Event;
+
+import com.gmail.berndivader.mythicskript.Utils;
 
 import java.util.UUID;
 
@@ -13,7 +14,6 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.adapters.AbstractEntity;
 import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
@@ -29,9 +29,8 @@ public class RemoveMythicFromEntity extends Effect {
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		// TODO Auto-generated method stub
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
@@ -40,20 +39,19 @@ public class RemoveMythicFromEntity extends Effect {
 		if (am!=null) RemoveMythicFromEntity.transformToNormalEntity(am);
 	}
 
-	private static Entity transformToNormalEntity(ActiveMob am) {
-		Entity entity = am.getEntity().getBukkitEntity();
-		Location l = am.getEntity().getBukkitEntity().getLocation();
+	private static void transformToNormalEntity(ActiveMob am) {
+		Location l = am.getEntity().getBukkitEntity().getLocation().clone();
 		l.setY(0);
 		AbstractEntity d = BukkitAdapter.adapt(l.getWorld().spawnEntity(l, EntityType.BAT));
-		am.getEntity().getBukkitEntity().removeMetadata("Faction", MythicMobs.inst());
+		am.getEntity().getBukkitEntity().removeMetadata("Faction", Utils.mythicMobs);
 		unregisterActiveMob(am.getUniqueId());
 		am.setEntity(d);
 		d.remove();
-		return entity;
+		return;
 	}
 	
     private static void unregisterActiveMob(UUID uuid) {
-		MythicMobs.inst().getMobManager().unregisterActiveMob(uuid);
+		Utils.mobManager.unregisterActiveMob(uuid);
     }
 	
 	

@@ -39,12 +39,11 @@ public class GetLootBagOthers extends SimpleExpression<String> {
 	}
 
 	@Override
-	public String toString(@Nullable Event event, boolean arg1) {
-		return bagExpr.getSingle(event).toString();
+	public String toString(@Nullable Event e, boolean arg1) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected String[] get(Event event) {
 		LootBag lootBag=bagExpr.getSingle(event);
 		List<String>drops=new ArrayList<>();

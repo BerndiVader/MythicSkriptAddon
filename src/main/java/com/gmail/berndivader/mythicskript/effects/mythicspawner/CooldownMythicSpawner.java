@@ -19,13 +19,13 @@ public class CooldownMythicSpawner extends Effect {
 	@Override
 	public boolean init(Expression<?>[] expr, int i, Kleenean var3, ParseResult var4) {
 		mythicSpawner = (Expression<MythicSpawner>) expr[0];
-		bool = i==0 ? true : false;
+		bool=i==0;
 		return true;
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override

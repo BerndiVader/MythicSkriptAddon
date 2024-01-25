@@ -23,16 +23,14 @@ public class SetHealth extends Effect {
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		// TODO Auto-generated method stub
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
 	protected void execute(Event e) {
-		ActiveMob am=null;
-		if ((am=skriptMob.getSingle(e))==null) return;
+		ActiveMob am=skriptMob.getSingle(e);
+		if (am==null) return;
 		am.getEntity().setHealth(skriptHealth.getSingle(e).doubleValue());
-	//		am.getEntity().setHealth(Math.min(am.getEntity().getMaxHealth(),skriptHealth.getSingle(e).doubleValue()));
 	}
 }

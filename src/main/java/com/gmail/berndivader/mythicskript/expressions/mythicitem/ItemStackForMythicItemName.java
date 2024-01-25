@@ -7,19 +7,18 @@ import javax.annotation.Nullable;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
 
+import com.gmail.berndivader.mythicskript.Utils;
+
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
-import io.lumine.xikage.mythicmobs.items.ItemManager;
 import io.lumine.xikage.mythicmobs.items.MythicItem;
 
 public class ItemStackForMythicItemName extends SimpleExpression<ItemStack> {
 	
-	protected Expression<String>expression;
-	ItemManager itemManager=MythicMobs.inst().getItemManager();
+	private Expression<String>expression;
 
 	@Override
 	public Class<? extends ItemStack> getReturnType() {
@@ -39,15 +38,14 @@ public class ItemStackForMythicItemName extends SimpleExpression<ItemStack> {
 	}
 
 	@Override
-	public String toString(@Nullable Event event, boolean arg1) {
-		return expression.getSingle(event);
+	public String toString(@Nullable Event e, boolean arg1) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected ItemStack[] get(Event event) {
 		String name=expression.getSingle(event);
-		Optional<MythicItem>maybe=itemManager.getItem(name);
+		Optional<MythicItem>maybe=Utils.itemManager.getItem(name);
 		if(maybe.isPresent()) {
 			return new ItemStack[] {BukkitAdapter.adapt(maybe.get().generateItemStack(1))};
 		} else {

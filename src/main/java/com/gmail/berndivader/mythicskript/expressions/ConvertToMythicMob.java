@@ -6,13 +6,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.metadata.FixedMetadataValue;
 
+import com.gmail.berndivader.mythicskript.Utils;
+
 import javax.annotation.Nullable;
 
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import io.lumine.xikage.mythicmobs.mobs.MythicMob;
@@ -43,7 +44,7 @@ public class ConvertToMythicMob extends SimpleExpression <ActiveMob> {
 
 	@Override
 	public String toString(@Nullable Event e, boolean bool) {
-		return null;
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
@@ -56,7 +57,7 @@ public class ConvertToMythicMob extends SimpleExpression <ActiveMob> {
 		LivingEntity le = (LivingEntity)entity;
 		boolean isplayer = le instanceof Player?true:false;
 		int level = this.skLevel.getSingle(e).intValue();
-		MythicMob mm = MythicMobs.inst().getMobManager().getMythicMob(type);
+		MythicMob mm = Utils.mobManager.getMythicMob(type);
 		if (mm==null) return null;
 		if (isplayer 
 				&& !mm.isPersistent()) return null;
@@ -71,11 +72,11 @@ public class ConvertToMythicMob extends SimpleExpression <ActiveMob> {
 	public static void addActiveMobToFaction(MythicMob mm, ActiveMob am) {
         if (mm.hasFaction()) {
             am.setFaction(mm.getFaction());
-            am.getEntity().setMetadata("Faction", new FixedMetadataValue(MythicMobs.inst(),mm.getFaction()));
+            am.getEntity().setMetadata("Faction", new FixedMetadataValue(Utils.mythicMobs,mm.getFaction()));
         }
 	}	
     public static void registerActiveMob(ActiveMob am) {
-        MythicMobs.inst().getMobManager().registerActiveMob(am);
+        Utils.mobManager.registerActiveMob(am);
     }
 	
 

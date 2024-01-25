@@ -4,12 +4,11 @@ import javax.annotation.Nullable;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
-import org.jetbrains.annotations.NotNull;
 
-import com.gmail.berndivader.mythicskript.events.custom.mmMythicMobSpawnEvent;
-import com.gmail.berndivader.mythicskript.events.custom.mmMythicMobsSkriptConditionEvent;
-import com.gmail.berndivader.mythicskript.events.custom.mmMythicMobsSkriptSkill;
-import com.gmail.berndivader.mythicskript.events.custom.mmMythicSpawnerSpawnEvent;
+import com.gmail.berndivader.mythicskript.events.skript.MythicSkriptConditionEvent;
+import com.gmail.berndivader.mythicskript.events.skript.MythicSkriptSkillEvent;
+import com.gmail.berndivader.mythicskript.events.skript.MythicSkriptSpawnEvent;
+import com.gmail.berndivader.mythicskript.events.skript.MythicSkriptSpawnerSpawnEvent;
 import com.gmail.berndivader.mythicskript.expressions.event.*;
 import com.gmail.berndivader.mythicskript.classes.*;
 import com.gmail.berndivader.mythicskript.effects.conditions.SetConditionMeet;
@@ -27,45 +26,42 @@ import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 
 public class Events {
 	
+	static BukkitEvents bukkitEvents;
+	
 	public static void register() {
-		// register custom events
-		new mmRegisterEvents();
-
-		// register skript events
+		
+		Events.bukkitEvents=new BukkitEvents();
 		
 		Skript.registerEvent("MythicMobLootDropEvent", SimpleEvent.class, MythicMobLootDropEvent.class, "mythicmob lootdrop [event]");
 		EventValues.registerEventValue(MythicMobLootDropEvent.class, ActiveMob.class, new Getter<ActiveMob, MythicMobLootDropEvent>() {
 			@Override
-			@NotNull
+			@Nullable
 			public ActiveMob get(MythicMobLootDropEvent e) {
 				return e.getMob();
-			}
-		}, 0);
-		EventValues.registerEventValue(MythicMobLootDropEvent.class, LootBag.class, new Getter<LootBag, MythicMobLootDropEvent>() {
-			@Override
-			@NotNull
-			public LootBag get(MythicMobLootDropEvent e) {
-				return e.getDrops();
-			}
-		}, 0);
+		}}, 0);
 		EventValues.registerEventValue(MythicMobLootDropEvent.class, LootBag.class, new Getter<LootBag, MythicMobLootDropEvent>() {
 			@Override
 			@Nullable
 			public LootBag get(MythicMobLootDropEvent e) {
 				return e.getDrops();
-			}
-		}, 0);
-		Skript.registerEvent("MythicMobSpawnEvent", SimpleEvent.class, mmMythicMobSpawnEvent.class, "mythicmob spawnevent");
-		EventValues.registerEventValue(mmMythicMobSpawnEvent.class, ActiveMob.class, new Getter<ActiveMob, mmMythicMobSpawnEvent>() {
+		}}, 0);
+		EventValues.registerEventValue(MythicMobLootDropEvent.class, LootBag.class, new Getter<LootBag, MythicMobLootDropEvent>() {
 			@Override
 			@Nullable
-			public ActiveMob get(mmMythicMobSpawnEvent e) {
+			public LootBag get(MythicMobLootDropEvent e) {
+				return e.getDrops();
+		}}, 0);
+		Skript.registerEvent("MythicSkriptSpawnEvent", SimpleEvent.class, MythicSkriptSpawnEvent.class, "mythicmob spawnevent");
+		EventValues.registerEventValue(MythicSkriptSpawnEvent.class, ActiveMob.class, new Getter<ActiveMob, MythicSkriptSpawnEvent>() {
+			@Override
+			@Nullable
+			public ActiveMob get(MythicSkriptSpawnEvent e) {
 				return e.getActiveMob();
 		}}, 0);
-		EventValues.registerEventValue(mmMythicMobSpawnEvent.class, Entity.class, new Getter<Entity, mmMythicMobSpawnEvent>() {
+		EventValues.registerEventValue(MythicSkriptSpawnEvent.class, Entity.class, new Getter<Entity, MythicSkriptSpawnEvent>() {
 			@Override
 			@Nullable
-			public Entity get(mmMythicMobSpawnEvent e) {
+			public Entity get(MythicSkriptSpawnEvent e) {
 				return e.getEntity();
 		}}, 0);
 		Skript.registerEvent("MythicMobDeathEvent", SimpleEvent.class, MythicMobDeathEvent.class, "mythicmob deathevent");
@@ -94,36 +90,36 @@ public class Events {
 				MythicDrops md = new MythicDrops(e.getDrops());
 				return md;
 		}}, 0);
-		Skript.registerEvent("MythicSpawnerSpawnEvent", SimpleEvent.class, mmMythicSpawnerSpawnEvent.class, "mythicspawner spawnevent");
-		EventValues.registerEventValue(mmMythicSpawnerSpawnEvent.class, MythicSpawner.class, new Getter<MythicSpawner, mmMythicSpawnerSpawnEvent>() {
+		Skript.registerEvent("MythicSkriptSpawnerSpawnEvent", SimpleEvent.class, MythicSkriptSpawnerSpawnEvent.class, "mythicspawner spawnevent");
+		EventValues.registerEventValue(MythicSkriptSpawnerSpawnEvent.class, MythicSpawner.class, new Getter<MythicSpawner, MythicSkriptSpawnerSpawnEvent>() {
 			@Override
 			@Nullable
-			public MythicSpawner get(mmMythicSpawnerSpawnEvent e) {
+			public MythicSpawner get(MythicSkriptSpawnerSpawnEvent e) {
 				return e.getMs();
 		}}, 0);
-		EventValues.registerEventValue(mmMythicSpawnerSpawnEvent.class, ActiveMob.class, new Getter<ActiveMob, mmMythicSpawnerSpawnEvent>() {
+		EventValues.registerEventValue(MythicSkriptSpawnerSpawnEvent.class, ActiveMob.class, new Getter<ActiveMob, MythicSkriptSpawnerSpawnEvent>() {
 			@Override
 			@Nullable
-			public ActiveMob get(mmMythicSpawnerSpawnEvent e) {
+			public ActiveMob get(MythicSkriptSpawnerSpawnEvent e) {
 				return e.getAm();
 		}}, 0);
-		Skript.registerEvent("CustomSkriptSkillEvent", SimpleEvent.class, mmMythicMobsSkriptSkill.class, "mythicmobs skriptskillevent");
-		EventValues.registerEventValue(mmMythicMobsSkriptSkill.class, Entity.class, new Getter<Entity, mmMythicMobsSkriptSkill>() {
+		Skript.registerEvent("MythicSkriptSkillEvent", SimpleEvent.class, MythicSkriptSkillEvent.class, "mythicmobs skriptskillevent");
+		EventValues.registerEventValue(MythicSkriptSkillEvent.class, Entity.class, new Getter<Entity, MythicSkriptSkillEvent>() {
 			@Override
 			@Nullable
-			public Entity get(mmMythicMobsSkriptSkill e) {
+			public Entity get(MythicSkriptSkillEvent e) {
 				return e.getCaster().getEntity().getBukkitEntity();
 		}}, 0);
-		EventValues.registerEventValue(mmMythicMobsSkriptSkill.class, Location.class, new Getter<Location, mmMythicMobsSkriptSkill>() {
+		EventValues.registerEventValue(MythicSkriptSkillEvent.class, Location.class, new Getter<Location, MythicSkriptSkillEvent>() {
 			@Override
 			@Nullable
-			public Location get(mmMythicMobsSkriptSkill e) {
+			public Location get(MythicSkriptSkillEvent e) {
 				return e.getTargetLocation();
 		}}, 0);
-		EventValues.registerEventValue(mmMythicMobsSkriptSkill.class, ActiveMob.class, new Getter<ActiveMob, mmMythicMobsSkriptSkill>() {
+		EventValues.registerEventValue(MythicSkriptSkillEvent.class, ActiveMob.class, new Getter<ActiveMob, MythicSkriptSkillEvent>() {
 			@Override
 			@Nullable
-			public ActiveMob get(mmMythicMobsSkriptSkill e) {
+			public ActiveMob get(MythicSkriptSkillEvent e) {
 				if (e.getCaster() instanceof ActiveMob) {
 					return (ActiveMob)e.getCaster();
 				}
@@ -136,7 +132,7 @@ public class Events {
 		Skript.registerExpression(EventSkillArgs.class, String.class, ExpressionType.SIMPLE, "skill-args");
 		Skript.registerExpression(TargetType.class, String.class, ExpressionType.SIMPLE, "skill-targettype");
 		
-		Skript.registerEvent("CustomSkriptConditionEvent", SimpleEvent.class, mmMythicMobsSkriptConditionEvent.class, "mythicmobs skriptconditionevent");
+		Skript.registerEvent("MythicSkriptConditionEvent", SimpleEvent.class, MythicSkriptConditionEvent.class, "mythicmobs skriptconditionevent");
 		Skript.registerExpression(ConditionActiveMob.class, ActiveMob.class, ExpressionType.SIMPLE, "condition-activemob");
 		Skript.registerExpression(ConditionEntity.class, Entity.class, ExpressionType.SIMPLE, "condition-entity");
 		Skript.registerExpression(ConditionTargetEntity.class, Entity.class, ExpressionType.SIMPLE, "condition-targetentity");

@@ -34,8 +34,8 @@ public class SetOtherLootForLootBag extends Effect {
 	}
 
 	@Override
-	public String toString(@Nullable Event arg0, boolean arg1) {
-		return exprBag.getSingle(arg0).toString();
+	public String toString(@Nullable Event e, boolean arg1) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -52,7 +52,7 @@ public class SetOtherLootForLootBag extends Effect {
 			}
 			setDrops(dropList,lootBag);
 		} else {
-			lootBag.setLootTableIntangible(new HashMap<Class, Drop>());;
+			lootBag.setLootTableIntangible(new HashMap<Class, Drop>());
 		}
 	}
 	

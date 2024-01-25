@@ -5,7 +5,7 @@ import ch.njol.skript.Skript;
 public class Conditions {
 	public static void register() {
 		Skript.registerCondition(ConditionEntityIsActiveMob.class, 
-				"%entity% [is ]instanceof activemob");
+				"%entity% [is ]instanceof activemob", "%entity% is [an ]activemob");
 		Skript.registerCondition(ActiveMobIsDead.class, 
 				"activemob %activemob% isdead");
 		Skript.registerCondition(HasThreatTable.class, 

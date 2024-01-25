@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.Event;
 
-import com.gmail.berndivader.mythicskript.events.custom.mmMythicMobsSkriptConditionEvent;
+import com.gmail.berndivader.mythicskript.events.skript.MythicSkriptConditionEvent;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Expression;
@@ -27,7 +27,7 @@ public class ConditionTargetEntity extends SimpleExpression<Entity> {
 
 	@Override
 	public boolean init(Expression<?>[] e, int var2, Kleenean var3, ParseResult var4) {
-		if (!getParser().isCurrentEvent(mmMythicMobsSkriptConditionEvent.class)) {
+		if (!getParser().isCurrentEvent(MythicSkriptConditionEvent.class)) {
 			Skript.error("Only allowed in SkriptSkill Event!");
 			return false;
 		}
@@ -35,13 +35,12 @@ public class ConditionTargetEntity extends SimpleExpression<Entity> {
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		return "condition-targetentity";
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected Entity[] get(Event e) {
-		return new Entity[]{((mmMythicMobsSkriptConditionEvent)e).getTargetEntity()};
+		return new Entity[]{((MythicSkriptConditionEvent)e).getTargetEntity()};
 	}
 }

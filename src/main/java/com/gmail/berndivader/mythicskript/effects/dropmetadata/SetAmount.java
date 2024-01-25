@@ -15,22 +15,23 @@ public class SetAmount extends Effect {
 	Expression<DropMetadata>expData;
 	Expression<Float>amount;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean init(Expression<?>[] expr, int arg1, Kleenean arg2, ParseResult arg3) {
-		
+		expData=(Expression<DropMetadata>)expr[0];
+		amount=(Expression<Float>)expr[1];
 		return true;
 	}
 
 	@Override
-	public String toString(@Nullable Event arg0, boolean arg1) {
-		// TODO Auto-generated method stub
-		return null;
+	public String toString(@Nullable Event e, boolean arg1) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	protected void execute(Event arg0) {
-		// TODO Auto-generated method stub
-		
+	protected void execute(Event e) {
+		DropMetadata meta=expData.getSingle(e);
+		meta.setAmount(amount.getSingle(e).floatValue());
 	}
 
 }

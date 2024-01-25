@@ -9,7 +9,6 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
 
 public class ConditionEntityIsActiveMob extends Condition {
 	private Expression<Entity> bukkitentity;
@@ -23,14 +22,11 @@ public class ConditionEntityIsActiveMob extends Condition {
 
 	@Override
 	public String toString(@Nullable Event e, boolean debug) {
-		return null;
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
 	public boolean check(final Event e) {
-		if (MythicMobs.inst().getMobManager().isActiveMob(BukkitAdapter.adapt(bukkitentity.getSingle(e)))) {
-			return true;
-		}
-		return false;
+		return MythicMobs.inst().getAPIHelper().isMythicMob(bukkitentity.getSingle(e).getUniqueId());
 	}
 }

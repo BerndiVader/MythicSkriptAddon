@@ -27,7 +27,6 @@ public class GetLootBagItems extends SimpleExpression<ItemStack> {
 
 	@Override
 	public boolean isSingle() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -39,12 +38,11 @@ public class GetLootBagItems extends SimpleExpression<ItemStack> {
 	}
 
 	@Override
-	public String toString(@Nullable Event event, boolean arg1) {
-		return bagExpr.getSingle(event).toString();
+	public String toString(@Nullable Event e, boolean arg1) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected ItemStack[] get(Event event) {
 		LootBag lootBag=bagExpr.getSingle(event);
 		List<ItemStack>items=new ArrayList<>();

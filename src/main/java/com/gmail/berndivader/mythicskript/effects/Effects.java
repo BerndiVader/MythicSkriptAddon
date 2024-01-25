@@ -19,7 +19,7 @@ import ch.njol.skript.Skript;
 public class Effects {
 	public static void register() {
 		
-		//activemob
+		//ActiveMob
 		
 		Skript.registerEffect(SetLastAggroCause.class, "set lastaggro of activemob %activemob% to %entity%");
 		Skript.registerEffect(DropCombat.class, "dropcombat for activemob %activemob%");
@@ -58,7 +58,7 @@ public class Effects {
 		
 		Skript.registerEffect(RemoveMythicFromEntity.class, "remove mythic from activemob %activemob%");
 		
-		//mythicspawner
+		//MythicSpawner
 		
 		Skript.registerEffect(ActivateMythicSpawner.class, "activate mythicspawner %mythicspawner%",
 				"deactivate mythicspawner %mythicspawner%");
@@ -71,7 +71,7 @@ public class Effects {
 		Skript.registerEffect(MakeSpawnerSpawn.class, "make mythicspawner %mythicspawner% spawn");
 		Skript.registerEffect(AttachMobToSpawner.class, "attach activemob %activemob% to mythicspawner %mythicspawner%");
 
-		//mobdrops & mobitems & lootbags
+		//MobDrops & MobItems & LootBags
 		
 		Skript.registerEffect(SetPhysicalLootForLootBag.class, "set [physical] loot [for] [lootbag] %lootbag% to [(%-itemstack%|%-itemstacks%)]");
 		Skript.registerEffect(SetOtherLootForLootBag.class, "set [other] loot [for] [lootbag] %lootbag% to [(%-string%|%-strings%)]");
@@ -81,9 +81,9 @@ public class Effects {
 		Skript.registerEffect(AddItemToMobDrop.class, "add item %itemstack% to mobdrop %mobdrop%");
 		
 		/*
-		 * dropmeta
+		 * DropMeta
 		 */
 		
-		Skript.registerEffect(SetAmount.class, "set amount [for] [dropdata] %dropdata% to %number%");
+		Skript.registerEffect(SetAmount.class, "set amount[ for ][dropdata] %dropdata% to %number%");
 	};
 }

@@ -3,7 +3,7 @@ package com.gmail.berndivader.mythicskript.functions;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import com.gmail.berndivader.mythicskript.Main;
+import com.gmail.berndivader.mythicskript.MythicSkript;
 import com.gmail.berndivader.mythicskript.functions.conditions.CompareEntitiesCondition;
 import com.gmail.berndivader.mythicskript.functions.conditions.CompareEntityLocationCondition;
 import com.gmail.berndivader.mythicskript.functions.conditions.CompareLocationsCondition;
@@ -31,7 +31,7 @@ public class Functions implements Listener {
 	}
 	
 	public Functions() {
-		Main.plugin.getServer().getPluginManager().registerEvents(this, Main.plugin);
+		MythicSkript.plugin.getServer().getPluginManager().registerEvents(this,MythicSkript.plugin);
 	}
 	
 	@EventHandler

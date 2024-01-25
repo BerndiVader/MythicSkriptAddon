@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.Event;
 
+import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -23,7 +24,7 @@ public class SetOwner extends Effect {
 	@Override
 	public boolean init(Expression<?>[] expr, int matchedParser, Kleenean var3, ParseResult var4) {
 		skriptMob = (Expression<ActiveMob>) expr[0];
-		byUUID = matchedParser==1 ? true : false;
+		byUUID=matchedParser==1;
 		if (byUUID) {
 			skriptUUID = (Expression<String>) expr[1];
 		} else {
@@ -33,20 +34,22 @@ public class SetOwner extends Effect {
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		// TODO Auto-generated method stub
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
 	protected void execute(Event e) {
 		ActiveMob am = skriptMob.getSingle(e);
-		UUID uuid;
 		if (am==null) return;
+		UUID uuid;
 		if (byUUID) {
 			try {
 				uuid = UUID.fromString(skriptUUID.getSingle(e));
-			} catch (ExceptionInInitializerError ex) {return;}
+			} catch (ExceptionInInitializerError ex) {
+				Skript.warning("Set owner for uuid "+skriptUUID.getSingle(e)+" wrong!");
+				return;
+			}
 		} else {
 			Entity owner = skriptEntity.getSingle(e);
 			uuid = owner.getUniqueId();

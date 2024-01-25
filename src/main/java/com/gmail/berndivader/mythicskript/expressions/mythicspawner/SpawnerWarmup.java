@@ -28,21 +28,19 @@ public class SpawnerWarmup extends SimpleExpression<Number> {
 	@Override
 	public boolean init(Expression<?>[] expr, int i, Kleenean var3, ParseResult var4) {
 		skriptSpawner = (Expression<MythicSpawner>) expr[0];
-		bool = i == 0 ? true : false;
+		bool=i==0;
 		return true;
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected Number[] get(Event e) {
-		Number secs;
 		MythicSpawner ms = skriptSpawner.getSingle(e);
-		secs = bool ? ms.getWarmupSeconds() : ms.getRemainingWarmupSeconds();
+		Number secs = bool ? ms.getWarmupSeconds() : ms.getRemainingWarmupSeconds();
 		return new Number[]{secs};
 	}
 }

@@ -24,7 +24,7 @@ public class TriggerSkill extends Effect {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean init(Expression<?>[] expr, int pattern, Kleenean var3, ParseResult var4) {
-		bool = pattern==0?false:true;
+		bool=pattern!=0;
 		this.trigger = (Expression<String>) expr[0];
 		this.activeMob = (Expression<ActiveMob>) expr[1];
 		if (bool) this.scriptEntity = (Expression<Entity>) expr[2];
@@ -33,8 +33,7 @@ public class TriggerSkill extends Effect {
 
 	@Override
 	public String toString(@Nullable Event e, boolean var2) {
-		// TODO Auto-generated method stub
-		return null;
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 	
 	@Override
@@ -46,8 +45,10 @@ public class TriggerSkill extends Effect {
 		} catch (Exception ex) {
 			return;
 		}
-		@SuppressWarnings("unused")
-		AbstractTriggeredSkill ts = !bool?new AbstractTriggeredSkill(trigger, am, null)
-				:new AbstractTriggeredSkill(trigger, am, BukkitAdapter.adapt(this.scriptEntity.getSingle(e)));
+		if(bool) {
+			new AbstractTriggeredSkill(trigger, am, BukkitAdapter.adapt(this.scriptEntity.getSingle(e)));
+		} else {
+			new AbstractTriggeredSkill(trigger, am, null);
+		}
 	}
 }

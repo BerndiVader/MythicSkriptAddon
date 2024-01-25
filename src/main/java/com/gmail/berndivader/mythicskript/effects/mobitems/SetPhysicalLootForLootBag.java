@@ -33,8 +33,8 @@ public class SetPhysicalLootForLootBag extends Effect {
 	}
 
 	@Override
-	public String toString(@Nullable Event arg0, boolean arg1) {
-		return exprBag.getSingle(arg0).toString();
+	public String toString(@Nullable Event e, boolean arg1) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override

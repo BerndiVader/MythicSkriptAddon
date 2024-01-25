@@ -1,5 +1,7 @@
 package com.gmail.berndivader.mythicskript.functions.drops;
 
+import javax.annotation.Nullable;
+
 import org.bukkit.inventory.ItemStack;
 
 import ch.njol.skript.Skript;
@@ -25,6 +27,7 @@ public class ItemDrop extends Drop implements IItemDrop {
 	}
 
 	@Override
+	@Nullable
 	public AbstractItemStack getDrop(DropMetadata data) {
 		parameters[0]=new DropMetadata[] {data};
 		Object[]result=function.execute(parameters);

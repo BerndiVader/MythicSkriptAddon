@@ -20,7 +20,7 @@ public class RemoveMobItem extends Effect {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean init(Expression<?>[] expr, int i, Kleenean var3, ParseResult var4) {
-		bool = i == 0 ? true : false;
+		bool=i==0;
 		if (bool) {
 			skriptItem = (Expression<MobItem>) expr[0];
 			skriptDrops = (Expression<MythicDrops>) expr[1];
@@ -32,8 +32,7 @@ public class RemoveMobItem extends Effect {
 
 	@Override
 	public String toString(@Nullable Event e, boolean var2) {
-		// TODO Auto-generated method stub
-		return null;
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override

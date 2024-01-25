@@ -9,7 +9,6 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
-import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 
 public class ConditionAmHasCustomSpawner extends Condition {
 	private Expression<ActiveMob> activeMob;
@@ -23,14 +22,11 @@ public class ConditionAmHasCustomSpawner extends Condition {
 
 	@Override
 	public String toString(@Nullable Event e, boolean bool) {
-		return null;
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
 	public boolean check(Event e) {
-		ActiveMob am = activeMob.getSingle(e);
-		MythicSpawner ms = am.getSpawner();
-		if (ms==null) return false;
-		return true;
+		return activeMob.getSingle(e).getSpawner()!=null;
 	}
 }

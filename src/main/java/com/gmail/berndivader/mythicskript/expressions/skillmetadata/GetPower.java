@@ -31,12 +31,11 @@ public class GetPower extends SimpleExpression<Float> {
 	}
 
 	@Override
-	public String toString(@Nullable Event event, boolean bool) {
-		return "Power@"+event.getEventName();
+	public String toString(@Nullable Event e, boolean bool) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected Float[] get(Event event) {
 		SkillMetadata meta=data.getSingle(event);
 		if(meta!=null) {

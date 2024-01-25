@@ -35,12 +35,11 @@ public class GetTargetLocations extends SimpleExpression<Location> {
 	}
 
 	@Override
-	public String toString(@Nullable Event event, boolean bool) {
-		return "LocationTargets@"+event.getEventName();
+	public String toString(@Nullable Event e, boolean bool) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected Location[] get(Event event) {
 		SkillMetadata meta=data.getSingle(event);
 		if(meta!=null&&meta.getLocationTargets()!=null) {

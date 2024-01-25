@@ -22,7 +22,7 @@ public class ModThreatofEntity extends Effect {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean init(Expression<?>[] expr, int mp, Kleenean var3, ParseResult var4) {
-		this.bool = mp==0?true:false;
+		bool=mp==0;
 		this.skriptEntity = (Expression<Entity>) expr[0];
 		this.skriptAmount = (Expression<Number>) expr[1];
 		this.skriptMob = (Expression<ActiveMob>) expr[2];
@@ -30,9 +30,9 @@ public class ModThreatofEntity extends Effect {
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		// TODO Auto-generated method stub
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
+
 	}
 
 	@Override

@@ -31,13 +31,11 @@ public class MobtypeOfSpawner extends SimpleExpression<String> {
 	}
 
 	@Override
-	public String toString(@Nullable Event var1, boolean var2) {
-		// TODO Auto-generated method stub
-		return null;
+	public String toString(@Nullable Event e, boolean var2) {
+		return getClass().getSimpleName()+e!=null?"@"+e.getEventName():"";
 	}
 
 	@Override
-	@Nullable
 	protected String[] get(Event e) {
 		if (!(skriptSpawner.getSingle(e) instanceof MythicSpawner)) return null;
 		return new String[]{skriptSpawner.getSingle(e).getTypeName()};
