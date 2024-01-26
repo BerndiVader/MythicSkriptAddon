@@ -8,7 +8,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
+import io.lumine.mythic.core.spawning.spawners.MythicSpawner;
 
 public class MobtypeOfSpawner extends SimpleExpression<String> {
 	private Expression<MythicSpawner> skriptSpawner;
@@ -37,7 +37,6 @@ public class MobtypeOfSpawner extends SimpleExpression<String> {
 
 	@Override
 	protected String[] get(Event e) {
-		if (!(skriptSpawner.getSingle(e) instanceof MythicSpawner)) return null;
 		return new String[]{skriptSpawner.getSingle(e).getTypeName()};
 	}
 }

@@ -8,7 +8,7 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
+import io.lumine.mythic.core.spawning.spawners.MythicSpawner;
 
 public class SetMobTypeOfSpawner extends Effect {
 	private Expression<MythicSpawner> skriptSpawner;

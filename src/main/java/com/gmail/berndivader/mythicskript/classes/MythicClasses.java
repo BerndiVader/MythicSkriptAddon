@@ -5,19 +5,20 @@ import ch.njol.skript.classes.Parser;
 import ch.njol.skript.expressions.base.EventValueExpression;
 import ch.njol.skript.lang.ParseContext;
 import ch.njol.skript.registrations.Classes;
-import io.lumine.xikage.mythicmobs.drops.DropMetadata;
-import io.lumine.xikage.mythicmobs.drops.LootBag;
-import io.lumine.xikage.mythicmobs.items.MythicItem;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
-import io.lumine.xikage.mythicmobs.mobs.MythicMob;
-import io.lumine.xikage.mythicmobs.skills.SkillMetadata;
-import io.lumine.xikage.mythicmobs.skills.SkillTargeter;
-import io.lumine.xikage.mythicmobs.skills.targeters.ConsoleTargeter;
-import io.lumine.xikage.mythicmobs.skills.targeters.IEntitySelector;
-import io.lumine.xikage.mythicmobs.skills.targeters.ILocationSelector;
-import io.lumine.xikage.mythicmobs.skills.targeters.OriginTargeter;
-import io.lumine.xikage.mythicmobs.skills.targeters.TriggerLocationTargeter;
-import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
+import io.lumine.mythic.api.drops.DropMetadata;
+import io.lumine.mythic.api.mobs.MythicMob;
+import io.lumine.mythic.api.skills.SkillMetadata;
+import io.lumine.mythic.core.drops.LootBag;
+import io.lumine.mythic.core.items.MythicItem;
+import io.lumine.mythic.core.mobs.ActiveMob;
+import io.lumine.mythic.core.skills.SkillTargeter;
+import io.lumine.mythic.core.skills.targeters.ConsoleTargeter;
+import io.lumine.mythic.core.skills.targeters.IEntitySelector;
+import io.lumine.mythic.core.skills.targeters.ILocationSelector;
+import io.lumine.mythic.core.skills.targeters.OriginTargeter;
+import io.lumine.mythic.core.skills.targeters.TriggerLocationTargeter;
+import io.lumine.mythic.core.spawning.spawners.MythicSpawner;
+
 
 public class MythicClasses {
 	public static void register() {

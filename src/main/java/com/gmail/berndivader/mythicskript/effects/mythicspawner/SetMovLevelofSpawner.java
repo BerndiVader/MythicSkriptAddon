@@ -8,8 +8,9 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
-import io.lumine.xikage.mythicmobs.utils.numbers.RandomInt;
+import io.lumine.mythic.core.spawning.spawners.MythicSpawner;
+import io.lumine.mythic.utils.numbers.RandomInt;
+
 
 public class SetMovLevelofSpawner extends Effect {
 	private Expression<MythicSpawner> skriptSpawner;

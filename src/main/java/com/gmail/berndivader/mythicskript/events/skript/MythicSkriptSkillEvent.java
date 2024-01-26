@@ -1,12 +1,14 @@
 package com.gmail.berndivader.mythicskript.events.skript;
 
+import javax.annotation.Nullable;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import io.lumine.xikage.mythicmobs.adapters.AbstractEntity;
-import io.lumine.xikage.mythicmobs.skills.SkillCaster;
+import io.lumine.mythic.api.adapters.AbstractEntity;
+import io.lumine.mythic.api.skills.SkillCaster;
 
 public class MythicSkriptSkillEvent extends Event {
 	private enum TargetType {
@@ -21,7 +23,7 @@ public class MythicSkriptSkillEvent extends Event {
 	private String skill, args;
 	private TargetType targettype;
 
-	public MythicSkriptSkillEvent(SkillCaster caster, Entity target, Location targetloc, AbstractEntity t, String s, String a) {
+	public MythicSkriptSkillEvent(SkillCaster caster,@Nullable Entity target,@Nullable Location targetloc,@Nullable AbstractEntity t,String s,String a) {
 		this.caster = caster; this.skill = s; 
 		if (a.length()>1 && (a.startsWith("\"") && a.endsWith("\""))) {
 			this.args = a.substring(1, a.length()-1);

@@ -2,10 +2,11 @@ package com.gmail.berndivader.mythicskript;
 
 import org.bukkit.entity.Entity;
 
-import io.lumine.xikage.mythicmobs.adapters.AbstractEntity;
-import io.lumine.xikage.mythicmobs.adapters.AbstractLocation;
-import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
-import io.lumine.xikage.mythicmobs.skills.SkillCaster;
+import io.lumine.mythic.api.adapters.AbstractEntity;
+import io.lumine.mythic.api.adapters.AbstractLocation;
+import io.lumine.mythic.api.skills.SkillCaster;
+import io.lumine.mythic.bukkit.BukkitAdapter;
+
 
 public class ActivePlayer implements SkillCaster {
 	private AbstractEntity entity;

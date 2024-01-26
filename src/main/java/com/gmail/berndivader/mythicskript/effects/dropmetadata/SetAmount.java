@@ -8,7 +8,7 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.drops.DropMetadata;
+import io.lumine.mythic.api.drops.DropMetadata;
 
 public class SetAmount extends Effect {
 	

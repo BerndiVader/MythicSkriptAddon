@@ -8,7 +8,7 @@ import ch.njol.skript.lang.Condition;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.mythic.core.mobs.ActiveMob;
 
 public class ActiveMobIsDead extends Condition {
 	private Expression<ActiveMob> activeMob;

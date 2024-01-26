@@ -6,12 +6,12 @@ import org.bukkit.inventory.ItemStack;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.function.Function;
-import io.lumine.xikage.mythicmobs.adapters.AbstractItemStack;
-import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
-import io.lumine.xikage.mythicmobs.drops.Drop;
-import io.lumine.xikage.mythicmobs.drops.DropMetadata;
-import io.lumine.xikage.mythicmobs.drops.IItemDrop;
-import io.lumine.xikage.mythicmobs.io.MythicLineConfig;
+import io.lumine.mythic.api.adapters.AbstractItemStack;
+import io.lumine.mythic.api.config.MythicLineConfig;
+import io.lumine.mythic.api.drops.DropMetadata;
+import io.lumine.mythic.api.drops.IItemDrop;
+import io.lumine.mythic.bukkit.BukkitAdapter;
+import io.lumine.mythic.core.drops.Drop;
 
 public class ItemDrop extends Drop implements IItemDrop {
 	
@@ -22,14 +22,15 @@ public class ItemDrop extends Drop implements IItemDrop {
 		super(line, mlc);
 		
 		function=f;
-		parameters=new Object[1][];
+		parameters=new Object[2][];
 		
 	}
 
 	@Override
 	@Nullable
-	public AbstractItemStack getDrop(DropMetadata data) {
+	public AbstractItemStack getDrop(DropMetadata data, double amount) {
 		parameters[0]=new DropMetadata[] {data};
+		parameters[0]=new Number[] {amount};
 		Object[]result=function.execute(parameters);
 		if(result!=null&&(result[0] instanceof ItemStack)) {
 			return BukkitAdapter.adapt((ItemStack)result[0]);

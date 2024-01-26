@@ -1,20 +1,23 @@
 package com.gmail.berndivader.mythicskript.functions.mechanics;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 
+import com.gmail.berndivader.mythicskript.Utils;
+
+import ch.njol.skript.Skript;
 import ch.njol.skript.lang.function.Function;
 import ch.njol.skript.lang.function.Functions;
-import io.lumine.xikage.mythicmobs.adapters.AbstractEntity;
-import io.lumine.xikage.mythicmobs.adapters.AbstractLocation;
-import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
-import io.lumine.xikage.mythicmobs.io.MythicLineConfig;
-import io.lumine.xikage.mythicmobs.skills.INoTargetSkill;
-import io.lumine.xikage.mythicmobs.skills.ITargetedEntitySkill;
-import io.lumine.xikage.mythicmobs.skills.ITargetedLocationSkill;
-import io.lumine.xikage.mythicmobs.skills.SkillMechanic;
-import io.lumine.xikage.mythicmobs.skills.SkillMetadata;
+import io.lumine.mythic.api.adapters.AbstractEntity;
+import io.lumine.mythic.api.adapters.AbstractLocation;
+import io.lumine.mythic.api.config.MythicLineConfig;
+import io.lumine.mythic.api.skills.INoTargetSkill;
+import io.lumine.mythic.api.skills.ITargetedEntitySkill;
+import io.lumine.mythic.api.skills.ITargetedLocationSkill;
+import io.lumine.mythic.api.skills.SkillMetadata;
+import io.lumine.mythic.api.skills.SkillResult;
+import io.lumine.mythic.bukkit.BukkitAdapter;
+import io.lumine.mythic.core.skills.SkillMechanic;
 
 public class SkriptfunctionMechanic extends SkillMechanic implements INoTargetSkill,ITargetedEntitySkill,ITargetedLocationSkill {
 	
@@ -24,7 +27,7 @@ public class SkriptfunctionMechanic extends SkillMechanic implements INoTargetSk
 	String name;
 	
 	public SkriptfunctionMechanic(String skill, MythicLineConfig mlc) {
-		super(skill, mlc);
+		super(Utils.mythicMobs.getSkillManager(), skill, mlc);
 		
 		name=mlc.getString("name","");
 		function=Functions.getGlobalFunction(name);
@@ -46,35 +49,35 @@ public class SkriptfunctionMechanic extends SkillMechanic implements INoTargetSk
 				}
 			}
 		} else {
-			Bukkit.getLogger().warning("Cant find function "+name);
+			Skript.warning("Cant find function "+name);
 		}
 	}
 
 	@Override
-	public boolean cast(SkillMetadata meta) {
-		if(dataPos>-1) parameters[dataPos]=new SkillMetadata[] {meta};
-		if(locationPos>-1) parameters[locationPos]=new Location[0];
-		if(entityPos>-1) parameters[entityPos]=new Entity[0];
-		function.execute(parameters);
-		return true;
-	}
-
-	@Override
-	public boolean castAtLocation(SkillMetadata meta, AbstractLocation aLocation) {
+	public SkillResult castAtLocation(SkillMetadata meta, AbstractLocation aLocation) {
 		if(dataPos>-1) parameters[dataPos]=new SkillMetadata[] {meta};
 		if(locationPos>-1) parameters[locationPos]=new Location[] {BukkitAdapter.adapt(aLocation)};
 		if(entityPos>-1) parameters[entityPos]=new Entity[0];
 		function.execute(parameters);
-		return true;
+		return SkillResult.SUCCESS;
 	}
 
 	@Override
-	public boolean castAtEntity(SkillMetadata meta, AbstractEntity aEntity) {
+	public SkillResult castAtEntity(SkillMetadata meta, AbstractEntity aEntity) {
 		if(dataPos>-1) parameters[dataPos]=new SkillMetadata[] {meta};
 		if(locationPos>-1) parameters[locationPos]=new Location[0];
 		if(entityPos>-1) parameters[entityPos]=new Entity[] {aEntity.getBukkitEntity()};
 		function.execute(parameters);
-		return true;
+		return SkillResult.SUCCESS;
+	}
+
+	@Override
+	public SkillResult cast(SkillMetadata meta) {
+		if(dataPos>-1) parameters[dataPos]=new SkillMetadata[] {meta};
+		if(locationPos>-1) parameters[locationPos]=new Location[0];
+		if(entityPos>-1) parameters[entityPos]=new Entity[0];
+		function.execute(parameters);
+		return SkillResult.SUCCESS;
 	}
 
 }

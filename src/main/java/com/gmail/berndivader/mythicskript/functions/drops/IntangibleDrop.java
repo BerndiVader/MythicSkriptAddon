@@ -3,12 +3,12 @@ package com.gmail.berndivader.mythicskript.functions.drops;
 import org.bukkit.entity.Player;
 
 import ch.njol.skript.lang.function.Function;
-import io.lumine.xikage.mythicmobs.adapters.AbstractPlayer;
-import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
-import io.lumine.xikage.mythicmobs.drops.Drop;
-import io.lumine.xikage.mythicmobs.drops.DropMetadata;
-import io.lumine.xikage.mythicmobs.drops.IIntangibleDrop;
-import io.lumine.xikage.mythicmobs.io.MythicLineConfig;
+import io.lumine.mythic.api.adapters.AbstractPlayer;
+import io.lumine.mythic.api.config.MythicLineConfig;
+import io.lumine.mythic.api.drops.DropMetadata;
+import io.lumine.mythic.api.drops.IIntangibleDrop;
+import io.lumine.mythic.bukkit.BukkitAdapter;
+import io.lumine.mythic.core.drops.Drop;
 
 public class IntangibleDrop extends Drop implements IIntangibleDrop {
 	
@@ -19,14 +19,14 @@ public class IntangibleDrop extends Drop implements IIntangibleDrop {
 		super(line,mlc);
 		
 		function=f;
-		parameters=new Object[2][];
-		
+		parameters=new Object[3][];
 	}
 
 	@Override
-	public void giveDrop(AbstractPlayer aPlayer, DropMetadata data) {
-		parameters[0]=new DropMetadata[] {data};
-		parameters[1]=new Player[] {BukkitAdapter.adapt(aPlayer)};
+	public void giveDrop(AbstractPlayer player, DropMetadata meta, double amount) {
+		parameters[0]=new DropMetadata[] {meta};
+		parameters[1]=new Player[] {BukkitAdapter.adapt(player)};
+		parameters[2]=new Number[] {amount};
 		function.execute(parameters);
 	}
 

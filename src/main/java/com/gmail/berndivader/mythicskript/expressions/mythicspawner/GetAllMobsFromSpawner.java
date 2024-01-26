@@ -8,13 +8,14 @@ import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;
 
+import com.gmail.berndivader.mythicskript.Utils;
+
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
-import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
+import io.lumine.mythic.core.mobs.ActiveMob;
+import io.lumine.mythic.core.spawning.spawners.MythicSpawner;
 
 public class GetAllMobsFromSpawner extends SimpleExpression<ActiveMob> {
 	private Expression<MythicSpawner> mythicSpawner;
@@ -48,7 +49,7 @@ public class GetAllMobsFromSpawner extends SimpleExpression<ActiveMob> {
 		MythicSpawner ms = mythicSpawner.getSingle(e);
 		if (ms==null) return null;
 		for (UUID uuid : ms.getAssociatedMobs()) {
-			if (MythicMobs.inst().getMobManager().getActiveMob(uuid).isPresent()) am = MythicMobs.inst().getMobManager().getActiveMob(uuid).get();
+			if (Utils.mobManager.getActiveMob(uuid).isPresent()) am = Utils.mobManager.getActiveMob(uuid).get();
 			if (am!=null) ams.add(am);
 		}
 		return ams.toArray(new ActiveMob[0]);

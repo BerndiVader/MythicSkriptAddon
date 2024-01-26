@@ -6,12 +6,13 @@ import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;
 
+import com.gmail.berndivader.mythicskript.Utils;
+
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.mythic.core.mobs.ActiveMob;
 
 public class GetMobByUUID extends SimpleExpression<ActiveMob> {
 	private Expression<String> stringUUID;
@@ -47,8 +48,8 @@ public class GetMobByUUID extends SimpleExpression<ActiveMob> {
 		} catch (ExceptionInInitializerError ex) {
 			return null;
 		}
-		if (MythicMobs.inst().getMobManager().isActiveMob(uuid)) {
-			return new ActiveMob[]{MythicMobs.inst().getMobManager().getActiveMob(uuid).get()};
+		if (Utils.mobManager.isActiveMob(uuid)) {
+			return new ActiveMob[]{Utils.mobManager.getActiveMob(uuid).get()};
 		}
 		return null;
 	}

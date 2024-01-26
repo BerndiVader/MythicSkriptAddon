@@ -13,8 +13,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.mythic.core.mobs.ActiveMob;
 
 public class GetActiveMobs extends SimpleExpression<ActiveMob>{
 	private Expression<String> worldString;
@@ -52,7 +51,7 @@ public class GetActiveMobs extends SimpleExpression<ActiveMob>{
 	protected ActiveMob[] get(Event e) {
 		List<ActiveMob> ams = new ArrayList<ActiveMob>();
 		if (all) {
-			ams.addAll(MythicMobs.inst().getMobManager().getActiveMobs());
+			ams.addAll(Utils.mobManager.getActiveMobs());
 		} else {
 			String world = worldString.getSingle(e).toLowerCase();
 			for (ActiveMob am : Utils.mobManager.getActiveMobs()) {

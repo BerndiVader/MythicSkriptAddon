@@ -11,11 +11,11 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.drops.Drop;
-import io.lumine.xikage.mythicmobs.drops.IIntangibleDrop;
-import io.lumine.xikage.mythicmobs.drops.ILocationDrop;
-import io.lumine.xikage.mythicmobs.drops.IMessagingDrop;
-import io.lumine.xikage.mythicmobs.drops.LootBag;
+import io.lumine.mythic.api.drops.IIntangibleDrop;
+import io.lumine.mythic.api.drops.ILocationDrop;
+import io.lumine.mythic.api.drops.IMessagingDrop;
+import io.lumine.mythic.core.drops.Drop;
+import io.lumine.mythic.core.drops.LootBag;
 
 public class GetLootBagOthers extends SimpleExpression<String> {
 	Expression<LootBag> bagExpr;

@@ -9,7 +9,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.mythic.core.mobs.ActiveMob;
 
 public class GetEntityOfMob extends SimpleExpression<Entity> {
 	private Expression<ActiveMob> activeMob;
@@ -22,7 +22,6 @@ public class GetEntityOfMob extends SimpleExpression<Entity> {
 
 	@Override
 	public Class<? extends Entity> getReturnType() {
-		// TODO Auto-generated method stub
 		return Entity.class;
 	}
 

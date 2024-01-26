@@ -25,10 +25,10 @@ import com.gmail.berndivader.mythicskript.expressions.skillmetadata.GetTrigger;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
-import io.lumine.xikage.mythicmobs.mobs.MythicMob;
-import io.lumine.xikage.mythicmobs.skills.SkillTargeter;
-import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
+import io.lumine.mythic.api.mobs.MythicMob;
+import io.lumine.mythic.core.mobs.ActiveMob;
+import io.lumine.mythic.core.skills.SkillTargeter;
+import io.lumine.mythic.core.spawning.spawners.MythicSpawner;
 
 public class Expressions {
 	public static void register() {

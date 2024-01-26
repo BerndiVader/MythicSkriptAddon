@@ -11,9 +11,10 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
-import io.lumine.xikage.mythicmobs.skills.SkillTrigger;
+import io.lumine.mythic.api.skills.SkillTrigger;
+import io.lumine.mythic.bukkit.BukkitAdapter;
+import io.lumine.mythic.core.mobs.ActiveMob;
+import io.lumine.mythic.core.skills.SkillTriggers;
 
 public class TriggerSkill extends Effect {
 	private Expression<String> trigger;
@@ -41,7 +42,7 @@ public class TriggerSkill extends Effect {
 		ActiveMob am = this.activeMob.getSingle(e);
 		SkillTrigger trigger;
 		try {
-			trigger = SkillTrigger.valueOf(this.trigger.getSingle(e).toUpperCase());
+			trigger = SkillTriggers.get(this.trigger.getSingle(e).toUpperCase());
 		} catch (Exception ex) {
 			return;
 		}

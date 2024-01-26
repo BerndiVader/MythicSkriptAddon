@@ -4,12 +4,14 @@ import java.util.HashSet;
 
 import org.bukkit.entity.Entity;
 
+import com.gmail.berndivader.mythicskript.Utils;
+
 import ch.njol.skript.lang.function.Function;
-import io.lumine.xikage.mythicmobs.adapters.AbstractEntity;
-import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
-import io.lumine.xikage.mythicmobs.io.MythicLineConfig;
-import io.lumine.xikage.mythicmobs.skills.SkillMetadata;
-import io.lumine.xikage.mythicmobs.skills.targeters.IEntitySelector;
+import io.lumine.mythic.api.adapters.AbstractEntity;
+import io.lumine.mythic.api.config.MythicLineConfig;
+import io.lumine.mythic.api.skills.SkillMetadata;
+import io.lumine.mythic.bukkit.BukkitAdapter;
+import io.lumine.mythic.core.skills.targeters.IEntitySelector;
 
 public class EntityTargeter extends IEntitySelector {
 	
@@ -17,7 +19,7 @@ public class EntityTargeter extends IEntitySelector {
 	Object[][]parameters;
 	
 	public EntityTargeter(MythicLineConfig mlc,Function<?>f) {
-		super(mlc);
+		super(Utils.mythicMobs.getSkillManager(),mlc);
 		
 		function=f;
 		parameters=new Object[1][];

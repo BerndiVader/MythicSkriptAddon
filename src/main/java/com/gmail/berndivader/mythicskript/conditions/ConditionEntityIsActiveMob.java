@@ -2,13 +2,15 @@ package com.gmail.berndivader.mythicskript.conditions;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.event.Event;
+
+import com.gmail.berndivader.mythicskript.Utils;
+
 import javax.annotation.Nullable;
 
 import ch.njol.skript.lang.Condition;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.MythicMobs;
 
 public class ConditionEntityIsActiveMob extends Condition {
 	private Expression<Entity> bukkitentity;
@@ -27,6 +29,6 @@ public class ConditionEntityIsActiveMob extends Condition {
 
 	@Override
 	public boolean check(final Event e) {
-		return MythicMobs.inst().getAPIHelper().isMythicMob(bukkitentity.getSingle(e).getUniqueId());
+		return Utils.mythicHelper.isMythicMob(bukkitentity.getSingle(e).getUniqueId());
 	}
 }

@@ -13,11 +13,11 @@ import com.gmail.berndivader.mythicskript.Utils;
 import com.gmail.berndivader.mythicskript.events.skript.MythicSkriptSpawnEvent;
 import com.gmail.berndivader.mythicskript.events.skript.MythicSkriptSpawnerSpawnEvent;
 
-import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicConditionLoadEvent;
-import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMechanicLoadEvent;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
-import io.lumine.xikage.mythicmobs.skills.SkillCondition;
-import io.lumine.xikage.mythicmobs.skills.SkillMechanic;
+import io.lumine.mythic.bukkit.events.MythicConditionLoadEvent;
+import io.lumine.mythic.bukkit.events.MythicMechanicLoadEvent;
+import io.lumine.mythic.core.mobs.ActiveMob;
+import io.lumine.mythic.core.skills.SkillCondition;
+import io.lumine.mythic.core.skills.SkillMechanic;
 
 public class BukkitEvents implements Listener {
 	

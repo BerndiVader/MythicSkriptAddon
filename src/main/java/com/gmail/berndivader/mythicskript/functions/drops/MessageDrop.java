@@ -4,10 +4,10 @@ import javax.annotation.Nullable;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.function.Function;
-import io.lumine.xikage.mythicmobs.drops.Drop;
-import io.lumine.xikage.mythicmobs.drops.DropMetadata;
-import io.lumine.xikage.mythicmobs.drops.IMessagingDrop;
-import io.lumine.xikage.mythicmobs.io.MythicLineConfig;
+import io.lumine.mythic.api.config.MythicLineConfig;
+import io.lumine.mythic.api.drops.DropMetadata;
+import io.lumine.mythic.api.drops.IMessagingDrop;
+import io.lumine.mythic.core.drops.Drop;
 
 public class MessageDrop extends Drop implements IMessagingDrop {
 	

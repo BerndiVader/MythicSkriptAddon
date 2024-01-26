@@ -9,8 +9,8 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.drops.DropMetadata;
-import io.lumine.xikage.mythicmobs.skills.SkillCaster;
+import io.lumine.mythic.api.drops.DropMetadata;
+import io.lumine.mythic.api.skills.SkillCaster;
 
 public class GetCaster extends SimpleExpression<Entity> {
 	

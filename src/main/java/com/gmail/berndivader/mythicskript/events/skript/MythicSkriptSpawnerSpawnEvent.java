@@ -3,8 +3,8 @@ package com.gmail.berndivader.mythicskript.events.skript;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
-import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
+import io.lumine.mythic.core.mobs.ActiveMob;
+import io.lumine.mythic.core.spawning.spawners.MythicSpawner;
 
 public class MythicSkriptSpawnerSpawnEvent extends Event {
 	private static final HandlerList handlers = new HandlerList();

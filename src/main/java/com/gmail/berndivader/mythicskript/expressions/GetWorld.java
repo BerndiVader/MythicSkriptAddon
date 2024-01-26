@@ -9,12 +9,11 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.mythic.bukkit.BukkitAdapter;
+import io.lumine.mythic.core.mobs.ActiveMob;
 
 public class GetWorld extends SimpleExpression<World>{
 	private Expression<ActiveMob> activeMob;
-	private ActiveMob am;
 
 	@Override
 	public boolean isSingle() {
@@ -39,9 +38,8 @@ public class GetWorld extends SimpleExpression<World>{
 	}
 
 	@Override
-	@Nullable
 	protected World[] get(Event e) {
-		if ((am = activeMob.getSingle(e))==null) return null;
+		ActiveMob am=activeMob.getSingle(e);
 		return new World[]{BukkitAdapter.adapt(am.getEntity().getWorld())};
 	}
 }

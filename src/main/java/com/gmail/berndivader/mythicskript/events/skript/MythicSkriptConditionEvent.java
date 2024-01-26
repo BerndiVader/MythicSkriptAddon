@@ -7,7 +7,7 @@ import org.bukkit.event.HandlerList;
 
 import com.gmail.berndivader.mythicskript.Utils;
 
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.mythic.core.mobs.ActiveMob;
 
 public class MythicSkriptConditionEvent extends Event {
 	private static final HandlerList handlers = new HandlerList();

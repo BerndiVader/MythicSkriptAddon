@@ -8,7 +8,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
+import io.lumine.mythic.core.spawning.spawners.MythicSpawner;
 
 public class SpawnerCooldown extends SimpleExpression<Number> {
 	private Expression<MythicSpawner> skriptSpawner;

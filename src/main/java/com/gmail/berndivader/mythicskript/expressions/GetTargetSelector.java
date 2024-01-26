@@ -12,8 +12,8 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.skills.SkillTargeter;
-import io.lumine.xikage.mythicmobs.skills.targeters.CustomTargeter;
+import io.lumine.mythic.core.skills.SkillTargeter;
+import io.lumine.mythic.core.skills.targeters.CustomTargeter;
 
 public class GetTargetSelector extends SimpleExpression<SkillTargeter> {
 	private Expression<String> targeterString;

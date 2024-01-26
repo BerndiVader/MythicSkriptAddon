@@ -1,15 +1,15 @@
 package com.gmail.berndivader.mythicskript;
 
-import io.lumine.xikage.mythicmobs.adapters.AbstractEntity;
-import io.lumine.xikage.mythicmobs.adapters.AbstractLocation;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
-import io.lumine.xikage.mythicmobs.skills.IParentSkill;
-import io.lumine.xikage.mythicmobs.skills.SkillMetadata;
-import io.lumine.xikage.mythicmobs.skills.SkillTrigger;
+import io.lumine.mythic.api.adapters.AbstractEntity;
+import io.lumine.mythic.api.adapters.AbstractLocation;
+import io.lumine.mythic.api.skills.IParentSkill;
+import io.lumine.mythic.api.skills.SkillTrigger;
+import io.lumine.mythic.core.mobs.ActiveMob;
+import io.lumine.mythic.core.skills.SkillMetadataImpl;
 
 public class AbstractTriggeredSkill
 implements IParentSkill {
-    private SkillMetadata data;
+    private SkillMetadataImpl data;
     private boolean cancel = false;
     
     public AbstractTriggeredSkill(SkillTrigger cause, ActiveMob am, AbstractEntity trigger) {
@@ -17,7 +17,7 @@ implements IParentSkill {
     }
     
     public AbstractTriggeredSkill(SkillTrigger cause, ActiveMob am, AbstractEntity trigger, AbstractLocation origin, boolean sync) {
-        this.data = new SkillMetadata(cause, am, trigger);
+        this.data = new SkillMetadataImpl(cause, am, trigger);
         this.data.setCallingEvent(this);
         this.data.setIsAsync(!sync);
         if (this.data.getTrigger() != null) {

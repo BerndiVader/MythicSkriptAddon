@@ -7,12 +7,13 @@ import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;
 
+import com.gmail.berndivader.mythicskript.Utils;
+
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
+import io.lumine.mythic.core.spawning.spawners.MythicSpawner;
 
 public class GetMythicSpawners extends SimpleExpression<MythicSpawner> {
 	private Expression<String> worldString;
@@ -49,10 +50,10 @@ public class GetMythicSpawners extends SimpleExpression<MythicSpawner> {
 	protected MythicSpawner[] get(Event e) {
 		List<MythicSpawner> spawners = new ArrayList<MythicSpawner>();
 		if (all) {
-			return MythicMobs.inst().getSpawnerManager().getSpawners().toArray(new MythicSpawner[0]);
+			return Utils.spawnerManager.getSpawners().toArray(new MythicSpawner[0]);
 		} else {
 			String wn = worldString.getSingle(e).toLowerCase();
-			for (MythicSpawner ms : MythicMobs.inst().getSpawnerManager().getSpawners()) {
+			for (MythicSpawner ms : Utils.spawnerManager.getSpawners()) {
 				if (ms.getLocation().getWorld().getName().toLowerCase().equals(wn)) {
 					spawners.add(ms);
 					continue;

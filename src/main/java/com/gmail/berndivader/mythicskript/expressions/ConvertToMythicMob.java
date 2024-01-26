@@ -8,15 +8,17 @@ import org.bukkit.metadata.FixedMetadataValue;
 
 import com.gmail.berndivader.mythicskript.Utils;
 
+import java.util.Optional;
+
 import javax.annotation.Nullable;
 
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
-import io.lumine.xikage.mythicmobs.mobs.MythicMob;
+import io.lumine.mythic.api.mobs.MythicMob;
+import io.lumine.mythic.bukkit.BukkitAdapter;
+import io.lumine.mythic.core.mobs.ActiveMob;
 
 public class ConvertToMythicMob extends SimpleExpression <ActiveMob> {
 	private Expression<String> skMobtype;
@@ -50,18 +52,16 @@ public class ConvertToMythicMob extends SimpleExpression <ActiveMob> {
 	@Override
 	@Nullable
 	protected ActiveMob[] get(Event e) {
-		String type = this.skMobtype.getSingle(e);
-		ActiveMob am = null;
 		Entity entity = this.skEntity.getSingle(e);
 		if (!(entity instanceof LivingEntity)) return null;
 		LivingEntity le = (LivingEntity)entity;
-		boolean isplayer = le instanceof Player?true:false;
+		if(le instanceof Player) return null;
+		String type = this.skMobtype.getSingle(e);
 		int level = this.skLevel.getSingle(e).intValue();
-		MythicMob mm = Utils.mobManager.getMythicMob(type);
-		if (mm==null) return null;
-		if (isplayer 
-				&& !mm.isPersistent()) return null;
-		am = new ActiveMob(le.getUniqueId(), BukkitAdapter.adapt(le), mm, level);
+		Optional<MythicMob>maybe = Utils.mobManager.getMythicMob(type);
+		if(!maybe.isPresent()) return null;
+		MythicMob mm=maybe.get();
+		ActiveMob am = new ActiveMob(BukkitAdapter.adapt(le), mm, level);
 		if (am!=null) {
 			ConvertToMythicMob.addActiveMobToFaction(mm, am);
 			ConvertToMythicMob.registerActiveMob(am);
@@ -69,13 +69,13 @@ public class ConvertToMythicMob extends SimpleExpression <ActiveMob> {
 		return new ActiveMob[]{am};
 	}
 	
-	public static void addActiveMobToFaction(MythicMob mm, ActiveMob am) {
+	private static void addActiveMobToFaction(MythicMob mm, ActiveMob am) {
         if (mm.hasFaction()) {
             am.setFaction(mm.getFaction());
             am.getEntity().setMetadata("Faction", new FixedMetadataValue(Utils.mythicMobs,mm.getFaction()));
         }
 	}	
-    public static void registerActiveMob(ActiveMob am) {
+    private static void registerActiveMob(ActiveMob am) {
         Utils.mobManager.registerActiveMob(am);
     }
 	

@@ -9,7 +9,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.drops.DropMetadata;
+import io.lumine.mythic.api.drops.DropMetadata;
 
 public class GetCause extends SimpleExpression<Entity> {
 	

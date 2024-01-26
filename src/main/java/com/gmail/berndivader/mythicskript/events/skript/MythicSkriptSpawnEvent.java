@@ -4,7 +4,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.mythic.core.mobs.ActiveMob;
 
 public final class MythicSkriptSpawnEvent extends Event {
 	private static final HandlerList handlers = new HandlerList();

@@ -12,10 +12,11 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
-import io.lumine.xikage.mythicmobs.drops.Drop;
-import io.lumine.xikage.mythicmobs.drops.IItemDrop;
-import io.lumine.xikage.mythicmobs.drops.LootBag;
+import io.lumine.mythic.api.drops.IItemDrop;
+import io.lumine.mythic.bukkit.BukkitAdapter;
+import io.lumine.mythic.core.drops.Drop;
+import io.lumine.mythic.core.drops.LootBag;
+
 
 public class GetLootBagItems extends SimpleExpression<ItemStack> {
 	Expression<LootBag> bagExpr;
@@ -48,7 +49,12 @@ public class GetLootBagItems extends SimpleExpression<ItemStack> {
 		List<ItemStack>items=new ArrayList<>();
 		for(Drop drop:lootBag.getDrops()) {
 			if(drop instanceof IItemDrop) {
-				items.add(BukkitAdapter.adapt(((IItemDrop) drop).getDrop(lootBag.getMetadata())));
+				/*
+				 * TODO:
+				 * What is that double in getDrop good for?
+				 * 
+				 */
+				items.add(BukkitAdapter.adapt(((IItemDrop) drop).getDrop(lootBag.getMetadata(),1d)));
 			}
 		}
 		return items.toArray(new ItemStack[items.size()]);

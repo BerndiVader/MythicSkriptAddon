@@ -9,15 +9,17 @@ import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;
 
+import com.gmail.berndivader.mythicskript.Utils;
+
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.drops.Drop;
-import io.lumine.xikage.mythicmobs.drops.DropMetadata;
-import io.lumine.xikage.mythicmobs.drops.IItemDrop;
-import io.lumine.xikage.mythicmobs.drops.IMultiDrop;
-import io.lumine.xikage.mythicmobs.drops.LootBag;
+import io.lumine.mythic.api.drops.IItemDrop;
+import io.lumine.mythic.api.drops.IMultiDrop;
+import io.lumine.mythic.core.drops.Drop;
+import io.lumine.mythic.core.drops.DropMetadataImpl;
+import io.lumine.mythic.core.drops.LootBag;
 
 public class SetOtherLootForLootBag extends Effect {
 	Expression<LootBag> exprBag;
@@ -60,9 +62,9 @@ public class SetOtherLootForLootBag extends Effect {
 		@SuppressWarnings("rawtypes")
 		Map<Class,Drop>intangibleDrops=new HashMap<Class,Drop>();
 		for(String type:dropList) {
-			Drop drop=Drop.getDrop("MMSK_DROP",type);
+			Drop drop=Utils.dropExecutor.getDrop("MMSK_DROP",type);
 			if(drop instanceof IMultiDrop) {
-				LootBag loot=((IMultiDrop)drop).get(new DropMetadata(lootBag.getMetadata().getCaster(),lootBag.getMetadata().getCause().orElse(null)));
+				LootBag loot=((IMultiDrop)drop).get(new DropMetadataImpl(lootBag.getMetadata().getCaster(),lootBag.getMetadata().getCause().orElse(null)));
 				for(Drop d1:loot.getDrops()) {
 					if(d1 instanceof IItemDrop) {
 						lootBag.add(lootBag.getMetadata(),d1);

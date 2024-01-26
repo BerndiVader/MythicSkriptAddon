@@ -15,13 +15,13 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.adapters.AbstractEntity;
-import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
-import io.lumine.xikage.mythicmobs.skills.SkillCaster;
-import io.lumine.xikage.mythicmobs.skills.SkillMetadata;
-import io.lumine.xikage.mythicmobs.skills.SkillTargeter;
-import io.lumine.xikage.mythicmobs.skills.SkillTrigger;
-import io.lumine.xikage.mythicmobs.skills.targeters.IEntitySelector;
+import io.lumine.mythic.api.adapters.AbstractEntity;
+import io.lumine.mythic.api.skills.SkillCaster;
+import io.lumine.mythic.bukkit.BukkitAdapter;
+import io.lumine.mythic.core.skills.SkillMetadataImpl;
+import io.lumine.mythic.core.skills.SkillTargeter;
+import io.lumine.mythic.core.skills.SkillTriggers;
+import io.lumine.mythic.core.skills.targeters.IEntitySelector;
 
 public class GetEntitiesFromSelector extends SimpleExpression<Entity>{
 	private Expression<Entity> bukkitEntity;
@@ -57,7 +57,7 @@ public class GetEntitiesFromSelector extends SimpleExpression<Entity>{
 		SkillCaster caster = Utils.mythicHelper.isMythicMob(this.bukkitEntity.getSingle(e))
 				?Utils.mythicHelper.getMythicMobInstance(this.bukkitEntity.getSingle(e))
 				:new ActivePlayer(this.bukkitEntity.getSingle(e));
-		SkillMetadata data = new SkillMetadata(SkillTrigger.API, caster, caster.getEntity(), caster.getLocation(), null, null, 1.0f);
+		SkillMetadataImpl data = new SkillMetadataImpl(SkillTriggers.API, caster, caster.getEntity(), caster.getLocation(), null, null, 1.0f);
         if (targeter instanceof IEntitySelector) {
     		List<Entity> eTargets = new ArrayList<Entity>();
             data.setEntityTargets(((IEntitySelector)targeter).getEntities(data));

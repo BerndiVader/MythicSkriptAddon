@@ -1,5 +1,7 @@
 package com.gmail.berndivader.mythicskript.expressions.mythicmob;
 
+import java.util.Optional;
+
 import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;
@@ -10,7 +12,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.mobs.MythicMob;
+import io.lumine.mythic.api.mobs.MythicMob;
 
 public class GetMythicMobByName extends SimpleExpression<MythicMob>{
 	private Expression<String> skType; 
@@ -38,8 +40,9 @@ public class GetMythicMobByName extends SimpleExpression<MythicMob>{
 	}
 
 	@Override
+	@Nullable
 	protected MythicMob[] get(Event e) {
-		MythicMob mm = Utils.mobManager.getMythicMob(this.skType.getSingle(e));
-        return new MythicMob[]{mm};
+		Optional<MythicMob>maybe=Utils.mobManager.getMythicMob(this.skType.getSingle(e));
+		return maybe.isPresent()?new MythicMob[] {maybe.get()}:null;
 	}
 }
