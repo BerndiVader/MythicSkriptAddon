@@ -3,7 +3,7 @@ package com.gmail.berndivader.mythicskript.effects.mobitems;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;

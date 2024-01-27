@@ -1,6 +1,6 @@
 package com.gmail.berndivader.mythicskript.expressions.mythicmob;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.Event;
@@ -40,7 +40,7 @@ public class GetEntityType extends SimpleExpression<EntityType>{
 	protected EntityType[] get(Event e) {
 		EntityType et = null;
 		MythicMob mm = this.skMythicMob.getSingle(e);
-		String t = mm.getEntityType().toUpperCase();
+		String t = mm.getEntityType().name().toUpperCase();
 		try {
 			et = EntityType.valueOf(t);
 		} catch (Exception ex) {

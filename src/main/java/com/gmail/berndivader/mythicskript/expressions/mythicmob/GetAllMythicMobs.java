@@ -2,7 +2,7 @@ package com.gmail.berndivader.mythicskript.expressions.mythicmob;
 
 import java.util.ArrayList;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import org.bukkit.event.Event;
 

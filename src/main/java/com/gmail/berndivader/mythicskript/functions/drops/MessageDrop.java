@@ -1,6 +1,6 @@
 package com.gmail.berndivader.mythicskript.functions.drops;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.function.Function;

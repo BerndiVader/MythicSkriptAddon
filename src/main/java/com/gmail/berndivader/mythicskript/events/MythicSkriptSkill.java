@@ -23,6 +23,7 @@ public class MythicSkriptSkill extends SkillMechanic implements ITargetedEntityS
 	private String skill;
 	private PlaceholderStringImpl placeholder;
 
+	@SuppressWarnings("deprecation")
 	public MythicSkriptSkill(SkillMechanic skill, MythicLineConfig mlc) {
 		super(Utils.mythicMobs.getSkillManager(), skill.getConfigLine(), mlc);
 		this.setAsyncSafe(false);

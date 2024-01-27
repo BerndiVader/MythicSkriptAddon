@@ -1,8 +1,10 @@
 # MythicMobs Skript Addon:
-### for MythicMobs 4.12.0 free and Skript 2.8.0
+### for Spigot 1.20.4, MythicMobs 5.5.1 and Skript 2.8.0
 
 # [DOWNLOAD](https://berndivader.pii.at/jenkins/job/MythicSkript/) [![Build Status](https://berndivader.pii.at/jenkins/job/MythicSkript/badge/icon)]
 
+### Update 27.1.2024 V0.99.3 update to work with MythicMobs 5.5.1
+### Update 26.1.2024 V0.99.2 update to work with MythicMobs 5.0.2
 ### Update 24.1.2024 V0.99.g fixed issues to work with mm 4.12.0 and Skript 2.8.0.
 ### Update 18.1.2024 V0.99f compiled with MythicMobs 4.12.0 and Skript 2.8.0 and Spigot 1.16.5
 ### Update 11.5.2021 V0.99e added mythicitem class. added new expression 'itemstack of mythicitem "name"' <br> Example (#itemstack of mythicitem %string%)
@@ -115,7 +117,7 @@ Monkey:
 ### skriptfunction:
 ### skfunction:
 #### mythicmobs syntax: skfunction{name=skript_function_name} @ANYTARGETER
-#### skript syntax: function skript_function_name(data: skilldata, [location: locatin], [entity: entity]) :: boolean:
+#### skript syntax: function skript_function_name(data: skilldata, [location: location], [entity: entity]) :: boolean:
 ##### call a skript function as a mechanic.
 
 Depending on the targeter of the skill there is either a location, an entity ore none of both. The skilldata is required. It represents the metadatas of the skill. Possible fields to get are: caster, cause, trigger,
@@ -270,7 +272,7 @@ function example_targeter(skilldata: skilldata) :: locations:
 ##### depending on the return type of the function its either an itemstack a string. returns a list of drops.
 
 The dropdata parameter is required. See dropdata class and dropdata expressions for information how to get data out of the object. the return type has
-to be a list of itemstacks or a list of stringts, or an empty list if nothing matches.
+to be a list of itemstacks or a list of strings, or an empty list if nothing matches.
 
 
 

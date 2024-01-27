@@ -5,7 +5,7 @@ import org.bukkit.event.Event;
 
 import com.gmail.berndivader.mythicskript.Utils;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;

@@ -1,19 +1,22 @@
 apply plugin: 'java'
-apply plugin: 'maven'
 
 repositories {
-    maven {
-        url "https://berndivader.pii.at/archiva/repository/public/"
-   	}
-    maven {
-        url "https://jitpack.io"
-    } 
+	mavenCentral()
+    maven {url "https://berndivader.pii.at/archiva/repository/public/"}
+    maven {url "https://jitpack.io"}
+    maven {url "https://mvn.lumine.io/repository/maven-public/"}   
+	maven {url "https://oss.sonatype.org/content/repositories/snapshots"}
+ 	maven {url "https://oss.sonatype.org/content/repositories/central"}    
 }
 
 dependencies {
-    implementation	"org.spigotmc:spigot-1.16.5:+"
-    implementation	"io.lumine.xikage:mythicmobs:5.0.2"
-    implementation	"com.github.SkriptLang:Skript:2.8.0"
+	compileOnly "org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT"
+    compileOnly	"io.lumine:Mythic-Dist:5.5.1"
+    compileOnly	"com.github.SkriptLang:Skript:2.8.0"
+}
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 }
 
 processResources {
@@ -44,53 +47,4 @@ processResources {
             exclude "plugin.yml"
     }
     println("Done!")
-}
-
-compileJava {
-    dependsOn clean
-    
-    doLast {
-        print("Create POM file....")
-        pom {
-            project {
-                groupId project.group
-                artifactId project.name
-                version project.version
-            }
-        }.writeTo("./build/libs/"+project.name+"-"+project.version+".xml")
-        println("Done!")
-    }
-    
-}
-
-uploadArchives {
-    doLast {
-        print("Update repository files....")
-		def d1=project.projectDir
-		Properties archiva=new Properties()
-        
-    	File data=new File("${d1}/../usr.properties")
-		if(data.exists())
-        {
-            archiva.load(data.newDataInputStream())
-            def usr=archiva.getProperty('usr')
-            def pwd=archiva.getProperty('pwd')
-
-
-            repositories.mavenDeployer {
-                    repository(url:'http://mc.hackerzlair.org:8888/repository/public/') {
-                            authentication (userName: '${usr}', password: '${pwd}')
-                    }
-
-                    pom.version=project.version
-                    pom.artifactId=project.name
-                    pom.groupId='com.gmail.berndivader'
-            }
-            println("Done!")
-        }
-        else
-        {
-            println("Archiva config file is missing. Repository not updated!")
-        }
-    }
 }

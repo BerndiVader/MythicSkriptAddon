@@ -1,6 +1,6 @@
 package com.gmail.berndivader.mythicskript.expressions.mythicspawner;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import org.bukkit.event.Event;
 

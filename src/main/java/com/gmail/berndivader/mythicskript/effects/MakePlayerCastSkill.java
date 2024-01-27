@@ -3,7 +3,7 @@ package com.gmail.berndivader.mythicskript.effects;
 import java.util.HashSet;
 import java.util.Optional;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;

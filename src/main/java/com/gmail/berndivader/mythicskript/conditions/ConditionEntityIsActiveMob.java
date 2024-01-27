@@ -2,10 +2,9 @@ package com.gmail.berndivader.mythicskript.conditions;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.Nullable;
 
 import com.gmail.berndivader.mythicskript.Utils;
-
-import javax.annotation.Nullable;
 
 import ch.njol.skript.lang.Condition;
 import ch.njol.skript.lang.Expression;

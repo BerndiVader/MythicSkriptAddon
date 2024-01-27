@@ -26,6 +26,7 @@ public class SkriptfunctionMechanic extends SkillMechanic implements INoTargetSk
 	int dataPos,locationPos,entityPos;
 	String name;
 	
+	@SuppressWarnings("deprecation")
 	public SkriptfunctionMechanic(String skill, MythicLineConfig mlc) {
 		super(Utils.mythicMobs.getSkillManager(), skill, mlc);
 		

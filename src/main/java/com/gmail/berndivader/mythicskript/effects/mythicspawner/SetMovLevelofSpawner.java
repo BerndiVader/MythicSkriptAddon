@@ -1,6 +1,6 @@
 package com.gmail.berndivader.mythicskript.effects.mythicspawner;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import org.bukkit.event.Event;
 
@@ -8,8 +8,8 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
+import io.lumine.mythic.bukkit.utils.numbers.RandomInt;
 import io.lumine.mythic.core.spawning.spawners.MythicSpawner;
-import io.lumine.mythic.utils.numbers.RandomInt;
 
 
 public class SetMovLevelofSpawner extends Effect {

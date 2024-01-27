@@ -1,6 +1,6 @@
 package com.gmail.berndivader.mythicskript.effects;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.event.Event;
@@ -14,7 +14,6 @@ import ch.njol.util.Kleenean;
 import io.lumine.mythic.api.skills.SkillTrigger;
 import io.lumine.mythic.bukkit.BukkitAdapter;
 import io.lumine.mythic.core.mobs.ActiveMob;
-import io.lumine.mythic.core.skills.SkillTriggers;
 
 public class TriggerSkill extends Effect {
 	private Expression<String> trigger;
@@ -40,9 +39,9 @@ public class TriggerSkill extends Effect {
 	@Override
 	protected void execute(Event e) {
 		ActiveMob am = this.activeMob.getSingle(e);
-		SkillTrigger trigger;
+		SkillTrigger<?> trigger;
 		try {
-			trigger = SkillTriggers.get(this.trigger.getSingle(e).toUpperCase());
+			trigger = SkillTrigger.get(this.trigger.getSingle(e).toUpperCase());
 		} catch (Exception ex) {
 			return;
 		}

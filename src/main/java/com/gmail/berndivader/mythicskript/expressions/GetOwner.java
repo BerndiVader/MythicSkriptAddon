@@ -2,7 +2,7 @@ package com.gmail.berndivader.mythicskript.expressions;
 
 import java.util.UUID;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;

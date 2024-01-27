@@ -1,6 +1,6 @@
 package com.gmail.berndivader.mythicskript.events;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;

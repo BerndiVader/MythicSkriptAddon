@@ -1,8 +1,7 @@
 package com.gmail.berndivader.mythicskript.conditions;
 
-import javax.annotation.Nullable;
-
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.Nullable;
 
 import ch.njol.skript.lang.Condition;
 import ch.njol.skript.lang.Expression;
