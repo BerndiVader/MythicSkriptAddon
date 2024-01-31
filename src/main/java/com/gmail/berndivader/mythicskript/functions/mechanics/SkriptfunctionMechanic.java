@@ -3,8 +3,6 @@ package com.gmail.berndivader.mythicskript.functions.mechanics;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 
-import com.gmail.berndivader.mythicskript.Utils;
-
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.function.Function;
 import ch.njol.skript.lang.function.Functions;
@@ -26,9 +24,8 @@ public class SkriptfunctionMechanic extends SkillMechanic implements INoTargetSk
 	int dataPos,locationPos,entityPos;
 	String name;
 	
-	@SuppressWarnings("deprecation")
-	public SkriptfunctionMechanic(String skill, MythicLineConfig mlc) {
-		super(Utils.mythicMobs.getSkillManager(), skill, mlc);
+	public SkriptfunctionMechanic(SkillMechanic skill,MythicLineConfig mlc) {
+		super(skill.getManager(),skill.getFile(), mlc.getLine(), mlc);
 		
 		name=mlc.getString("name","");
 		function=Functions.getGlobalFunction(name);

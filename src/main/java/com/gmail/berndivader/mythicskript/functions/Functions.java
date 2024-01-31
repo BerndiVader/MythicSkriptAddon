@@ -40,7 +40,7 @@ public class Functions implements Listener {
 		switch(e.getMechanicName().toLowerCase()) {
 		case "skriptfunction":
 		case "skfunction":
-			e.register(new SkriptfunctionMechanic(e.getContainer().getConfigLine(),e.getConfig()));
+			e.register(new SkriptfunctionMechanic(e.getContainer(),e.getConfig()));
 			break;
 		}
 	}
@@ -82,7 +82,7 @@ public class Functions implements Listener {
 						Skript.warning("There was an error with the given paramters for "+name);
 					}
 				} else {
-					Skript.warning("The return type for skriptcondition function "+name+" has to be boolean but is "+function.getReturnType().getCodeName());
+					Skript.warning("The return type for skriptcondition function "+name+" requires to be boolean but is "+function.getReturnType().getCodeName());
 				}
 			} else {
 				Skript.warning("Cant find function "+name);
@@ -107,7 +107,7 @@ public class Functions implements Listener {
 				} else if(returnType.equals("entity")) {
 					e.register(new EntityTargeter(mlc, function));
 				} else {
-					Skript.warning("Expected return type for skript targeter "+name+" has to be a entity or location list but is "+returnType);
+					Skript.warning("Expected return type for skript targeter "+name+" requires to be entity or location list but is "+returnType);
 				}
 			} else {
 				Skript.warning("Cant find function "+name);
@@ -132,6 +132,9 @@ public class Functions implements Listener {
 					break;
 				case "string":
 					e.register(new MessageDrop(e.getContainer().getConfigLine(),e.getConfig(),function));
+					break;
+				default:
+					Skript.warning("Expected return type for skript drop "+name+" requires to be itemstack or string but is "+function.getReturnType().getCodeName());
 					break;
 				}
 			} else {

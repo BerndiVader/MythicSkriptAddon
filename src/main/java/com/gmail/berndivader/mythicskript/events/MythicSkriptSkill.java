@@ -2,7 +2,6 @@ package com.gmail.berndivader.mythicskript.events;
 
 import org.bukkit.Bukkit;
 
-import com.gmail.berndivader.mythicskript.Utils;
 import com.gmail.berndivader.mythicskript.events.skript.MythicSkriptSkillEvent;
 
 import io.lumine.mythic.api.adapters.AbstractEntity;
@@ -23,9 +22,8 @@ public class MythicSkriptSkill extends SkillMechanic implements ITargetedEntityS
 	private String skill;
 	private PlaceholderStringImpl placeholder;
 
-	@SuppressWarnings("deprecation")
 	public MythicSkriptSkill(SkillMechanic skill, MythicLineConfig mlc) {
-		super(Utils.mythicMobs.getSkillManager(), skill.getConfigLine(), mlc);
+		super(skill.getManager(),skill.getFile(), mlc.getLine(), mlc);
 		this.setAsyncSafe(false);
 		this.skill = mlc.getString(new String[]{"skriptskill","skill","s"}, "");
 		placeholder=new PlaceholderStringImpl(SkillString.parseMessageSpecialChars(mlc.getString(new String[]{"args","a"},"")));

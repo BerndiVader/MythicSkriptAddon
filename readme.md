@@ -1,8 +1,11 @@
 # MythicMobs Skript Addon:
 ### for Spigot 1.20.4, MythicMobs 5.5.1 and Skript 2.8.0
 
-# [DOWNLOAD](https://berndivader.pii.at/jenkins/job/MythicSkript/) [![Build Status](https://berndivader.pii.at/jenkins/job/MythicSkript/badge/icon)]
+[![](https://berndivader.pii.at/jenkins/job/MythicSkript/badge/icon)](https://berndivader.pii.at/jenkins/job/MythicSkript/)
 
+[![](https://dcbadge.vercel.app/api/server/8EfDrnd)](https://discord.gg/8EfDrnd)
+
+### Update 31.1.2024 V0.99.4 fixed NPE in all custom mechanics.
 ### Update 27.1.2024 V0.99.3 update to work with MythicMobs 5.5.1
 ### Update 26.1.2024 V0.99.2 update to work with MythicMobs 5.0.2
 ### Update 24.1.2024 V0.99.g fixed issues to work with mm 4.12.0 and Skript 2.8.0.
