@@ -1,10 +1,11 @@
 package com.gmail.berndivader.mythicskript;
 
-import io.lumine.mythic.api.items.ItemManager;
+import io.lumine.mythic.api.volatilecode.VolatileCodeHandler;
 import io.lumine.mythic.bukkit.BukkitAPIHelper;
 import io.lumine.mythic.bukkit.MythicBukkit;
 import io.lumine.mythic.core.config.MythicLineConfigImpl;
 import io.lumine.mythic.core.drops.DropExecutor;
+import io.lumine.mythic.core.items.ItemExecutor;
 import io.lumine.mythic.core.mobs.MobExecutor;
 import io.lumine.mythic.core.skills.SkillTargeter;
 import io.lumine.mythic.core.spawning.spawners.SpawnerManager;
@@ -15,10 +16,11 @@ Utils
 {
 	public static MythicBukkit mythicMobs;
 	public static MobExecutor mobManager;
-	public static ItemManager itemManager;
+	public static ItemExecutor itemManager;
 	public static BukkitAPIHelper mythicHelper;
 	public static DropExecutor dropExecutor;
 	public static SpawnerManager spawnerManager;
+	public static VolatileCodeHandler VCH;
 	
 	static {
 		mythicMobs=MythicBukkit.inst();
@@ -26,6 +28,7 @@ Utils
 		itemManager=mythicMobs.getItemManager();
 		mythicHelper=mythicMobs.getAPIHelper();
 		dropExecutor=mythicMobs.getDropManager();
+		VCH=mythicMobs.getVolatileCodeHandler();
 	}
 	
 	/**

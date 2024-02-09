@@ -1,5 +1,7 @@
 package com.gmail.berndivader.mythicskript.conditions;
 
+import com.gmail.berndivader.mythicskript.conditions.mythicitem.ItemStackisMythicItem;
+
 import ch.njol.skript.Skript;
 
 public class Conditions {
@@ -16,5 +18,7 @@ public class Conditions {
 				"mythicspawner %mythicspawner% contains activemob %activemob%");
 		Skript.registerCondition(ActiveMobHasImmunityTable.class, 
 				"activemob %activemob% has immunitytable");
+		Skript.registerCondition(ItemStackisMythicItem.class,
+				"%itemstack% is [a ]mythicitem");
 	}
 }

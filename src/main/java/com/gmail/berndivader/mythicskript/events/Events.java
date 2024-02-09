@@ -45,12 +45,6 @@ public class Events {
 			public LootBag get(MythicMobLootDropEvent e) {
 				return e.getDrops();
 		}}, 0);
-		EventValues.registerEventValue(MythicMobLootDropEvent.class, LootBag.class, new Getter<LootBag, MythicMobLootDropEvent>() {
-			@Override
-			@Nullable
-			public LootBag get(MythicMobLootDropEvent e) {
-				return e.getDrops();
-		}}, 0);
 		Skript.registerEvent("MythicSkriptSpawnEvent", SimpleEvent.class, MythicSkriptSpawnEvent.class, "mythicmob spawnevent");
 		EventValues.registerEventValue(MythicSkriptSpawnEvent.class, ActiveMob.class, new Getter<ActiveMob, MythicSkriptSpawnEvent>() {
 			@Override

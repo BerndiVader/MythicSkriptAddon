@@ -1,10 +1,20 @@
 # MythicMobs Skript Addon:
-### for Spigot 1.20.4, MythicMobs 5.5.1 and Skript 2.8.0
+### for Spigot 1.20.4, MythicMobs 5.5.1 and Skript 2.8.2
 
 [![](https://berndivader.pii.at/jenkins/job/MythicSkript/badge/icon)](https://berndivader.pii.at/jenkins/job/MythicSkript/)
 
 [![](https://dcbadge.vercel.app/api/server/8EfDrnd)](https://discord.gg/8EfDrnd)
 
+### Update 09.2.2024 V0.99.5
+	- compiled with Skript 2.8.2
+	- new conditions:
+		- %itemstack% is a mythicitem
+	- new expressions:
+		- [create ]itemstack for mythicitem [named ]%string%
+		- [get ]mythicitem [for ]name %string%
+		- [get ]itemstack for %mythicitem%
+	- new event value for mythicmob lootdrop event:
+		- event-lootbag							
 ### Update 31.1.2024 V0.99.4 fixed NPE in all custom mechanics.
 ### Update 27.1.2024 V0.99.3 update to work with MythicMobs 5.5.1
 ### Update 26.1.2024 V0.99.2 update to work with MythicMobs 5.0.2
@@ -661,6 +671,9 @@ Creates and returns an itemstack for the mythicitem with the name string.
 ```
 set {_item} to itemstack of mythicitem "mythicitem"
 ```
+
+### mythicitem of name %string%
+Returns a mythicitem object for the given name or null with not found.
 
 
 #### for Skilldata:

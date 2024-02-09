@@ -64,7 +64,6 @@ public class MythicClasses {
 					return o.toString();
 
 				}
-				
 			})
 		);
 		
