@@ -2,7 +2,6 @@ package com.gmail.berndivader.mythicskript.effects;
 
 import javax.annotation.Nullable;
 
-import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.Event;
 
@@ -33,18 +32,18 @@ public class SetDamage extends Effect {
 
 	@Override
 	protected void execute(Event e) {
-		ActiveMob am = this.activeMob.getSingle(e);
-		double amount = this.amount.getSingle(e).doubleValue();
-		if (am==null || !am.getEntity().isLiving()) return;
-		if (MythicMobs.inst().getMinecraftVersion()>=9) {
-			LivingEntity le = am.getLivingEntity();
-			if (le.getAttribute(org.bukkit.attribute.Attribute.GENERIC_ATTACK_DAMAGE)!=null) {
-				AttributeInstance ai = le.getAttribute(org.bukkit.attribute.Attribute.GENERIC_ATTACK_DAMAGE);
-				ai.setBaseValue(amount);
-			}
-		} else {
-			MythicMobs.inst().getVolatileCodeHandler().setAttackDamage(am.getEntity().getBukkitEntity(), amount);
-		}
+//		ActiveMob am = this.activeMob.getSingle(e);
+//		double amount = this.amount.getSingle(e).doubleValue();
+//		if (am==null || !am.getEntity().isLiving()) return;
+//		if (MythicMobs.inst().getMinecraftVersion()>=9) {
+//			LivingEntity le = am.getLivingEntity();
+//			if (le.getAttribute(org.bukkit.attribute.Attribute.GENERIC_ATTACK_DAMAGE)!=null) {
+//				AttributeInstance ai = le.getAttribute(org.bukkit.attribute.Attribute.GENERIC_ATTACK_DAMAGE);
+//				ai.setBaseValue(amount);
+//			}
+//		} else {
+//			MythicMobs.inst().getVolatileCodeHandler().setAttackDamage(am.getEntity().getBukkitEntity(), amount);
+//		}
 	}
 	
 }

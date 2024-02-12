@@ -17,7 +17,7 @@ task processbuildnumber {
 
 repositories {
     maven {
-        url "http://mc.hackerzlair.org:8888/repository/public"
+        url "https://berndivader.pii.at/archiva/repository/public"
    }    
     maven {
     	url 'https://repo.destroystokyo.com/repository/maven-public/'
@@ -28,9 +28,9 @@ repositories {
 }
 
 dependencies {
-	compileOnly "org.spigotmc:spigot:+"
-    compileOnly "io.lumine.xikage:mythicmobs:+"
-    compileOnly "com.github.SkriptLang:Skript:+"
+	compileOnly "org.spigotmc:spigot:1.8.8"
+    compileOnly "io.lumine.xikage:mythicmobs:4.6.5"
+    compileOnly "com.github.SkriptLang:Skript:2.4.1"
 }
 
 processResources {
