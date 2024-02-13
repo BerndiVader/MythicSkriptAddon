@@ -16,21 +16,21 @@ task processbuildnumber {
 }
 
 repositories {
-    maven {
-        url "https://berndivader.pii.at/archiva/repository/public"
-   }    
-    maven {
-    	url 'https://repo.destroystokyo.com/repository/maven-public/'
-   }    
-    maven {
-        url "https://jitpack.io"
-   }    
+	maven {
+		url "https://berndivader.pii.at/archiva/repository/public"
+	}
+	maven {
+		url "https://repo.destroystokyo.com/repository/maven-public/"
+	}
+	maven {
+		url "https://jitpack.io"
+	}
 }
 
 dependencies {
-	compileOnly "org.spigotmc:spigot:1.8.8"
-    compileOnly "io.lumine.xikage:mythicmobs:4.6.5"
-    compileOnly "com.github.SkriptLang:Skript:2.4.1"
+	implementation "org.spigotmc:spigot:1.8.8"
+    implementation "io.lumine.xikage:mythicmobs:4.6.5"
+    implementation "com.github.SkriptLang:Skript:2.4.1"
 }
 
 processResources {

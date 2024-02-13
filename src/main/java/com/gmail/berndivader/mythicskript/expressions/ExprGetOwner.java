@@ -12,11 +12,9 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 
-public class ExprGetOwner extends SimpleExpression<String> {
+public class ExprGetOwner extends SimpleExpression<Entity> {
 	private Expression<ActiveMob> activeMob;
 
 	@Override
@@ -25,8 +23,8 @@ public class ExprGetOwner extends SimpleExpression<String> {
 	}
 
 	@Override
-	public Class<? extends String> getReturnType() {
-		return String.class;
+	public Class<? extends Entity> getReturnType() {
+		return Entity.class;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -44,12 +42,20 @@ public class ExprGetOwner extends SimpleExpression<String> {
 
 	@Override
 	@Nullable
-	protected String[] get(Event e) {
+	protected Entity[] get(Event e) {
 		ActiveMob am = activeMob.getSingle(e);
 		if (am!=null && am.getOwner().isPresent()) {
 			UUID uuid = am.getOwner().get();
-			return new String[]{uuid.toString()};
+			return new Entity[]{getEntity(uuid)};
 		};
 		return null;
+	}
+	
+	private static Entity getEntity(UUID uuid) {
+		return Bukkit.getWorlds().stream()
+			.map(world->world.getEntities())
+			.flatMap(entities->entities.stream())
+			.filter(entitiy->entitiy.getUniqueId().equals(uuid))
+			.findFirst().get();
 	}
 }
