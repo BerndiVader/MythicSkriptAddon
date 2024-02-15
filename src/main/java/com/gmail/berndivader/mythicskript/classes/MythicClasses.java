@@ -1,5 +1,7 @@
 package com.gmail.berndivader.mythicskript.classes;
 
+import com.gmail.berndivader.mythicskript.ActivePlayer;
+
 import ch.njol.skript.classes.ClassInfo;
 import ch.njol.skript.classes.Parser;
 import ch.njol.skript.expressions.base.EventValueExpression;
@@ -22,6 +24,29 @@ import io.lumine.mythic.core.spawning.spawners.MythicSpawner;
 
 public class MythicClasses {
 	public static void register() {
+		
+		Classes.registerClass(new ClassInfo<ActivePlayer>(ActivePlayer.class,"activeplayer")
+				.name("activeplayer")
+				.user("activeplayer")
+				.defaultExpression(new EventValueExpression<ActivePlayer>(ActivePlayer.class))
+				.parser(new Parser<ActivePlayer>() {
+					
+					@Override
+					public boolean canParse(ParseContext context) {
+						return false;
+					}
+
+					@Override
+					public String toString(ActivePlayer o, int flags) {
+						return o.toString();
+					}
+
+					@Override
+					public String toVariableNameString(ActivePlayer o) {
+						return o.toString();
+					}
+				
+				}));
 		
 		Classes.registerClass(new ClassInfo<MythicItem>(MythicItem.class,"mythicitem").name("mythicitem").user("mythicitem")
 				.defaultExpression(new EventValueExpression<MythicItem>(MythicItem.class))

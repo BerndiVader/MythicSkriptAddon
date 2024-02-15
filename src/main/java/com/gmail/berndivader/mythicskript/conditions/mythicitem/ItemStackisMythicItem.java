@@ -30,7 +30,7 @@ public class ItemStackisMythicItem extends Condition {
 
 	@Override
 	public boolean check(Event event) {
-		return Utils.VCH.getItemHandler().getNBTData(expr.getSingle(event)).containsKey("MYTHIC_ITEM");
+		return Utils.VCH.getItemHandler().getNBTData(expr.getSingle(event)).containsKey("MYTHIC_TYPE");
 	}
 
 }
