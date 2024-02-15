@@ -1,5 +1,4 @@
 apply plugin: 'java'
-apply plugin: 'maven'
 
 task processbuildnumber {
 	Properties p1=new Properties()
@@ -47,12 +46,3 @@ processResources {
 	}
 }
 
-task createPom  {
-    pom {
-        project {
-            groupId "com.gmail.berndivader"
-            artifactId project.name
-            version project.version
-        }
-    }.writeTo("./build/libs/"+project.name+"-"+project.version+".xml")
-}
