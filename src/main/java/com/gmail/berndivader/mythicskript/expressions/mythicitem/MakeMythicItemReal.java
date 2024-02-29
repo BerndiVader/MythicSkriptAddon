@@ -44,8 +44,11 @@ public class MakeMythicItemReal extends SimpleExpression<ItemStack>{
 	@Override
 	protected ItemStack[] get(Event event) {
 		MythicItem item=itemExpr.getSingle(event);
-		int amount=skAmount!=null?skAmount.getSingle(event).intValue():1;
-		return new ItemStack[] {BukkitAdapter.adapt(item.generateItemStack(amount))};
+		if(item!=null) {
+			int amount=skAmount!=null?skAmount.getSingle(event).intValue():1;
+			return new ItemStack[] {BukkitAdapter.adapt(item.generateItemStack(amount))};
+		}
+		return null;
 	}
 
 }

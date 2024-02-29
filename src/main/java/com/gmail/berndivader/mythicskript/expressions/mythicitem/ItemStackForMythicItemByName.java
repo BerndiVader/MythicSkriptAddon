@@ -49,9 +49,8 @@ public class ItemStackForMythicItemByName extends SimpleExpression<ItemStack> {
 		if(maybe.isPresent()) {
 			int amount=skAmount!=null?skAmount.getSingle(event).intValue():1;
 			return new ItemStack[] {BukkitAdapter.adapt(maybe.get().generateItemStack(amount))};
-		} else {
-			return new ItemStack[0];
 		}
+		return null;
 	}
 
 }
