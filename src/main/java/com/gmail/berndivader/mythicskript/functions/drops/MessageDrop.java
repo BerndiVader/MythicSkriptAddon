@@ -2,7 +2,6 @@ package com.gmail.berndivader.mythicskript.functions.drops;
 
 import org.jetbrains.annotations.Nullable;
 
-import ch.njol.skript.Skript;
 import ch.njol.skript.lang.function.Function;
 import io.lumine.mythic.api.config.MythicLineConfig;
 import io.lumine.mythic.api.drops.DropMetadata;
@@ -31,7 +30,6 @@ public class MessageDrop extends Drop implements IMessagingDrop {
 		if(result!=null&&(result[0] instanceof String)) {
 			return (String)result[0];
 		}
-		Skript.warning("The return for "+function.getName()+" expects a string but got "+result==null?"NULL":result[0].getClass().getName());
 		return null;
 	}
 

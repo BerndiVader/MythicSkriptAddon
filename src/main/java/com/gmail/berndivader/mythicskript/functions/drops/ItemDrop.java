@@ -4,7 +4,6 @@ import org.jetbrains.annotations.Nullable;
 
 import org.bukkit.inventory.ItemStack;
 
-import ch.njol.skript.Skript;
 import ch.njol.skript.lang.function.Function;
 import io.lumine.mythic.api.adapters.AbstractItemStack;
 import io.lumine.mythic.api.config.MythicLineConfig;
@@ -35,7 +34,6 @@ public class ItemDrop extends Drop implements IItemDrop {
 		if(result!=null&&(result[0] instanceof ItemStack)) {
 			return BukkitAdapter.adapt((ItemStack)result[0]);
 		}
-		Skript.warning("The return for "+function.getName()+" expects an itemstack but got "+result==null?"NULL":result[0].getClass().getName());
 		return null;
 	}
 
