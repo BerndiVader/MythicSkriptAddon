@@ -1,4 +1,7 @@
-apply plugin: 'java'
+plugins {
+	id "java"
+	id "groovy"
+}
 
 repositories {
 	mavenCentral()
@@ -16,35 +19,34 @@ dependencies {
 }
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(16))
 }
 
 processResources {
-    
-    print("Process properties....")
-    Properties p1=new Properties()
-    File pf1=new File("$project.projectDir/gradle.properties")
-    if(pf1.exists())
+
+	duplicatesStrategy=DuplicatesStrategy.INCLUDE
+	
+    print("Process version....")
+    Properties properties=new Properties()
+    File file=new File("$project.projectDir/gradle.properties")
+    if(file.exists())
     {
-        p1.load(pf1.newDataInputStream())
-        project.version = p1.artver
-        project.group = p1.group
+        properties.load(file.newDataInputStream())
+        project.version = properties.version
         println("Done!")
     }
     else
     {
+    	project.version = "0.00.0"
         println("Warning! gradle.properties file is missing!")
     }
     
-    print("Process resources....")
+    print("Process plugin.yml....")
     inputs.property "version", project.version
     from (sourceSets.main.resources.srcDirs) {
             include "plugin.yml"
             expand "version": project.version
     }
 
-    from (sourceSets.main.resources.srcDirs) {
-            exclude "plugin.yml"
-    }
     println("Done!")
 }
