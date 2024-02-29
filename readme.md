@@ -5,6 +5,12 @@
 
 [![](https://dcbadge.vercel.app/api/server/8EfDrnd)](https://discord.gg/8EfDrnd)
 
+### Update 29.2.2024 V0.99.6
+	- set java target back to 16 for compatibility
+	- fixed possible NPE's in MythicItem expressions
+	- new class:
+		- mythicplayer
+
 ### Update 09.2.2024 V0.99.5
 	- compiled with Skript 2.8.2
 	- new conditions:
