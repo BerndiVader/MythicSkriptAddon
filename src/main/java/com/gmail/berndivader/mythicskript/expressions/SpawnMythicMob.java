@@ -12,6 +12,7 @@ import com.gmail.berndivader.mythicskript.Utils;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
+import ch.njol.skript.util.LiteralUtils;
 import ch.njol.util.Kleenean;
 import io.lumine.mythic.api.adapters.AbstractLocation;
 import io.lumine.mythic.api.adapters.AbstractWorld;
@@ -28,8 +29,8 @@ public class SpawnMythicMob extends SimpleExpression<ActiveMob> {
 	public boolean init(Expression<?>[] expr, int i, Kleenean var3, ParseResult var4) {
 		this.skriptMobtype = (Expression<String>) expr[0];
 		this.skriptLocation = (Expression<Location>) expr[1];
-		this.skriptWorld = (Expression<Object>) expr[2];
-		return true;
+		this.skriptWorld=(Expression<Object>)(expr[2]);
+		return LiteralUtils.canInitSafely(expr[2]);
 	}
 
 	@Override
@@ -60,9 +61,9 @@ public class SpawnMythicMob extends SimpleExpression<ActiveMob> {
 		} else if (worldObject instanceof World) {
 			world=BukkitAdapter.adapt((World)skriptWorld.getSingle(e));
 		}
-		if (location==null || world == null) return null;
+		if (location==null||world==null) return null;
 		AbstractLocation loc = new AbstractLocation(world, location.getX(), location.getY()+0.5, location.getZ());
-		if ((am = Utils.mobManager.spawnMob(mobtype, loc))==null) return null;
+		if ((am=Utils.mobManager.spawnMob(mobtype,loc))==null) return null;
 		return new ActiveMob[]{am};
 	}
 }
