@@ -21,6 +21,7 @@ public class Effects {
 		
 		//ActiveMob
 		
+		Skript.registerEffect(SetDisplayname.class,"set display of [activemob] %activemob% to %string%");
 		Skript.registerEffect(SetLastAggroCause.class, "set lastaggro of activemob %activemob% to %entity%");
 		Skript.registerEffect(DropCombat.class, "dropcombat for activemob %activemob%");
 		Skript.registerEffect(SetTarget.class, "set %entity% to new target of activemob %activemob%");
