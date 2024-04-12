@@ -39,7 +39,7 @@ public class GetDisplayName extends SimpleExpression<String>{
 	@Nullable
 	protected String[] get(Event e) {
 		ActiveMob am = activeMob.getSingle(e);
-		if (am.getEntity().getCustomName()==null) return null;
-		return new String[]{am.getEntity().getCustomName().toString()};
+		String display=am.getDisplayName();
+		return display!=null?new String[]{am.getDisplayName()}:null;
 	}
 }
